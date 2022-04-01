@@ -1,16 +1,8 @@
 <script lang="ts">
-    import { createEventDispatcher } from "svelte";
-    const dispatch = createEventDispatcher();
+    import { currencySelected } from "../store";
 
     let componentClass: string = "";
     export { componentClass as class };
-
-    let isEUR = false;
-
-    const setIsEUR = (value: boolean) => {
-        isEUR = value;
-        dispatch("changeCurrency", { isEUR });
-    };
 </script>
 
 <div class={`mb-auto ${componentClass}`}>
@@ -21,13 +13,13 @@
         height="25"
         fill="none"
         class="transition-colors mb-4 cursor-pointer"
-        on:click={() => setIsEUR(true)}
+        on:click={() => ($currencySelected = "EUR")}
     >
         <circle
             cx="12.3896"
             cy="12.3896"
             r="12.3896"
-            fill={isEUR ? "#30D7B4" : "#B8BAC7"}
+            fill={$currencySelected === "EUR" ? "#30D7B4" : "#B8BAC7"}
         />
         <path
             fill="#fff"
@@ -41,13 +33,13 @@
         height="25"
         fill="none"
         class="transition-colors cursor-pointer"
-        on:click={() => setIsEUR(false)}
+        on:click={() => ($currencySelected = "NIM")}
     >
         <circle
             cx="12.3896"
             cy="12.6103"
             r="12.3896"
-            fill={isEUR ? "#B8BAC7" : "#E9AF13"}
+            fill={$currencySelected === "NIM" ? "#E9AF13" : "#B8BAC7"}
         />
         <path
             fill="#fff"

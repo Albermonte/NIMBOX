@@ -1,0 +1,1 @@
+type CurrencySelected = "NIM" | "EUR"

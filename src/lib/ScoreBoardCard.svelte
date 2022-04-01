@@ -1,21 +1,49 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { fade, fly } from "svelte/transition";
-    import CoinSelector from "./CurrencySelector.svelte";
 
+    import {
+        FiatApiSupportedCryptoCurrency,
+        FiatApiSupportedFiatCurrency,
+        getExchangeRates,
+    } from "@nimiq/utils";
+
+    import { currencySelected } from "../store";
+
+    import CoinSelector from "./CurrencySelector.svelte";
     import InfoIcon from "./InfoIcon.svelte";
     import EurLogo from "./Logos/EURLogo.svelte";
     import NimiqLogo from "./Logos/NimiqLogo.svelte";
 
-    let isEUR = false;
+    const price = {
+        EUR: 0,
+        USD: 0,
+    };
     let initBalance = 190;
     let balance = "0";
     $: {
         balance = initBalance.toString().padStart(9, "0");
     }
+    // TODO: Better way of handling numeric balance instead of string
+    let smallBalance = "";
+    $: {
+        if ($currencySelected === "NIM")
+            smallBalance = `€ ${(Number(balance) * price.EUR).toFixed(2)}`;
+        else if ($currencySelected === "EUR")
+            smallBalance = `NIM ${Number(balance)}`;
+        else smallBalance = "";
+    }
 
-    onMount(() => {
+    onMount(async () => {
         setInterval(() => initBalance++, 1000);
+        const {
+            nim: { eur, usd },
+        } = await getExchangeRates(
+            [FiatApiSupportedCryptoCurrency.NIM],
+            [FiatApiSupportedFiatCurrency.EUR, FiatApiSupportedFiatCurrency.USD]
+        );
+        price.EUR = eur;
+        price.USD = usd;
     });
 </script>
 
@@ -26,11 +54,11 @@
         <div
             class="flex flex-col items-center justify-between h-full py-16 w-48"
         >
-            {#if isEUR}
+            {#if $currencySelected === "EUR"}
                 <div in:fly={{ y: 10 }}>
                     <EurLogo />
                 </div>
-            {:else}
+            {:else if $currencySelected === "NIM"}
                 <div in:fly={{ y: 10 }}>
                     <NimiqLogo />
                 </div>
@@ -68,14 +96,18 @@
                 </span>
             </div>
             <!-- Eur -->
-            <span class="ml-auto text-green font-extrabold">€ 321,6</span>
+            {#key smallBalance}
+                <span
+                    class={`ml-auto font-extrabold ${
+                        $currencySelected === "NIM"
+                            ? "text-green"
+                            : "text-gold"
+                    }`}
+                    in:fly={{ y: 10 }}>{smallBalance}</span
+                >
+            {/key}
         </div>
-        <CoinSelector
-            class="py-16"
-            on:changeCurrency={(event) => {
-                isEUR = event.detail.isEUR;
-            }}
-        />
+        <CoinSelector class="py-16" />
     </div>
 </div>
 

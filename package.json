@@ -22,5 +22,9 @@
     "tslib": "^2.3.1",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "@macfja/svelte-persistent-store": "^1.3.0",
+    "@nimiq/utils": "^0.8.2"
   }
 }

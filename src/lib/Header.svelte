@@ -3,7 +3,8 @@
     import RouteButton from "./RouteButton.svelte";
 </script>
 
-<div class="flex justify-between px-56 py-32">
+<!-- TODO: background when scrolling -->
+<div class="flex justify-between px-56 py-32 fixed top-0 w-full">
     <NimiqCommunityLogo />
     <RouteButton text="How to play?"/>
 </div>
