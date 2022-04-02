@@ -1,1 +1,0 @@
-type CurrencySelected = "NIM" | "EUR"

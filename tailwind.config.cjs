@@ -7,12 +7,6 @@ module.exports = {
     "./index.html",
     "./src/**/*.{svelte,js,ts,jsx,tsx}",
   ],
-  safelist: [
-    {
-      pattern:
-        /bg-radial-(white|grey|blue-light|blue-dark|gold|green|red|brown|purple|pink|lime)/,
-    },
-  ],
   theme: {
     colors: {
       current: {
