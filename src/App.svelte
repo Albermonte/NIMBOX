@@ -7,39 +7,62 @@
 	import ScoreBoardCard from "./lib/ScoreBoardCard.svelte"
 </script>
 
-<main class="h-screen w-full bg-grey-dark min-w-[1090px]">
-	<div class="bg-grey flex flex-col">
+<main class="h-screen w-full bg-grey-dark overflow-x-hidden">
+	<div class="bg-grey flex flex-col xl:h-[40vh]">
 		<Header />
-		<img class="game-logo self-center" src={logo} alt="Nimiq Game Treasure Logo" />
+		<img
+			class="game-logo self-center flex-1 max-w-[min(80vw,28rem)] object-contain mt-6"
+			src={logo}
+			alt="Nimiq Game Treasure Logo"
+		/>
 	</div>
 
-	<div class="w-full grid h-[28px] bg-grey grid-cols-[2fr_3fr_2fr]">
+	<div
+		class="xl:hidden flex flex-col xs:flex-row items-center justify-center gap-x-16 bg-grey pt-10"
+	>
+		<div class="flex flex-col items-center">
+			<button class="bg-blue-light text-white rounded px-12 py-8">
+				Particapte <span class="font-light">➞</span>
+			</button>
+			<div class="flex items-center mt-16">
+				<InfoIcon />
+				<span class="mx-6 font-[650]">
+					Participated: <span class="font-black text-20"> {2} </span></span
+				>
+			</div>
+		</div>
+		<div class="scale-75">
+			<HexagonBlockLoading />
+		</div>
+	</div>
+
+	<div class="w-full grid h-[28px] bg-grey invisible xl:visible xl:grid-cols-[2fr_3fr_2fr]">
 		<div />
 		<div class="w-full large-inner-shadow rounded-t-[28px] bg-grey-dark" />
 		<div />
 	</div>
 
-	<div class="w-full grid h-[28px] grid-cols-[2fr_3fr_2fr]">
-		<div class="w-full rounded-br-[28px] bg-grey relative large-shadow">
+	<div class="w-full grid h-[28px] grid-cols-2 xl:grid-cols-[2fr_3fr_2fr]">
+		<div class="w-full rounded-br-[18px] bg-grey relative large-shadow hidden xl:block">
 			<div class="absolute w-max left-1/2 -translate-x-1/2 flex flex-col items-center">
 				<button class="bg-blue-light text-white rounded px-16 py-12">
 					Particapte <span class="font-light">➞</span>
 				</button>
 				<div class="flex items-center mt-16">
 					<InfoIcon />
-					<span class="mx-6 font-[650]"
-						>Participated: <span class="font-black text-20"> {2} </span></span
+					<span class="mx-6 font-[650]">
+						Participated: <span class="font-black text-20"> {2} </span></span
 					>
 				</div>
 			</div>
 		</div>
-		<div class="bg-grey-dark relative">
-			<div class="mx-10 absolute -top-[18px] w-[calc(100%-20px)]">
-				<ScoreBoardCard />
-				<ParticipantList class="mt-26" />
+		<div class="bg-grey-dark relative col-span-2 xl:col-[2_/_span_1]">
+			<div class="xl:mx-10 xl:absolute px-10 -top-[18px] w-[500px] xl:w-[calc(100%-20px)]">
+				<ScoreBoardCard class="w-[calc(100vw-20px)] xl:w-unset overflow-auto" />
+				<ParticipantList class="mt-26 w-[calc(100vw-20px)] xl:w-unset mb-6" />
 			</div>
 		</div>
-		<div class="w-full rounded-bl-[28px] bg-grey relative large-shadow">
+		<div class="w-full rounded-bl-[18px] bg-grey relative large-shadow hidden xl:block">
 			<div class="absolute w-max top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 				<HexagonBlockLoading />
 			</div>

@@ -26,17 +26,20 @@
 		balance = initBalance.toString().padStart(9, "0")
 	}
 	// TODO: Better way of handling numeric balance instead of string
-	let smallBalance = ""
+	let smallBalance = 0
 	$: {
 		switch ($selectedCurrency) {
 			case SupportedCurrencies.NIM:
-				smallBalance = `${Number(balance)} NIM`
+				smallBalance = Number(balance)
 				break
 			case SupportedCurrencies.EUR:
-				smallBalance = `${(Number(balance) * price.EUR).toFixed(2)} €`
+				smallBalance = Number((Number(balance) * price.EUR).toFixed(2))
 				break
 		}
 	}
+
+	let componentClass: string = ""
+	export { componentClass as class }
 
 	onMount(async () => {
 		setInterval(() => initBalance++, 1000)
@@ -51,17 +54,19 @@
 	})
 </script>
 
-<div class="bg-white shadow-around rounded-[18px] px-20 py-10 flex flex-col items-center">
+<div
+	class={`bg-white shadow-around rounded-[18px] px-20 py-10 flex flex-col xs:items-center ${componentClass}`}
+>
 	<div class="flex items-center gap-x-14">
 		<!-- Currency Logo -->
 		<div class="flex flex-col items-center justify-between w-40">
 			{#if $selectedCurrency === SupportedCurrencies.EUR}
 				<div in:fly={{ y: 10 }} class="h-[50px]">
-					<img src={euroLogo} preload="true" alt="Euro Logo" class="object-cover" />
+					<img src={euroLogo} preload="true" alt="Euro Logo" class="object-cover min-w-[35px]" />
 				</div>
 			{:else if $selectedCurrency === SupportedCurrencies.NIM}
 				<div in:fly={{ y: 10 }} class="h-[50px]">
-					<img src={nimiqLogo} preload="true" alt="Nimiq Logo" class="object-cover" />
+					<img src={nimiqLogo} preload="true" alt="Nimiq Logo" class="object-cover min-w-[35px]" />
 				</div>
 			{/if}
 			<InfoIcon class="mt-14" />
@@ -91,12 +96,13 @@
 
 			{#key smallBalance}
 				<div
-					class={`ml-auto font-extrabold text-right ${
+					class={`ml-auto font-extrabold text-right flex justify-end gap-x-4 ${
 						$selectedCurrency === SupportedCurrencies.NIM ? "text-green" : "text-gold"
 					}`}
 					in:fly={{ y: 10 }}
 				>
 					{smallBalance}
+					{$selectedCurrency === SupportedCurrencies.NIM ? "NIM" : "€"}
 				</div>
 			{/key}
 		</div>

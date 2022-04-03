@@ -291,10 +291,6 @@ module.exports = {
       zIndex: {
         '-10': -10,
       },
-      aspectRatio: {
-        'floating-vertical-video': '1.22292993631/1',
-        initial: 'initial',
-      },
     },
   },
   plugins: [
