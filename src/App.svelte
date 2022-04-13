@@ -36,14 +36,14 @@
 		</div>
 	</div>
 
-	<div class="w-full grid h-[28px] bg-grey invisible xl:visible xl:grid-cols-[2fr_3fr_2fr]">
+	<div class="w-full grid h-[32px] bg-grey invisible xl:visible xl:grid-cols-[2fr_3fr_2fr]">
 		<div />
 		<div class="w-full large-inner-shadow rounded-t-[28px] bg-grey-dark" />
 		<div />
 	</div>
 
-	<div class="w-full grid h-[28px] grid-cols-2 xl:grid-cols-[2fr_3fr_2fr]">
-		<div class="w-full rounded-br-[18px] bg-grey relative large-shadow hidden xl:block">
+	<div class="w-full grid h-[32px] grid-cols-2 xl:grid-cols-[2fr_3fr_2fr]">
+		<div class="w-full rounded-br-[28px] bg-grey relative large-shadow hidden xl:block">
 			<div class="absolute w-max left-1/2 -translate-x-1/2 flex flex-col items-center">
 				<button class="bg-blue-light text-white rounded px-16 py-12">
 					Particapte <span class="font-light">➞</span>
@@ -57,12 +57,12 @@
 			</div>
 		</div>
 		<div class="bg-grey-dark relative col-span-2 xl:col-[2_/_span_1]">
-			<div class="xl:mx-10 xl:absolute px-10 -top-[18px] w-[500px] xl:w-[calc(100%-20px)]">
+			<div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px] xl:w-full">
 				<ScoreBoardCard class="w-[calc(100vw-20px)] xl:w-unset overflow-auto" />
 				<ParticipantList class="mt-26 w-[calc(100vw-20px)] xl:w-unset mb-6" />
 			</div>
 		</div>
-		<div class="w-full rounded-bl-[18px] bg-grey relative large-shadow hidden xl:block">
+		<div class="w-full rounded-bl-[28px] bg-grey relative large-shadow hidden xl:block">
 			<div class="absolute w-max top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 				<HexagonBlockLoading />
 			</div>
