@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { selectedCurrency } from "../store"
 	import { SupportedCurrencies } from "../types"
-
-	let componentClass: string = ""
 </script>
 
 <div>

@@ -113,6 +113,7 @@ module.exports = {
       intrinsic: 'intrinsic',
       'fit-content': 'fit-content',
       '1/2': '50%',
+      '4/10': '40%',
       '1/3': '33%',
       '1/4': '25%',
       '1/5': '20%',

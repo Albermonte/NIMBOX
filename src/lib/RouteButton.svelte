@@ -4,7 +4,7 @@
 		color = "bg-grey-dark"
 </script>
 
-<button class={`rounded ${color} flex px-14 gap-x-8 py-6 items-center`}>
+<button class={`rounded ${color} flex px-18 gap-x-10 py-12 items-center`}>
 	<img src={hamburguerIcon} alt="" />
 	<span class="font-bold text-14 leading-[14px]">
 		{text}

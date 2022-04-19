@@ -1,57 +1,57 @@
 <script lang="ts">
-	import { onMount } from "svelte"
-	import { fade, fly } from "svelte/transition"
+	import { onMount } from "svelte";
+	import { fade, fly } from "svelte/transition";
 
 	import {
 		FiatApiSupportedCryptoCurrency,
 		FiatApiSupportedFiatCurrency,
 		getExchangeRates,
-	} from "@nimiq/utils"
+	} from "@nimiq/utils";
 
-	import { selectedCurrency } from "../store"
-	import { SupportedCurrencies } from "../types"
+	import { selectedCurrency } from "../store";
+	import { SupportedCurrencies } from "../types";
 
-	import CoinSelector from "./CurrencySelector.svelte"
-	import InfoIcon from "./InfoIcon.svelte"
-	import nimiqLogo from "../assets/nimiq-logo.svg"
-	import euroLogo from "../assets/euro-logo.svg"
+	import CoinSelector from "./CurrencySelector.svelte";
+	import InfoIcon from "./InfoIcon.svelte";
+	import nimiqLogo from "../assets/nimiq-logo.svg";
+	import euroLogo from "../assets/euro-logo.svg";
 
 	const price = {
 		EUR: 0,
 		USD: 0,
-	}
-	let initBalance = 190
-	let balance = "0"
+	};
+	let initBalance = 190;
+	let balance = "0";
 	$: {
-		balance = initBalance.toString().padStart(9, "0")
+		balance = initBalance.toString().padStart(9, "0");
 	}
 	// TODO: Better way of handling numeric balance instead of string
-	let smallBalance = 0
+	let smallBalance = 0;
 	$: {
 		switch ($selectedCurrency) {
-			case SupportedCurrencies.NIM:
-				smallBalance = Number(balance)
-				break
 			case SupportedCurrencies.EUR:
-				smallBalance = Number((Number(balance) * price.EUR).toFixed(2))
-				break
+				smallBalance = Number(balance);
+				break;
+			case SupportedCurrencies.NIM:
+				smallBalance = Number((Number(balance) * price.EUR).toFixed(2));
+				break;
 		}
 	}
 
-	let componentClass: string = ""
-	export { componentClass as class }
+	let componentClass: string = "";
+	export { componentClass as class };
 
 	onMount(async () => {
-		setInterval(() => initBalance++, 1000)
+		setInterval(() => initBalance++, 1000);
 		const {
 			nim: { eur, usd },
 		} = await getExchangeRates(
 			[FiatApiSupportedCryptoCurrency.NIM],
 			[FiatApiSupportedFiatCurrency.EUR, FiatApiSupportedFiatCurrency.USD]
-		)
-		price.EUR = eur
-		price.USD = usd
-	})
+		);
+		price.EUR = eur;
+		price.USD = usd;
+	});
 </script>
 
 <div
@@ -62,11 +62,21 @@
 		<div class="flex flex-col items-center justify-between w-40">
 			{#if $selectedCurrency === SupportedCurrencies.EUR}
 				<div in:fly={{ y: 10 }} class="h-[50px]">
-					<img src={euroLogo} preload="true" alt="Euro Logo" class="object-cover min-w-[35px]" />
+					<img
+						src={euroLogo}
+						preload="true"
+						alt="Euro Logo"
+						class="object-cover min-w-[35px]"
+					/>
 				</div>
 			{:else if $selectedCurrency === SupportedCurrencies.NIM}
 				<div in:fly={{ y: 10 }} class="h-[50px]">
-					<img src={nimiqLogo} preload="true" alt="Nimiq Logo" class="object-cover min-w-[35px]" />
+					<img
+						src={nimiqLogo}
+						preload="true"
+						alt="Nimiq Logo"
+						class="object-cover min-w-[35px]"
+					/>
 				</div>
 			{/if}
 			<InfoIcon class="mt-14" />
@@ -77,8 +87,12 @@
 				{#each Array.from(balance) as number}
 					{#key number}
 						<div class="counter shadow flex-1">
-							<div class="counter__content counter__content--animate ">
-								<div class="counter__content__digit inner-shadow rounded-6 px-6 py-14">
+							<div
+								class="counter__content counter__content--animate "
+							>
+								<div
+									class="counter__content__digit inner-shadow rounded-6 px-6 py-14"
+								>
 									<span
 										class={`font-black text-26 counter__item counter__item--${number} counter__item--digit -translate-y-150`}
 										>&nbsp;</span
@@ -90,19 +104,25 @@
 				{/each}
 			</div>
 
-			<span class="text-13 font-bold text-black/50 text-ellipsis truncate">
+			<span
+				class="text-13 font-bold text-black/50 text-ellipsis truncate"
+			>
 				NQ48 8CKH BA24 2VR3 N249 N8MN J5XX 74DB 5XJ8
 			</span>
 
 			{#key smallBalance}
 				<div
 					class={`ml-auto font-extrabold text-right flex justify-end gap-x-4 ${
-						$selectedCurrency === SupportedCurrencies.NIM ? "text-green" : "text-gold"
+						$selectedCurrency === SupportedCurrencies.NIM
+							? "text-green"
+							: "text-gold"
 					}`}
 					in:fly={{ y: 10 }}
 				>
 					{smallBalance}
-					{$selectedCurrency === SupportedCurrencies.NIM ? "NIM" : "€"}
+					{$selectedCurrency === SupportedCurrencies.EUR
+						? "NIM"
+						: "€"}
 				</div>
 			{/key}
 		</div>
