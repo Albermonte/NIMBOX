@@ -20,20 +20,19 @@
 		EUR: 0,
 		USD: 0,
 	};
-	let initBalance = 190;
-	let balance = "0";
-	$: {
-		balance = initBalance.toString().padStart(9, "0");
-	}
+	let balance = 190;
 	// TODO: Better way of handling numeric balance instead of string
-	let smallBalance = 0;
+	let smallBalance = "0";
+	let bigBalance = "0";
 	$: {
 		switch ($selectedCurrency) {
 			case SupportedCurrencies.EUR:
-				smallBalance = Number(balance);
+				smallBalance = balance.toString();
+				bigBalance = (balance * price.EUR).toFixed(2).padStart(9, "0");
 				break;
 			case SupportedCurrencies.NIM:
-				smallBalance = Number((Number(balance) * price.EUR).toFixed(2));
+				smallBalance = (balance * price.EUR).toFixed(2);
+				bigBalance = balance.toString().padStart(9, "0");
 				break;
 		}
 	}
@@ -42,7 +41,7 @@
 	export { componentClass as class };
 
 	onMount(async () => {
-		setInterval(() => initBalance++, 1000);
+		setInterval(() => balance++, 1000);
 		const {
 			nim: { eur, usd },
 		} = await getExchangeRates(
@@ -84,7 +83,7 @@
 
 		<div class="flex-1 self-center">
 			<div class="flex justify-between gap-x-6">
-				{#each Array.from(balance) as number}
+				{#each Array.from(bigBalance) as number}
 					{#key number}
 						<div class="counter shadow flex-1">
 							<div
@@ -182,6 +181,11 @@
 		content: "0\A 9\A 0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9\A 0\A 1";
 	}
 
+	.counter__item--digit.counter__item--\.:before,
+	.counter__item--decimal.counter__item--\.:before {
+		content: "0\A  .\A 0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A  .\A 0\A 1";
+	}
+
 	.counter__content__digit {
 		line-height: 1.5;
 	}
@@ -227,8 +231,6 @@
 	}
 
 	.inner-shadow {
-		-moz-box-shadow: inset 2px 8px 10px -10px rgb(0 0 0 / 30%);
-		-webkit-box-shadow: inset 2px 8px 10px -10px rgb(0 0 0 / 30%);
 		box-shadow: inset 2px 8px 10px -10px rgb(0 0 0 / 30%);
 	}
 </style>
