@@ -10,8 +10,8 @@
 	let maxBlocks = 6;
 
 	$: {
-		if ($height <= 6) currentBlock = $height % 10;
-		else currentBlock = 0;
+		if ($height % 10 <= 6) currentBlock = $height % 10;
+		else currentBlock = 6;
 
 		for (let i = 0; i < maxBlocks; i++) {
 			const el = document.getElementById(`Triangle-${i + 1}`);

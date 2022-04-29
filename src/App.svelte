@@ -10,7 +10,10 @@
 	import { onMount } from "svelte";
 	import NetworkStatus from "./lib/NetworkStatus.svelte";
 
-	const workerURL = location.origin + "/nimiq/";
+	let isMobile = false;
+	let windowWidth = 0;
+	$: windowWidth < 1152 ? (isMobile = true) : (isMobile = false);
+
 	onMount(async () => {
 		// Only show error logs
 		// Nimiq.Log.instance.level = Nimiq.Log.ERROR;
@@ -19,6 +22,8 @@
 		});
 	});
 </script>
+
+<svelte:window bind:innerWidth={windowWidth} />
 
 <main class="h-screen w-full bg-grey-dark overflow-x-hidden">
 	<div class="bg-grey flex flex-col xl:h-[40vh]">
@@ -36,7 +41,10 @@
 		class="xl:hidden flex flex-col xs:flex-row items-center justify-center gap-x-16 bg-grey pt-10"
 	>
 		<ParticipateButton class="flex flex-col items-center" />
-		<HexagonBlockLoading class="scale-75" />
+		{#if isMobile}
+			<!-- Can only be rendered once, otherwise the animation on the Desktop version will brole -->
+			<HexagonBlockLoading class="scale-75" />
+		{/if}
 	</div>
 
 	<!-- Desktop -->
@@ -71,9 +79,11 @@
 		<div
 			class="w-full rounded-bl-[28px] bg-grey relative large-shadow hidden xl:block"
 		>
-			<HexagonBlockLoading
-				class="absolute w-max top-1/2 left-1/2 -translate-x-1/2 -translate-y-4/10"
-			/>
+			{#if !isMobile}
+				<HexagonBlockLoading
+					class="absolute w-max top-1/2 left-1/2 -translate-x-1/2 -translate-y-4/10"
+				/>
+			{/if}
 		</div>
 	</div>
 </main>
