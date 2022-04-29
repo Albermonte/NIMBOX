@@ -6,23 +6,17 @@
 	import ScoreBoardCard from "./lib/ScoreBoardCard.svelte";
 	import ParticipateButton from "./lib/ParticipateButton.svelte";
 
-	import Nimiq from "@nimiq/core-web";
 	import { start } from "nimiq-svelte-stores";
 	import { onMount } from "svelte";
-import NetworkStatus from "./lib/NetworkStatus.svelte";
+	import NetworkStatus from "./lib/NetworkStatus.svelte";
 
 	const workerURL = location.origin + "/nimiq/";
 	onMount(async () => {
 		// Only show error logs
-		Nimiq.Log.instance.level = Nimiq.Log.ERROR;
-		await Nimiq.load(workerURL);
-		await start(
-			(config: Nimiq.ClientConfigurationBuilder) => {
-			},
-			{
-				network: import.meta.env.DEV ? "test" : "main",
-			}
-		);
+		// Nimiq.Log.instance.level = Nimiq.Log.ERROR;
+		await start((config) => {}, {
+			network: import.meta.env.DEV ? "test" : "main",
+		});
 	});
 </script>
 

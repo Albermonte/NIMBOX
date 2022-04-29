@@ -32,11 +32,6 @@
     esserializer "^1.3.2"
     idb-keyval "^5.1.3"
 
-"@nimiq/core-web@^1.5.8":
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/@nimiq/core-web/-/core-web-1.5.8.tgz#da8abef84c6d293cbb9ca495a77f08daa08886b9"
-  integrity sha512-MNpFbGZetz2eZcHtJVa5tpmLjPf65mTcJBRQkOHS8kWE+f+Z++hdnwWUBQCEAph4oC6bsE5JSuU7VpwcogN7+w==
-
 "@nimiq/utils@^0.8.2":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@nimiq/utils/-/utils-0.8.2.tgz#f332100e83b7bb2f74690ce5608ada00898c7c19"
