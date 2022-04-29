@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-
+	import { height } from "nimiq-svelte-stores";
 	import LoadingBar from "./LoadingBar.svelte";
 
 	let componentClass: string = "";
@@ -10,13 +10,16 @@
 	let maxBlocks = 6;
 
 	$: {
+		if ($height <= 6) currentBlock = $height % 10;
+		else currentBlock = 0;
+
 		for (let i = 0; i < maxBlocks; i++) {
 			const el = document.getElementById(`Triangle-${i + 1}`);
 			if (el) el.setAttribute("class", "fill-white");
 		}
 
 		for (let i = 0; i < currentBlock; i++) {
-			const el = document.getElementById(`Triangle-${i + 1}`);			
+			const el = document.getElementById(`Triangle-${i + 1}`);
 			if (el) el.setAttribute("class", "fill-green");
 		}
 

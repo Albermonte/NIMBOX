@@ -1,11 +1,29 @@
 <script lang="ts">
 	import Header from "./lib/Header.svelte";
 	import HexagonBlockLoading from "./lib/HexagonBlockLoading.svelte";
-	import InfoIcon from "./lib/InfoIcon.svelte";
 	import logo from "./assets/treasury-logo.svg";
 	import ParticipantList from "./lib/ParticipantList.svelte";
 	import ScoreBoardCard from "./lib/ScoreBoardCard.svelte";
 	import ParticipateButton from "./lib/ParticipateButton.svelte";
+
+	import Nimiq from "@nimiq/core-web";
+	import { start } from "nimiq-svelte-stores";
+	import { onMount } from "svelte";
+import NetworkStatus from "./lib/NetworkStatus.svelte";
+
+	const workerURL = location.origin + "/nimiq/";
+	onMount(async () => {
+		// Only show error logs
+		Nimiq.Log.instance.level = Nimiq.Log.ERROR;
+		await Nimiq.load(workerURL);
+		await start(
+			(config: Nimiq.ClientConfigurationBuilder) => {
+			},
+			{
+				network: import.meta.env.DEV ? "test" : "main",
+			}
+		);
+	});
 </script>
 
 <main class="h-screen w-full bg-grey-dark overflow-x-hidden">
@@ -17,6 +35,7 @@
 			alt="Nimiq Game Treasure Logo"
 		/>
 	</div>
+	<NetworkStatus />
 
 	<!-- Mobile -->
 	<div
@@ -35,7 +54,9 @@
 		<div />
 	</div>
 
-	<div class="w-full grid h-[32px] grid-cols-2 xl:grid-cols-[2fr_500px_2fr] gap-x-16">
+	<div
+		class="w-full grid h-[32px] grid-cols-2 xl:grid-cols-[2fr_500px_2fr] gap-x-16"
+	>
 		<div
 			class="w-full rounded-br-[28px] bg-grey relative large-shadow hidden xl:block"
 		>
@@ -44,9 +65,7 @@
 			/>
 		</div>
 		<div class="bg-grey-dark relative col-span-2 xl:col-[2_/_span_1]">
-			<div
-				class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]"
-			>
+			<div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]">
 				<ScoreBoardCard
 					class="w-[calc(100vw-20px)] xl:w-unset overflow-auto"
 				/>
