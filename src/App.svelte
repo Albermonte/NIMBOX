@@ -90,11 +90,11 @@
 
 <style>
 	.large-shadow {
-		box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-			0 8px 10px -6px rgb(0 0 0 / 0.1);
+		box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
+			0 8px 10px -6px rgb(0 0 0 / 10%);
 	}
 
 	.large-inner-shadow {
-		box-shadow: inset 0 12px 6px -8px rgb(0 0 0 / 0.08);
+		box-shadow: inset 0 12px 6px -8px rgb(0 0 0 / 8%);
 	}
 </style>
