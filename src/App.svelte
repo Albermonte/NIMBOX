@@ -8,7 +8,6 @@
 
 	import { start } from "nimiq-svelte-stores";
 	import { onMount } from "svelte";
-	import NetworkStatus from "./lib/NetworkStatus.svelte";
 
 	let isMobile = false;
 	let windowWidth = 0;
@@ -34,7 +33,6 @@
 			alt="Nimiq Game Treasure Logo"
 		/>
 	</div>
-	<NetworkStatus />
 
 	<!-- Mobile -->
 	<div
