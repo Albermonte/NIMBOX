@@ -6,8 +6,8 @@
 </script>
 
 <div class={componentClass}>
-    <button class="bg-blue-light text-white rounded px-18 py-8">
-        Particapte <span class="font-light">➞</span>
+    <button class="py-8 text-white rounded bg-blue-light px-18">
+        Play the game <span class="font-light">➞</span>
     </button>
     <div class="flex items-center mt-16">
         <InfoIcon />
