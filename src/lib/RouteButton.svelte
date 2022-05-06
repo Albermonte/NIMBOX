@@ -1,12 +1,10 @@
 <script lang="ts">
-	import hamburguerIcon from "../assets/icons/hamburguer.svg"
-	export let text = "",
-		color = "bg-grey-dark"
+	export let color = "bg-grey",
+		route = "";
 </script>
 
-<button class={`rounded ${color} flex px-18 gap-x-10 py-12 items-center`}>
-	<img src={hamburguerIcon} alt="" />
-	<span class="font-bold text-14 leading-[14px]">
-		{text}
-	</span>
+<button
+	class={`rounded ${color} hover:brightness-95 transition-all duration-75 flex px-18 gap-x-10 py-12 items-center mx-8 h-40`}
+>
+	<slot />
 </button>

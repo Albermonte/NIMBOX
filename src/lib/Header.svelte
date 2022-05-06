@@ -1,18 +1,19 @@
 <script lang="ts">
-	import RouteButton from "./RouteButton.svelte";
-	import nimiqCommunity from "../assets/nimiq-community-logo.svg";
-	import WorldIcon from "./icons/WorldIcon.svelte";
-
 	import { consensus, height } from "nimiq-svelte-stores";
+
+	import RouteButton from "./RouteButton.svelte";
+	import FiatSelector from "./FiatSelector.svelte";
+	import WorldIcon from "./icons/WorldIcon.svelte";
 	import WorldCheckIcon from "./icons/WorldCheckIcon.svelte";
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
+	import hamburguerIcon from "../assets/icons/hamburguer.svg";
+	import nimiqIcon from "../assets/icons/nimiq-hex.svg";
 </script>
 
 <!-- TODO: background when scrolling -->
 <header
-	class="flex justify-between items-center h-136 px-20 sm:px-28 md:px-56 w-full bg-[url('/src/assets/nimiq-hexagon-1.svg')] bg-no-repeat bg-fixed bg-grey"
+	class="flex items-center justify-between w-full px-20 h-136 sm:px-28 md:px-56"
 >
-	<!-- <img src={nimiqCommunity} alt="Nimiq community" /> -->
 	<div class="flex">
 		<div class="flex flex-col mr-40">
 			<span class="font-medium uppercase text-13 text-blue-dark/40"
@@ -21,7 +22,7 @@
 			<div class="flex items-center">
 				<div class="w-24 h-24">
 					{#if $consensus === "connecting"}
-						<WorldIcon  />
+						<WorldIcon />
 					{:else if $consensus === "established"}
 						<WorldCheckIcon class=" text-green" />
 					{:else}
@@ -42,7 +43,19 @@
 			>
 		</div>
 	</div>
-	<div>
-		<RouteButton text="How to play?" />
+	<div class="flex">
+		<FiatSelector />
+		<RouteButton route="how-to">
+			<img src={hamburguerIcon} alt="" />
+			<span class={`font-bold text-14 leading-[14px]`}>
+				How to play?
+			</span>
+		</RouteButton>
+		<RouteButton color="bg-blue-light" route="free-nim">
+			<span class={`font-bold text-14 leading-[14px] text-white`}>
+				Get FREE NIM
+			</span>
+			<img src={nimiqIcon} alt="" />
+		</RouteButton>
 	</div>
 </header>
