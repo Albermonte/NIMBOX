@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { fade, fly } from "svelte/transition";
+	import { fly } from "svelte/transition";
 
 	import {
 		FiatApiSupportedCryptoCurrency,
@@ -8,33 +8,46 @@
 		getExchangeRates,
 	} from "@nimiq/utils";
 
-	import { selectedCurrency } from "../store";
+	import { selectedCurrency, selectedFiat } from "../store";
 	import { SupportedCurrencies } from "../types";
 
 	import CoinSelector from "./CurrencySelector.svelte";
 	import InfoIcon from "./InfoIcon.svelte";
-	import nimiqLogo from "../assets/nimiq-logo.svg";
-	import euroLogo from "../assets/euro-logo.svg";
 
 	const price = {
-		EUR: 0,
-		USD: 0,
+		eur: 0,
+		usd: 0,
 	};
 	let balance = 190;
 	// TODO: Better way of handling numeric balance instead of string
 	let smallBalance = "0";
 	let bigBalance = "0";
 	$: {
-		switch ($selectedCurrency) {
-			case SupportedCurrencies.EUR:
-				smallBalance = balance.toString();
-				bigBalance = (balance * price.EUR).toFixed(2).padStart(9, "0");
-				break;
-			case SupportedCurrencies.NIM:
-				smallBalance = (balance * price.EUR).toFixed(2);
-				bigBalance = balance.toString().padStart(9, "0");
-				break;
+		if ($selectedCurrency === SupportedCurrencies.NIM) {
+			smallBalance = (balance * price[$selectedFiat]).toFixed(2);
+			bigBalance = balance.toString().padStart(9, "0");
+		} else {
+			smallBalance = balance.toString();
+			bigBalance = (balance * price[$selectedFiat])
+				.toFixed(2)
+				.padStart(9, "0");
 		}
+	}
+	let currencyIcon = "NIM";
+	let smallBalanceColor = "text-gold";
+	$: {
+		if ($selectedCurrency === SupportedCurrencies.NIM) {
+			switch ($selectedFiat) {
+				case SupportedCurrencies.EUR:
+					currencyIcon = "€";
+					smallBalanceColor = "text-green";
+					break;
+				case SupportedCurrencies.USD:
+					currencyIcon = "$";
+					smallBalanceColor = "text-blue-light";
+					break;
+			}
+		} else currencyIcon = "NIM";
 	}
 
 	let componentClass: string = "";
@@ -48,8 +61,8 @@
 			[FiatApiSupportedCryptoCurrency.NIM],
 			[FiatApiSupportedFiatCurrency.EUR, FiatApiSupportedFiatCurrency.USD]
 		);
-		price.EUR = eur;
-		price.USD = usd;
+		price.eur = eur;
+		price.usd = usd;
 	});
 </script>
 
@@ -59,25 +72,16 @@
 	<div class="flex items-center gap-x-14">
 		<!-- Currency Logo -->
 		<div class="flex flex-col items-center justify-between w-40">
-			{#if $selectedCurrency === SupportedCurrencies.EUR}
+			{#key $selectedCurrency}
 				<div in:fly={{ y: 10 }} class="h-[50px]">
 					<img
-						src={euroLogo}
+						src={`/src/assets/${$selectedCurrency}-logo.svg`}
 						preload="true"
-						alt="Euro Logo"
+						alt={`${$selectedCurrency} logo`}
 						class="object-cover min-w-[35px]"
 					/>
 				</div>
-			{:else if $selectedCurrency === SupportedCurrencies.NIM}
-				<div in:fly={{ y: 10 }} class="h-[50px]">
-					<img
-						src={nimiqLogo}
-						preload="true"
-						alt="Nimiq Logo"
-						class="object-cover min-w-[35px]"
-					/>
-				</div>
-			{/if}
+			{/key}
 			<InfoIcon class="mt-14" />
 		</div>
 
@@ -111,17 +115,11 @@
 
 			{#key smallBalance}
 				<div
-					class={`ml-auto font-extrabold text-right flex justify-end gap-x-4 ${
-						$selectedCurrency === SupportedCurrencies.NIM
-							? "text-green"
-							: "text-gold"
-					}`}
+					class={`ml-auto font-extrabold text-right flex justify-end gap-x-4 ${smallBalanceColor}`}
 					in:fly={{ y: 10 }}
 				>
 					{smallBalance}
-					{$selectedCurrency === SupportedCurrencies.EUR
-						? "NIM"
-						: "€"}
+					{currencyIcon}
 				</div>
 			{/key}
 		</div>

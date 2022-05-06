@@ -2,5 +2,6 @@ import { FiatApiSupportedCryptoCurrency, FiatApiSupportedFiatCurrency } from "@n
 
 export enum SupportedCurrencies {
     NIM = FiatApiSupportedCryptoCurrency.NIM,
-    EUR = FiatApiSupportedFiatCurrency.EUR
+    EUR = FiatApiSupportedFiatCurrency.EUR,
+    USD = FiatApiSupportedFiatCurrency.USD,
 }

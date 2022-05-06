@@ -8,3 +8,9 @@ export const selectedCurrency: PersistentStore<SupportedCurrencies> = persist(
     indexedDBStorage(),
     "selectedCurrency",
 );
+
+export const selectedFiat: PersistentStore<SupportedCurrencies> = persist(
+    writable(SupportedCurrencies.EUR),
+    indexedDBStorage(),
+    "selectedFiat",
+);

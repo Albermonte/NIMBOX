@@ -1,44 +1,36 @@
 <script lang="ts">
-	import { selectedCurrency } from "../store"
-	import { SupportedCurrencies } from "../types"
+	import { selectedCurrency, selectedFiat } from "../store";
+	import { SupportedCurrencies } from "../types";
 </script>
 
 <div>
-	<!-- EUR -->
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="25"
-		height="25"
-		fill="none"
-		class="transition-colors mb-4 cursor-pointer"
-		on:click={() => ($selectedCurrency = SupportedCurrencies.EUR)}
+	<!-- Fiat -->
+	<div
+		class="mb-4 cursor-pointer"
+		on:click={() => ($selectedCurrency = $selectedFiat)}
 	>
-		<circle
-			cx="12.3896"
-			cy="12.3896"
-			r="12.3896"
-			fill={$selectedCurrency === SupportedCurrencies.EUR ? "#30D7B4" : "#B8BAC7"}
+		<img
+			src={`/src/assets/icons/${$selectedFiat}-icon.svg`}
+			alt=""
+			class="w-[25px] h-[25px]"
+			style={$selectedCurrency !== $selectedFiat
+				? "filter: grayscale(100%)"
+				: ""}
 		/>
-		<path
-			fill="#fff"
-			d="M13.181 4.81824c.6469 0 1.2356.06609 1.766.19828.5434.13218 1.0674.33046 1.572.59483l-.9315 2.24056c-.4399-.19828-.8475-.3503-1.2227-.45604-.3752-.11897-.7698-.17846-1.1838-.17846-.3882 0-.744.05949-1.0674.17846-.3106.10574-.5887.27098-.8346.49569-.2458.22472-.4528.50231-.621.83278-.1552.33046-.2717.7138-.3493 1.15001h3.8232v1.70525h-3.9591c0 .0528-.0064.1255-.0194.2181v.5948c0 .0925.0065.1917.0194.2974h3.3575v1.725h-3.2022c.1035.5156.2846.9518.5434 1.3087.2717.3437.6146.608 1.0286.7931.4269.1718.9186.2578 1.4749.2578.4917 0 .951-.0463 1.3779-.1388.4399-.1058.8475-.2446 1.2227-.4164v2.4785c-.3623.185-.7698.3238-1.2227.4164-.4398.1057-.9574.1586-1.5525.1586-1.0092 0-1.9084-.1851-2.6976-.5552-.78928-.3833-1.44266-.9385-1.96018-1.6655-.51753-.7271-.86686-1.6061-1.048-2.6372H6.19434v-1.725h1.12562c-.01294-.0661-.02588-.1586-.03882-.2776v-.6146c0-.0926.00647-.1653.01941-.2181H6.19434V9.87435h1.26147c.1682-1.05748.51106-1.96296 1.02859-2.71642.51752-.75346 1.17737-1.32847 1.9795-1.72503.8022-.40977 1.7079-.61466 2.7171-.61466Z"
-		/>
-	</svg>
+	</div>
 	<!-- NIM -->
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="25"
 		height="25"
 		fill="none"
-		class="transition-colors cursor-pointer"
+		class="cursor-pointer"
+		style={$selectedCurrency !== SupportedCurrencies.NIM
+			? "filter: grayscale(100%)"
+			: ""}
 		on:click={() => ($selectedCurrency = SupportedCurrencies.NIM)}
 	>
-		<circle
-			cx="12.3896"
-			cy="12.6103"
-			r="12.3896"
-			fill={$selectedCurrency === SupportedCurrencies.NIM ? "#E9AF13" : "#B8BAC7"}
-		/>
+		<circle cx="12.3896" cy="12.6103" r="12.3896" fill="#E9AF13" />
 		<path
 			fill="#fff"
 			d="m19.114 12.0303-2.8683-5.03632c-.2049-.35839-.5836-.57845-.9933-.57845H9.51898c-.40975 0-.78536.22006-.99023.57845L5.66049 12.0303c-.20487.3584-.20487.8017 0 1.1601l2.86515 5.0363c.20488.3584.58359.5784.99334.5784h5.73342c.4097 0 .7884-.22.9933-.5784l2.8652-5.0143c.2142-.3647.2173-.8174.0031-1.1821Z"
