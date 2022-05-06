@@ -8,6 +8,7 @@
 
 	import { start } from "nimiq-svelte-stores";
 	import { onMount } from "svelte";
+	import Footer from "./lib/Footer.svelte";
 
 	let isMobile = false;
 	let windowWidth = 0;
@@ -24,7 +25,7 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<main class="h-screen w-full bg-grey-dark overflow-x-hidden">
+<main class="w-full h-screen overflow-x-hidden bg-grey-dark">
 	<div class="bg-grey flex flex-col xl:h-[40vh]">
 		<Header />
 		<img
@@ -36,7 +37,7 @@
 
 	<!-- Mobile -->
 	<div
-		class="xl:hidden flex flex-col xs:flex-row items-center justify-center gap-x-16 bg-grey pt-10"
+		class="flex flex-col items-center justify-center pt-10 xl:hidden xs:flex-row gap-x-16 bg-grey"
 	>
 		<ParticipateButton class="flex flex-col items-center" />
 		{#if isMobile}
@@ -50,18 +51,16 @@
 		class="grid h-[45px] bg-grey invisible xl:visible xl:grid-cols-[2fr_532px_2fr]"
 	>
 		<div />
-		<div class="large-inner-shadow rounded-t-[28px] bg-grey-dark" />
+		<div class="rounded-t-[28px] bg-grey-dark" />
 		<div />
 	</div>
 
 	<div
 		class="w-full grid h-[32px] grid-cols-2 xl:grid-cols-[2fr_500px_2fr] gap-x-16"
 	>
-		<div
-			class="w-full rounded-br-[28px] bg-grey relative large-shadow hidden xl:block"
-		>
+		<div class="w-full rounded-br-[28px] bg-grey relative hidden xl:block">
 			<ParticipateButton
-				class="absolute w-max top-1/3 left-1/2 -translate-x-1/2 flex flex-col items-center"
+				class="absolute flex flex-col items-center -translate-x-1/2 w-max top-1/3 left-1/2"
 			/>
 		</div>
 		<div class="bg-grey-dark relative col-span-2 xl:col-[2_/_span_1]">
@@ -74,25 +73,13 @@
 				/>
 			</div>
 		</div>
-		<div
-			class="w-full rounded-bl-[28px] bg-grey relative large-shadow hidden xl:block"
-		>
+		<div class="w-full rounded-bl-[28px] bg-grey relative hidden xl:block">
 			{#if !isMobile}
 				<HexagonBlockLoading
-					class="absolute w-max top-1/2 left-1/2 -translate-x-1/2 -translate-y-4/10"
+					class="absolute -translate-x-1/2 w-max top-1/2 left-1/2 -translate-y-4/10"
 				/>
 			{/if}
 		</div>
+		<Footer />
 	</div>
 </main>
-
-<style>
-	.large-shadow {
-		box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
-			0 8px 10px -6px rgb(0 0 0 / 10%);
-	}
-
-	.large-inner-shadow {
-		box-shadow: inset 0 12px 6px -8px rgb(0 0 0 / 8%);
-	}
-</style>
