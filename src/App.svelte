@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Header from "./lib/Header.svelte";
 	import HexagonBlockLoading from "./lib/HexagonBlockLoading.svelte";
-	import logo from "./assets/treasury-logo.svg";
+	import logo from "/assets/treasury-logo.svg";
 	import ParticipantList from "./lib/ParticipantList.svelte";
 	import ScoreBoardCard from "./lib/ScoreBoardCard.svelte";
 	import ParticipateButton from "./lib/ParticipateButton.svelte";

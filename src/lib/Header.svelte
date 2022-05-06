@@ -6,8 +6,8 @@
 	import WorldIcon from "./icons/WorldIcon.svelte";
 	import WorldCheckIcon from "./icons/WorldCheckIcon.svelte";
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
-	import hamburguerIcon from "../assets/icons/hamburguer.svg";
-	import nimiqIcon from "../assets/icons/nimiq-hex.svg";
+	import hamburguerIcon from "/assets/icons/hamburguer.svg";
+	import nimiqIcon from "/assets/icons/nimiq-hex.svg";
 </script>
 
 <!-- TODO: background when scrolling -->

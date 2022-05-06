@@ -30,7 +30,7 @@
                 hover ? "bg-blue-dark" : ""
             }`}
         >
-            <img src={`/src/assets/icons/${$selectedFiat}-icon.svg`} alt="" />
+            <img src={`/assets/icons/${$selectedFiat}-icon.svg`} alt="" />
             <span
                 class={`ml-8 font-bold text-${
                     hover ? "white" : "black"
@@ -55,7 +55,7 @@
                     on:click={() => ($selectedFiat = currency)}
                 >
                     <img
-                        src={`/src/assets/icons/${currency}-icon.svg`}
+                        src={`/assets/icons/${currency}-icon.svg`}
                         alt=""
                     />
 

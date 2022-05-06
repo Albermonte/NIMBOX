@@ -1,7 +1,7 @@
 <script lang="ts">
     import RouteButton from "./RouteButton.svelte";
-    import nimiqCommunity from "../assets/nimiq-community-logo.svg";
-    import hamburguerIcon from "../assets/icons/hamburguer.svg";
+    import nimiqCommunity from "/assets/nimiq-community-logo.svg";
+    import hamburguerIcon from "/assets/icons/hamburguer.svg";
 </script>
 
 <footer
@@ -16,7 +16,7 @@
         </RouteButton>
     </div>
     <div
-        class="h-136 bg-[url('/src/assets/nimiq-hexagon-1.svg')] bg-no-repeat bg-fixed "
+        class="h-136 bg-[url('/assets/nimiq-hexagon-1.svg')] bg-no-repeat bg-fixed "
     >
         <img src={nimiqCommunity} alt="Nimiq community" />
     </div>

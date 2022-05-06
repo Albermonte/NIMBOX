@@ -12,7 +12,7 @@
     .world-icon::after {
         width: 100%;
         height: 100%;
-        background-image: url("/src/assets/consensus-sprite.svg");
+        background-image: url("/assets/consensus-sprite.svg");
         background-repeat: repeat-x;
         background-size: 1000% 300%;
     }

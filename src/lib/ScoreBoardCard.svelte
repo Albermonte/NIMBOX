@@ -75,7 +75,7 @@
 			{#key $selectedCurrency}
 				<div in:fly={{ y: 10 }} class="h-[50px]">
 					<img
-						src={`/src/assets/${$selectedCurrency}-logo.svg`}
+						src={`/assets/${$selectedCurrency}-logo.svg`}
 						preload="true"
 						alt={`${$selectedCurrency} logo`}
 						class="object-cover min-w-[35px]"
