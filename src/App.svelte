@@ -1,14 +1,15 @@
 <script lang="ts">
 	import Header from "./lib/Header.svelte";
+	import Footer from "./lib/Footer.svelte";
 	import HexagonBlockLoading from "./lib/HexagonBlockLoading.svelte";
-	import logo from "/assets/treasury-logo.svg";
 	import ParticipantList from "./lib/ParticipantList.svelte";
 	import ScoreBoardCard from "./lib/ScoreBoardCard.svelte";
 	import ParticipateButton from "./lib/ParticipateButton.svelte";
+	import SidebarsManager from "./lib/sidebars/SidebarsManager.svelte";
+	import logo from "/assets/treasury-logo.svg";
 
 	import { start } from "nimiq-svelte-stores";
 	import { onMount } from "svelte";
-	import Footer from "./lib/Footer.svelte";
 
 	let isMobile = false;
 	let windowWidth = 0;
@@ -83,3 +84,5 @@
 		<Footer />
 	</div>
 </main>
+
+<SidebarsManager />

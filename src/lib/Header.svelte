@@ -16,6 +16,7 @@
 >
 	<div class="flex">
 		<div class="flex flex-col mr-40">
+			<!-- TODO: add tooltip with network statistics like peer count, bandwith... -->
 			<span class="font-medium uppercase text-13 text-blue-dark/40"
 				>Consensus</span
 			>

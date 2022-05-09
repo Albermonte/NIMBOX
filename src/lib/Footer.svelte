@@ -8,7 +8,7 @@
     class="static bottom-0 flex items-center justify-between w-[100vw] px-20 xl:absolute h-136 sm:px-28 md:px-56"
 >
     <div>
-        <RouteButton route="hall-fame">
+        <RouteButton route="hall-of-fame">
             <img src={hamburguerIcon} alt="" />
             <span class={`font-bold text-14 leading-[14px]`}>
                 Hall of Fame
