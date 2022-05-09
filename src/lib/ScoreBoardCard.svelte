@@ -89,7 +89,7 @@
 			<div class="flex justify-between gap-x-6">
 				{#each Array.from(bigBalance) as number}
 					{#key number}
-						<div class="counter shadow flex-1">
+						<div class="counter shadow flex-1 rounded-6">
 							<div
 								class="counter__content counter__content--animate "
 							>
