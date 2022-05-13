@@ -47,7 +47,10 @@
 					smallBalanceColor = "text-blue-light";
 					break;
 			}
-		} else currencyIcon = "NIM";
+		} else {
+			currencyIcon = "NIM";
+			smallBalanceColor = "text-gold";
+		}
 	}
 
 	let componentClass: string = "";
