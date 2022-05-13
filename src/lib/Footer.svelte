@@ -18,5 +18,5 @@
 			class=" bg-[url('/assets/nimiq-hexagon-1.svg')] h-[213px] w-[198px] bg-no-repeat bg-right-bottom -mb-24"
 		/>
 	</div>
-	<img src={nimiqCommunity} alt="Nimiq community" class="z-10" />
+	<img src={nimiqCommunity} alt="Nimiq community" class="-mr-10" />
 </footer>
