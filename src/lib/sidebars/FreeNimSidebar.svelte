@@ -53,49 +53,48 @@
 </script>
 
 <SidebarPanel {right}>
-    <div class="flex flex-wrap gap-x-20 gap-y-56">
-        <div class="mx-auto w-320">Earn FREE Nimiq</div>
+    <div class="h-full overflow-auto gap-x-20 gap-y-56 scrollbar scroll-smooth">
+        <ul class="grid grid-cols-1 gap-32 mt-16 xl:mt-32 xl:grid-cols-2">
+            <li class="mx-auto w-320 text-24 font-medium">Earn FREE Nimiq</li>
         {#each options as option}
-            <div
-                class="border-1 border-blue-dark/20 rounded-32 px-32 py-10 min-h-[154px] w-360 mx-auto"
+            <li
+                class="px-32 py-10 border-1 border-blue-dark/20 rounded-32"
             >
                 <span class="font-bold text-blue-dark text-17">
                     {option.name}
                 </span>
                 <!-- Divider -->
                 <hr class="my-6 border-t-1 border-blue-dark/20" />
-                <div class="flex py-4">
-                    <div
-                        class="flex flex-col items-center justify-center min-w-[65px] mr-20"
+                <div class="grid grid-flow-col grid-cols-[min-content,1fr] grid-rows-2 py-4 gap-x-32 text-14">
+                    <img
+                        class="mb-18 self-end"
+                        src={option.logo}
+                        alt={option.name}
+                    />
+                    <button
+                        class="px-12 py-2 font-bold text-white rounded bg-blue-light self-start w-max"
+                        on:click={() => {
+                            // TODO: const newTab = 
+                            window.open(option.url, "_blank").focus();
+                        }}
                     >
-                        <img
-                            class="max-w-[65px] mb-18"
-                            src={option.logo}
-                            alt={option.name}
-                        />
-                        <button
-                            class="px-10 font-bold text-white rounded bg-blue-light text-14"
-                            on:click={() => {
-                                // TODO: const newTab = 
-                                window.open(option.url, "_blank").focus();
-                            }}
-                        >
-                            {option.buttonText}
-                        </button>
-                    </div>
-                    <div>
+                        {option.buttonText}
+                    </button>
+                    <div class="row-[1_/_-1]">
                         {#if option.notice}
                             <span class="font-bold text-14 text-blue-light">
                                 {option.notice}
                             </span>
                             <br />
                         {/if}
-                        <span class="font-semibold text-14 text-[#9E9E9E]">
+                        <p class="font-semibold text-14 text-justify text-[#9E9E9E]">
                             {option.description}
-                        </span>
+                        </p>
                     </div>
                 </div>
-            </div>
+            </li>
         {/each}
+    </ul>
+
     </div>
 </SidebarPanel>
