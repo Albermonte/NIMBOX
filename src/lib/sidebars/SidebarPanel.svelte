@@ -7,7 +7,7 @@
 </script>
 
 <div
-    class={`absolute top-0 grid auto-cols-fr grid-rows-[20%_1fr] justify-around items-center drop-shadow-2xl bg-white h-full w-1/2 md:w-[50vw] px-32 ${
+    class={`transform-gpu absolute top-0 grid auto-cols-fr grid-rows-[20%_1fr] justify-around items-center drop-shadow-2xl bg-white h-full w-1/2 md:w-[50vw] px-32 ${
         right ? "right-0" : ""
     }`}
     in:fly={{ delay: 150, x: 100 }}

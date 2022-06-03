@@ -54,47 +54,60 @@
 
 <SidebarPanel {right}>
     <div class="h-full overflow-auto gap-x-20 gap-y-56 scrollbar scroll-smooth">
-        <ul class="grid grid-cols-1 gap-32 mt-16 xl:mt-32 xl:grid-cols-2">
-            <li class="mx-auto w-320 text-24 font-medium">Earn FREE Nimiq</li>
-        {#each options as option}
-            <li
-                class="px-32 py-10 border-1 border-blue-dark/20 rounded-32"
-            >
-                <span class="font-bold text-blue-dark text-17">
-                    {option.name}
-                </span>
-                <!-- Divider -->
-                <hr class="my-6 border-t-1 border-blue-dark/20" />
-                <div class="grid grid-flow-col grid-cols-[min-content,1fr] grid-rows-2 py-4 gap-x-32 text-14">
-                    <img
-                        class="mb-18 self-end"
-                        src={option.logo}
-                        alt={option.name}
-                    />
-                    <button
-                        class="px-12 py-2 font-bold text-white rounded bg-blue-light self-start w-max"
-                        on:click={() => {
-                            // TODO: const newTab = 
-                            window.open(option.url, "_blank").focus();
-                        }}
-                    >
-                        {option.buttonText}
-                    </button>
-                    <div class="row-[1_/_-1]">
-                        {#if option.notice}
-                            <span class="font-bold text-14 text-blue-light">
-                                {option.notice}
-                            </span>
-                            <br />
-                        {/if}
-                        <p class="font-semibold text-14 text-justify text-[#9E9E9E]">
-                            {option.description}
-                        </p>
-                    </div>
-                </div>
+        <ul class="grid items-center grid-cols-1 gap-32 mt-16 xl:mt-32 xl:grid-cols-2 justify-items-center">
+            <li class="max-w-sm px-32 py-10">
+                <span class="font-medium text-24"> Earn FREE Nimiq </span>
+                <p
+                    class="font-semibold text-16 text-justify text-[#9E9E9E] mt-20"
+                >
+                    Welcome to the Nimiq Treasury Game. There are plenty of
+                    opportunities to earn free Nimiq, and join the Nimiq
+                    Treasury Game. See below.
+                </p>
             </li>
-        {/each}
-    </ul>
-
+            {#each options as option}
+                <li
+                    class="max-w-sm px-32 py-10 border-1 border-blue-dark/20 rounded-32 bg-gradient-to-t from-grey-light to-white"
+                >
+                    <span class="font-bold text-blue-dark text-17">
+                        {option.name}
+                    </span>
+                    <!-- Divider -->
+                    <hr class="my-6 border-t-1 border-blue-dark/20" />
+                    <div
+                        class="grid grid-flow-col grid-cols-[min-content,1fr] grid-rows-2 py-4 gap-x-32 text-14"
+                    >
+                        <img
+                            class="self-end mb-18"
+                            src={option.logo}
+                            alt={option.name}
+                        />
+                        <a
+                            class="self-start px-12 py-2 font-bold text-white rounded bg-blue-light w-max"
+                            href={option.url}
+                            target={option.url.startsWith("http")
+                                ? "_blank"
+                                : "_self"}
+                            rel="noopener noreferrer"
+                        >
+                            {option.buttonText}
+                        </a>
+                        <div class="row-[1_/_-1]">
+                            {#if option.notice}
+                                <span class="font-bold text-14 text-blue-light">
+                                    {option.notice}
+                                </span>
+                                <br />
+                            {/if}
+                            <p
+                                class="font-semibold text-14 text-justify text-[#9E9E9E]"
+                            >
+                                {option.description}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            {/each}
+        </ul>
     </div>
 </SidebarPanel>
