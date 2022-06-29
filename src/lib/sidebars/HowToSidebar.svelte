@@ -13,13 +13,13 @@
         </p>
         <h1>How to play?</h1>
         <p>
-            Click PARTICIPATE to submit a transaction of atleast <b
+            Click <i>Play the game</i> button to submit a transaction of <b
                 class="font-bold text-blue-light">1 NIM</b
             > to the game.
         </p>
         <ul class="list-disc ml-32 mt-18">
             <li>
-                The timer will start the 6 block countdown (6 blocks on Nimiq
+                The timer will start the 6 blocks counter (6 blocks on Nimiq
                 blockchain).
             </li>
             <li>
@@ -27,8 +27,9 @@
                 transaction to the treasure chest.
             </li>
             <li>
-                There is no set limit for the number of transactions sent To
-                win, be the last one to send a transaction!
+                There is no limit for the number of transactions sent to win, be
+                the last one to send a transaction and become the winner of the
+                Nimiq Treasury!
             </li>
         </ul>
     </div>
@@ -41,7 +42,8 @@
         margin-bottom: 1rem;
     }
 
-    p, ul {
+    p,
+    ul {
         color: #9e9e9e;
     }
 </style>
