@@ -7,7 +7,7 @@
 		FiatApiSupportedFiatCurrency,
 		getExchangeRates,
 	} from "@nimiq/utils";
-	import { accounts } from "nimiq-svelte-stores";
+	import { accounts, transactions } from "nimiq-svelte-stores";
 
 	import { selectedCurrency, selectedFiat } from "../store";
 	import { SupportedCurrencies } from "../types";
@@ -23,11 +23,20 @@
 		usd: 0,
 	};
 	let balance = 0;
-	$: $accounts.length > 0 && (balance = $accounts[0].balance / 1e5 || 0);
+	$: {
+		balance = $accounts.length > 0 ? $accounts[0].balance / 1e5 : 0;
+		$transactions.forEach((tx: Nimiq.Client.TransactionDetails) => {
+			if (tx.state !== Nimiq.Client.TransactionState.PENDING) return;
+			balance += tx.value / 1e5;
+		});
+	}
+
 	// TODO: Better way of handling numeric balance instead of string
 	let smallBalance = "0";
 	let bigBalance = "0";
 	$: {
+		if (isNaN(balance)) balance = 0;
+
 		if ($selectedCurrency === SupportedCurrencies.NIM) {
 			smallBalance = (balance * price[$selectedFiat]).toFixed(2);
 			bigBalance = balance.toString().padStart(9, "0");

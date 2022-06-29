@@ -5,42 +5,14 @@
 	let componentClass: string = "";
 	export { componentClass as class };
 
-	const mockupData = [
-		{
-			time: "1 sec",
-			address: "NQ21 XYQY 8QYM PURS Y574 19HA 9XDB MPSH XV05",
-		},
-		{
-			time: "4 sec",
-			address: "NQ56 VUGQ QN52 V0TM B9XV UXG3 HCG9 DMFV QY73",
-		},
-		{
-			time: "10 sec",
-			address: "NQ22 VU48 E7UN V66S KGAD 27K7 HMV4 5A1S PJCF",
-		},
-		{
-			time: "47 sec",
-			address: "NQ80 VT3M RNGX FV1G PXTP 012K V0V0 UVCU L553",
-		},
-		{
-			time: "54 sec",
-			address: "NQ02 VF79 XQ4Y C1DF 1SDB YPA2 NSJF 6B4F 7LPK",
-		},
-		{
-			time: "1 min",
-			address: "NQ48 V71M 4F3G L9MC LXA5 U5D3 7R12 CFGP R6J0",
-		},
-		{
-			time: "2 min",
-			address: "NQ86 V59J V0RE TUU1 XGRQ 69SF U5SB 1Q67 4Q4D",
-		},
-	];
-
 	let timestamp: Date = new Date();
 	let participants: Array<{ time: string; address: string }> = [];
 	$: {
-		participants = $transactions.map(
-			(tx: Nimiq.Client.TransactionDetails) => {
+		participants = $transactions
+			.filter(
+				(tx: Nimiq.Client.TransactionDetails) => tx.value / 1e5 === 1
+			)
+			.map((tx: Nimiq.Client.TransactionDetails) => {
 				const h =
 					timestamp.getHours() -
 					new Date(tx.timestamp * 1e3).getHours();
@@ -61,8 +33,7 @@
 					time,
 					address: tx.sender.toUserFriendlyAddress(),
 				};
-			}
-		);
+			});
 	}
 
 	onMount(() => {
