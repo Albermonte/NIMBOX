@@ -1,7 +1,7 @@
 <script lang="ts">
-	import RouteButton from "./RouteButton.svelte"
-	import nimiqCommunity from "/assets/nimiq-community-logo.svg"
-	import hamburguerIcon from "/assets/icons/hamburguer.svg"
+	import RouteButton from "./RouteButton.svelte";
+	import nimiqCommunity from "/assets/nimiq-community-logo.svg";
+	import hamburguerIcon from "/assets/icons/hamburguer.svg";
 </script>
 
 <footer
@@ -10,7 +10,7 @@
 	<div>
 		<RouteButton route="hall-of-fame">
 			<img src={hamburguerIcon} alt="" />
-			<span class={`font-bold text-14 leading-[14px]`}> Hall of Fame </span>
+			<span class="font-bold text-14 leading-[14px]"> Hall of Fame </span>
 		</RouteButton>
 	</div>
 	<div class="overflow-hidden absolute right-0 bottom-0">

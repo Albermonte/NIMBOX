@@ -1,6 +1,6 @@
 <script lang="ts">
-	let componentClass: string = ""
-	export { componentClass as class }
+	let componentClass: string = "";
+	export { componentClass as class };
 
 	// Es mockup jaja
 	const mokupData = [
@@ -32,18 +32,26 @@
 			time: "2 min",
 			address: "NQ86 V59J V0RE TUU1 XGRQ 69SF U5SB 1Q67 4Q4D",
 		},
-	]
+	];
 </script>
 
-<div class={`flex flex-col p-10 pt-16 pb-32 bg-white rounded-24 ${componentClass}`}>
+<div
+	class="flex flex-col p-10 pt-16 pb-32 bg-white rounded-24 {componentClass}"
+>
 	<div class="flex pb-4">
-		<span class="w-1/5 font-bold text-center text-18 text-blue-light">Age.</span>
-		<span class="w-4/5 font-bold text-left text-18 text-blue-light">Participant.</span>
+		<span class="w-1/5 font-bold text-center text-18 text-blue-light"
+			>Age.</span
+		>
+		<span class="w-4/5 font-bold text-left text-18 text-blue-light"
+			>Participant.</span
+		>
 	</div>
 	{#each mokupData as participant}
 		<div class="flex py-6 font-bold text-black/40">
 			<span class="w-1/5 text-center text-14">{participant.time}</span>
-			<span class="w-4/5 text-left text-12 text-ellipsis truncate">{participant.address}</span>
+			<span class="w-4/5 text-left text-12 text-ellipsis truncate"
+				>{participant.address}</span
+			>
 		</div>
 	{/each}
 </div>

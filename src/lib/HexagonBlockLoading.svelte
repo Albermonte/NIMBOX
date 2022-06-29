@@ -47,8 +47,8 @@
 					<path
 						d="M116.698 90.4331L164.588 6.65798C165.766 4.58586 164.28 2 161.889 2H66.1109C63.7198 2 62.234 4.58586 63.4124 6.65798L111.302 90.4331C112.497 92.5223 115.503 92.5223 116.698 90.4331Z"
 						class="fill-white"
-						id={`Triangle-${index}`}
-						transform={`rotate(${(index * 360) / 6} 114 99)`}
+						id="Triangle-{index}"
+						transform="rotate({(index * 360) / 6} 114 99)"
 					/>
 				</g>
 			{/each}
@@ -70,8 +70,16 @@
 					y2="96"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop class="transition-all duration-1000 ease-in-out" stop-color={color} />
-					<stop class="transition-all duration-1000 ease-in-out" offset="1" stop-color={color} stop-opacity="0.5" />
+					<stop
+						class="transition-all duration-1000 ease-in-out"
+						stop-color={color}
+					/>
+					<stop
+						class="transition-all duration-1000 ease-in-out"
+						offset="1"
+						stop-color={color}
+						stop-opacity="0.5"
+					/>
 				</linearGradient>
 			</defs>
 

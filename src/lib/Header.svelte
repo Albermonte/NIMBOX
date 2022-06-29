@@ -48,12 +48,12 @@
 		<FiatSelector />
 		<RouteButton route="how-to">
 			<img src={hamburguerIcon} alt="" />
-			<span class={`font-bold text-14 leading-[14px]`}>
+			<span class="font-bold text-14 leading-[14px]">
 				How to play?
 			</span>
 		</RouteButton>
 		<RouteButton color="bg-blue-light" route="free-nim">
-			<span class={`font-bold text-14 leading-[14px] text-white`}>
+			<span class="font-bold text-14 leading-[14px] text-white">
 				Get FREE NIM
 			</span>
 			<img src={nimiqIcon} alt="" />

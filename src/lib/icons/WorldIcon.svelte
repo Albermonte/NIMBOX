@@ -4,7 +4,7 @@
     export { componentClass as class };
 </script>
 
-<div class={`world-icon ${componentClass}`} />
+<div class="world-icon {componentClass}" />
 
 <style>
     .world-icon,

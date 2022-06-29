@@ -3,13 +3,15 @@
     import CloseButton from "../CloseButton.svelte";
     import logo from "/assets/treasury-logo.svg";
 
-    export let right = true;
+    export let right = true,
+        width = "50vw";
 </script>
 
 <div
-    class={`transform-gpu absolute top-0 grid auto-cols-fr grid-rows-[20%_1fr] justify-around items-center drop-shadow-2xl bg-white h-full w-1/2 md:w-[50vw] px-32 ${
-        right ? "right-0" : ""
-    }`}
+    class="transform-gpu absolute top-0 grid auto-cols-fr grid-rows-[20%_1fr] justify-around items-center drop-shadow-2xl bg-white h-full w-1/2 sidebar-width px-32 {right
+        ? 'right-0'
+        : ''}"
+    style="--custom-width: {width}"
     in:fly={{ delay: 150, x: 100 }}
     out:fly={{ x: 100 }}
 >
@@ -19,3 +21,11 @@
     </div>
     <slot />
 </div>
+
+<style>
+    @media (min-width: 1024px) {
+        .sidebar-width {
+            width: var(--custom-width);
+        }
+    }
+</style>

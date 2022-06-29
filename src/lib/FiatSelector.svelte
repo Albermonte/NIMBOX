@@ -26,15 +26,15 @@
 >
     <div>
         <div
-            class={`flex px-12 py-6 rounded-tl-16 min-w-[90px] w-90 hover:bg-blue-dark/80 ${
-                hover ? "bg-blue-dark" : ""
-            }`}
+            class="flex px-12 py-6 rounded-tl-16 min-w-[90px] w-90 hover:bg-blue-dark/80 {hover
+                ? 'bg-blue-dark'
+                : ''}"
         >
-            <img src={`/assets/icons/${$selectedFiat}-icon.svg`} alt="" />
+            <img src="/assets/icons/{$selectedFiat}-icon.svg" alt="" />
             <span
-                class={`ml-8 font-bold text-${
-                    hover ? "white" : "black"
-                } uppercase text-15`}>{$selectedFiat}</span
+                class="ml-8 font-bold text-{hover
+                    ? 'white'
+                    : 'black'} uppercase text-15">{$selectedFiat}</span
             >
         </div>
 
@@ -43,26 +43,21 @@
         {#if hover}
             {#each SupportedCurrenciesList as currency, i}
                 <div
-                    class={`flex px-12 py-6 min-w-[90px] w-90 hover:bg-blue-dark/80 ${
-                        hover ? "bg-blue-dark absolute" : ""
-                    } ${
-                        i === SupportedCurrenciesList.length - 1
-                            ? "rounded-b-16"
-                            : ""
-                    }`}
+                    class="flex px-12 py-6 min-w-[90px] w-90 hover:bg-blue-dark/80 {hover
+                        ? 'bg-blue-dark absolute'
+                        : ''} {i === SupportedCurrenciesList.length - 1
+                        ? 'rounded-b-16'
+                        : ''}"
                     in:fly={{ opacity: 1, y: -20 }}
                     out:fly={{ opacity: 0, y: -10, duration: 150 }}
                     on:click={() => ($selectedFiat = currency)}
                 >
-                    <img
-                        src={`/assets/icons/${currency}-icon.svg`}
-                        alt=""
-                    />
+                    <img src="/assets/icons/{currency}-icon.svg" alt="" />
 
                     <span
-                        class={`ml-8 font-bold text-${
-                            hover ? "white" : "black"
-                        } uppercase text-15`}>{currency}</span
+                        class="ml-8 font-bold text-{hover
+                            ? 'white'
+                            : 'black'} uppercase text-15">{currency}</span
                     >
                 </div>
             {/each}

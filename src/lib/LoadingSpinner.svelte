@@ -1,9 +1,9 @@
 <script lang="ts">
 	export let height = 48,
 		width = 54,
-		strokeWidth = 3
-	let clazz
-	export { clazz as class }
+		strokeWidth = 3;
+	let clazz;
+	export { clazz as class };
 </script>
 
 <svg
@@ -11,7 +11,7 @@
 	{width}
 	viewBox="0 0 54 48"
 	color="inherit"
-	class={`loading-spinner stroke-blue-light ${clazz}`}
+	class="loading-spinner stroke-blue-light {clazz}"
 >
 	<path
 		id="big-hex"

@@ -70,7 +70,7 @@
 </script>
 
 <div
-	class={`bg-white shadow-around rounded-[18px] px-20 py-10 flex flex-col xs:items-center ${componentClass}`}
+	class="bg-white shadow-around rounded-[18px] px-20 py-10 flex flex-col xs:items-center {componentClass}"
 >
 	<div class="flex items-center gap-x-14">
 		<!-- Currency Logo -->
@@ -78,9 +78,9 @@
 			{#key $selectedCurrency}
 				<div in:fly={{ y: 10 }} class="h-[50px]">
 					<img
-						src={`/assets/${$selectedCurrency}-logo.svg`}
+						src="/assets/{$selectedCurrency}-logo.svg"
 						preload="true"
-						alt={`${$selectedCurrency} logo`}
+						alt="{$selectedCurrency} logo"
 						class="object-cover min-w-[35px]"
 					/>
 				</div>
@@ -100,7 +100,7 @@
 									class="counter__content__digit inner-shadow rounded-6 px-6 py-14"
 								>
 									<span
-										class={`font-black text-26 counter__item counter__item--${number} counter__item--digit -translate-y-150`}
+										class="font-black text-26 counter__item counter__item--{number} counter__item--digit -translate-y-150"
 										>&nbsp;</span
 									>
 								</div>
@@ -118,7 +118,7 @@
 
 			{#key smallBalance}
 				<div
-					class={`ml-auto font-extrabold text-right flex justify-end gap-x-4 ${smallBalanceColor}`}
+					class="ml-auto font-extrabold text-right flex justify-end gap-x-4 {smallBalanceColor}"
 					in:fly={{ y: 10 }}
 				>
 					{smallBalance}

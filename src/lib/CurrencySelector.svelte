@@ -10,7 +10,7 @@
 		on:click={() => ($selectedCurrency = $selectedFiat)}
 	>
 		<img
-			src={`/assets/icons/${$selectedFiat}-icon.svg`}
+			src="/assets/icons/{$selectedFiat}-icon.svg"
 			alt=""
 			class="w-[25px] h-[25px]"
 			style={$selectedCurrency !== $selectedFiat
