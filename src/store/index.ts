@@ -15,6 +15,12 @@ export const selectedFiat: PersistentStore<SupportedCurrencies> = persist(
     "selectedFiat",
 );
 
+export const participationCounter: PersistentStore<number> = persist(
+    writable(0),
+    indexedDBStorage(),
+    "participationCounter",
+);
+
 const createUrlStore = () => {
     const href = writable(window.location.href)
 

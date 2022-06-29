@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { transactions } from "nimiq-svelte-stores";
+	import { onMount } from "svelte";
+
 	let componentClass: string = "";
 	export { componentClass as class };
 
-	// Es mockup jaja
-	const mokupData = [
+	const mockupData = [
 		{
 			time: "1 sec",
 			address: "NQ21 XYQY 8QYM PURS Y574 19HA 9XDB MPSH XV05",
@@ -33,6 +35,44 @@
 			address: "NQ86 V59J V0RE TUU1 XGRQ 69SF U5SB 1Q67 4Q4D",
 		},
 	];
+
+	let timestamp: Date = new Date();
+	let participants: Array<{ time: string; address: string }> = [];
+	$: {
+		participants = $transactions.map(
+			(tx: Nimiq.Client.TransactionDetails) => {
+				const h =
+					timestamp.getHours() -
+					new Date(tx.timestamp * 1e3).getHours();
+				const m =
+					timestamp.getMinutes() -
+					new Date(tx.timestamp * 1e3).getMinutes();
+				// TODO: try if client.addTransactionListener returns some timestamp
+				const s =
+					timestamp.getSeconds() -
+					new Date(tx.timestamp * 1e3).getSeconds();
+
+				let time = `0 sec`;
+				if (h) time = `${h} h`;
+				else if (m) time = `${m} min`;
+				else time = `${s || 0} sec`;
+
+				return {
+					time,
+					address: tx.sender.toUserFriendlyAddress(),
+				};
+			}
+		);
+	}
+
+	onMount(() => {
+		const interval = setInterval(() => {
+			timestamp = new Date();
+		}, 1000);
+		return () => {
+			clearInterval(interval);
+		};
+	});
 </script>
 
 <div
@@ -46,10 +86,10 @@
 			>Participant.</span
 		>
 	</div>
-	{#each mokupData as participant}
+	{#each participants as participant}
 		<div class="flex py-6 font-bold text-black/40">
 			<span class="w-1/5 text-center text-14">{participant.time}</span>
-			<span class="w-4/5 text-left text-12 text-ellipsis truncate"
+			<span class="w-4/5 text-12 text-ellipsis truncate text-justify"
 				>{participant.address}</span
 			>
 		</div>

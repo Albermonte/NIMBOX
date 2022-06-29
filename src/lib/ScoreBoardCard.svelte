@@ -7,6 +7,7 @@
 		FiatApiSupportedFiatCurrency,
 		getExchangeRates,
 	} from "@nimiq/utils";
+	import { accounts } from "nimiq-svelte-stores";
 
 	import { selectedCurrency, selectedFiat } from "../store";
 	import { SupportedCurrencies } from "../types";
@@ -14,11 +15,15 @@
 	import CoinSelector from "./CurrencySelector.svelte";
 	import InfoIcon from "./InfoIcon.svelte";
 
+	// TODO: Import from .env
+	const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
+
 	const price = {
 		eur: 0,
 		usd: 0,
 	};
-	let balance = 190;
+	let balance = 0;
+	$: $accounts.length > 0 && (balance = $accounts[0].balance / 1e5 || 0);
 	// TODO: Better way of handling numeric balance instead of string
 	let smallBalance = "0";
 	let bigBalance = "0";
@@ -57,7 +62,7 @@
 	export { componentClass as class };
 
 	onMount(async () => {
-		setInterval(() => balance++, 1000);
+		accounts.add(gameAddress);
 		const {
 			nim: { eur, usd },
 		} = await getExchangeRates(
@@ -110,11 +115,15 @@
 				{/each}
 			</div>
 
-			<span
+			<a
+				href="https://{import.meta.env.DEV
+					? 'test.'
+					: ''}nimiq.watch/#{gameAddress}"
+				target="_blank"
 				class="text-13 font-bold text-black/50 text-ellipsis truncate"
 			>
-				NQ48 8CKH BA24 2VR3 N249 N8MN J5XX 74DB 5XJ8
-			</span>
+				{gameAddress}
+			</a>
 
 			{#key smallBalance}
 				<div
