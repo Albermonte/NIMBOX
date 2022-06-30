@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { height } from "nimiq-svelte-stores";
+	import { height, transactions } from "nimiq-svelte-stores";
 	import LoadingBar from "./LoadingBar.svelte";
 
 	let componentClass: string = "";
@@ -10,8 +10,14 @@
 	let color = "#FAFBFD";
 
 	$: {
-		if ($height % 10 <= 6) currentBlock = $height % 10;
-		else currentBlock = 6;
+		if ($transactions[0])
+			currentBlock =
+				$height -
+				($transactions[0].blockHeight ||
+					$transactions[0].validityStartHeight);
+
+		if (currentBlock < 0) currentBlock = 0;
+		else if (currentBlock > 6) currentBlock = 6;
 
 		for (let i = 0; i < maxBlocks; i++) {
 			const el = document.getElementById(`Triangle-${i}`);
