@@ -54,7 +54,7 @@
 
 <SidebarPanel {right}>
     <div class="h-full overflow-auto gap-x-20 gap-y-56 scrollbar scroll-smooth">
-        <ul class="grid items-center grid-cols-1 gap-32 mt-16 xl:mt-32 xl:grid-cols-2 justify-items-center">
+        <ul class="grid items-center grid-cols-1 gap-32 mt-16 xl:mt-32 xl:grid-cols-2 justify-items-center text-black">
             <li class="max-w-sm px-32 py-10">
                 <span class="font-medium text-24"> Earn FREE Nimiq </span>
                 <p

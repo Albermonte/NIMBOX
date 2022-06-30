@@ -6,12 +6,14 @@
 	export { componentClass as class };
 
 	let timestamp: Date = new Date();
-	let participants: Array<{ time: string; address: string }> = [];
+	let participants: Array<{ time: string; address: string; hash: string }> =
+		[];
 	$: {
 		participants = $transactions
 			.filter(
 				(tx: Nimiq.Client.TransactionDetails) => tx.value / 1e5 === 1
 			)
+			.slice(0, 25) // Only show the last 25 participants
 			.map((tx: Nimiq.Client.TransactionDetails) => {
 				let time = `0 sec`;
 				calc: if (tx.timestamp) {
@@ -47,6 +49,7 @@
 				return {
 					time,
 					address: tx.sender.toUserFriendlyAddress(),
+					hash: tx.transactionHash.toHex(),
 				};
 			});
 	}
@@ -62,7 +65,7 @@
 </script>
 
 <div
-	class="flex flex-col p-10 pt-16 pb-32 bg-white rounded-24 {componentClass}"
+	class="flex flex-col p-10 pt-16 pb-16 max-h-320 bg-white rounded-24 {componentClass}"
 >
 	<div class="flex pb-4">
 		<span class="w-1/5 font-bold text-center text-18 text-blue-light"
@@ -72,12 +75,24 @@
 			>Participant.</span
 		>
 	</div>
-	{#each participants as participant}
-		<div class="flex py-6 font-bold text-black/40">
-			<span class="w-1/5 text-center text-14">{participant.time}</span>
-			<span class="w-4/5 text-12 text-ellipsis truncate text-justify"
-				>{participant.address}</span
+	<div class="overflow-auto scrollbar scroll-smooth mb-16">
+		{#each participants as participant}
+			<a
+				href="https://{import.meta.env.DEV
+					? 'test.'
+					: ''}nimiq.watch/#{participant.hash}"
+				target="_blank"
+				class="flex py-6 font-bold text-black/40 hover:text-black/[0.35]"
 			>
-		</div>
-	{/each}
+				<span class="w-1/5 text-center text-14">{participant.time}</span
+				>
+				<span class="w-4/5 text-12 text-ellipsis truncate text-justify"
+					>{participant.address}</span
+				>
+			</a>
+		{/each}
+	</div>
+	<div
+		class="bg-gradient-to-t from-white to-transparent h-72 -mt-32 mr-16 relative"
+	/>
 </div>
