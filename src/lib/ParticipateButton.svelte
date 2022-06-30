@@ -1,6 +1,6 @@
 <script lang="ts">
     import HubApi from "@nimiq/hub-api";
-    import { participationCounter } from "../store";
+    import { participationCounter, url } from "../store";
 
     import InfoIcon from "./InfoIcon.svelte";
 
@@ -29,7 +29,7 @@
 </script>
 
 <div class={componentClass}>
-    <button
+    <!-- <button
         class="py-8 text-white rounded bg-blue-light px-18"
         on:click={async () => {
             const signedTransaction = await hubApi.checkout(options);
@@ -37,6 +37,15 @@
         }}
     >
         Play the game <span class="font-light">➞</span>
+    </button> -->
+    <button
+        class="min-w-full py-8 text-white rounded bg-blue-light px-18"
+        on:click={async () => {
+            // Use timeout to prevent modal closing on opening cause it's registering a click outside the modal
+            setTimeout(() => url.navigate("login"), 100); 
+        }}
+    >
+        Login <span class="font-light">➞</span>
     </button>
     <div class="flex items-center mt-16">
         <InfoIcon />

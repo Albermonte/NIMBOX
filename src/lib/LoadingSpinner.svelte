@@ -2,7 +2,7 @@
 	export let height = 48,
 		width = 54,
 		strokeWidth = 3;
-	let clazz;
+	let clazz = "";
 	export { clazz as class };
 </script>
 

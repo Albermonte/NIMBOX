@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { transactions } from "nimiq-svelte-stores";
 	import { onMount } from "svelte";
+	import LoadingSpinner from "./LoadingSpinner.svelte";
 
 	let componentClass: string = "";
 	export { componentClass as class };
@@ -65,9 +66,9 @@
 </script>
 
 <div
-	class="flex flex-col p-10 pt-16 pb-16 max-h-320 bg-white rounded-24 {componentClass}"
+	class="flex flex-col p-10 pt-16 pb-16 max-h-320 min-h-[200px] bg-white rounded-24 {componentClass}"
 >
-	<div class="flex pb-4">
+	<div class="flex pb-4 pr-32">
 		<span class="w-1/5 font-bold text-center text-18 text-blue-light"
 			>Age.</span
 		>
@@ -75,24 +76,33 @@
 			>Participant.</span
 		>
 	</div>
-	<div class="overflow-auto scrollbar scroll-smooth mb-16">
-		{#each participants as participant}
-			<a
-				href="https://{import.meta.env.DEV
-					? 'test.'
-					: ''}nimiq.watch/#{participant.hash}"
-				target="_blank"
-				class="flex py-6 font-bold text-black/40 hover:text-black/[0.35]"
-			>
-				<span class="w-1/5 text-center text-14">{participant.time}</span
+	{#if participants.length > 0}
+		<div class="overflow-auto scrollbar scroll-smooth mb-16">
+			{#each participants as participant}
+				<a
+					href="https://{import.meta.env.DEV
+						? 'test.'
+						: ''}nimiq.watch/#{participant.hash}"
+					target="_blank"
+					class="flex py-6 font-bold text-black/40 hover:text-black/[0.35]"
 				>
-				<span class="w-4/5 text-12 text-ellipsis truncate text-justify"
-					>{participant.address}</span
-				>
-			</a>
-		{/each}
-	</div>
-	<div
-		class="bg-gradient-to-t from-white to-transparent h-72 -mt-32 mr-16 relative"
-	/>
+					<span class="w-1/5 text-center text-14"
+						>{participant.time}</span
+					>
+					<span
+						class="w-4/5 text-12 text-ellipsis truncate text-justify"
+						>{participant.address}</span
+					>
+				</a>
+			{/each}
+		</div>
+		<div
+			class="bg-gradient-to-t from-white to-transparent h-72 -mt-32 mr-16 relative"
+		/>
+	{:else}
+		<div class="m-auto h-full flex justify-center items-center">
+			<span class="mr-10"> Loading participants... </span>
+			<LoadingSpinner height={25} width={25} strokeWidth={5} />
+		</div>
+	{/if}
 </div>
