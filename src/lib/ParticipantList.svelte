@@ -13,21 +13,36 @@
 				(tx: Nimiq.Client.TransactionDetails) => tx.value / 1e5 === 1
 			)
 			.map((tx: Nimiq.Client.TransactionDetails) => {
-				const h =
-					timestamp.getHours() -
-					new Date(tx.timestamp * 1e3).getHours();
-				const m =
-					timestamp.getMinutes() -
-					new Date(tx.timestamp * 1e3).getMinutes();
-				// TODO: try if client.addTransactionListener returns some timestamp
-				const s =
-					timestamp.getSeconds() -
-					new Date(tx.timestamp * 1e3).getSeconds();
-
 				let time = `0 sec`;
-				if (h) time = `${h} h`;
-				else if (m) time = `${m} min`;
-				else time = `${s || 0} sec`;
+				calc: if (tx.timestamp) {
+					const txDate = new Date(tx.timestamp * 1e3);
+					const d =
+						(timestamp.getTime() - txDate.getTime()) /
+						(1e3 * 3600 * 24);
+					if (d >= 1) {
+						time = `${Math.ceil(d)} days`;
+						break calc;
+					}
+
+					const h =
+						(timestamp.getTime() - txDate.getTime()) / (1e3 * 3600);
+					if (h >= 1) {
+						time = `${Math.ceil(h)} h`;
+						break calc;
+					}
+
+					const m =
+						(timestamp.getTime() - txDate.getTime()) / (1e3 * 60);
+					if (m >= 1) {
+						time = `${Math.ceil(m)} min`;
+						break calc;
+					}
+					const s = (timestamp.getTime() - txDate.getTime()) / 1e3;
+					if (s >= 1) {
+						time = `${Math.ceil(s)} sec`;
+						break calc;
+					}
+				}
 
 				return {
 					time,
