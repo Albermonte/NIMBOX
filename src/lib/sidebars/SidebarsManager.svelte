@@ -17,7 +17,8 @@
     <div
         class="absolute top-0 order-1 w-full h-full cursor-pointer bg-blue-dark/20"
         on:click={() => url.navigate("")}
-        transition:background
+        in:background={{ duration: 500 }}
+        out:background={{ duration: 200 }}
     />
     {#if route === "free-nim"}
         <FreeNimSidebar />
