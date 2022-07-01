@@ -25,7 +25,7 @@
 					{#if $consensus === "connecting"}
 						<WorldIcon />
 					{:else if $consensus === "established"}
-						<WorldCheckIcon class=" text-green" />
+						<WorldCheckIcon class=" text-green-light" />
 					{:else}
 						<WorldAlertIcon class=" text-orange" />
 					{/if}

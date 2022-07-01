@@ -57,7 +57,7 @@
 			switch ($selectedFiat) {
 				case SupportedCurrencies.EUR:
 					currencyIcon = "€";
-					smallBalanceColor = "text-green";
+					smallBalanceColor = "text-green-light";
 					break;
 				case SupportedCurrencies.USD:
 					currencyIcon = "$";
