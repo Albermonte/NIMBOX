@@ -1,7 +1,15 @@
+<script lang="ts">
+    import { createEventDispatcher } from "svelte";
+    import { fly } from "svelte/transition";
+
+    const dispatch = createEventDispatcher();
+</script>
+
 <div
-    class="flex justify-between h-full leading-1.6 text-blue-dark/60 text-justify"
+    class="grid grid-cols-2 gap-26 leading-1.6 text-blue-dark/60 text-justify"
+    in:fly={{ x: -25 }}
 >
-    <div class="w-1/2 pr-8">
+    <div>
         <p>
             Cashlinks are an amazing and unique feature of the Nimiq Blockchain.
             In essence, a Cashlink is a cryptocurrency payment done over text.
@@ -41,7 +49,7 @@
             that Cashlink and used to play.
         </p>
     </div>
-    <div class="flex flex-col w-1/2 pl-8">
+    <div class="flex flex-col">
         <p>
             So, if you fund a Cashlink with <b class="font-bold text-blue-light"
                 >25 NIM</b
@@ -49,15 +57,20 @@
             <b class="font-bold text-blue-light">25 times</b> until you need to fund
             the Cashlink again.
         </p>
-        <div class="flex items-center justify-center h-full">
+        <div class="flex flex-col items-center justify-center h-full gap-y-28">
             <a
-                class="px-12 py-4 text-white rounded text-14 font-semibold bg-radial-gold hover:scale-[1.01] hover:drop-shadow-sm transition-all duration-75"
+                class="px-12 py-4 text-white rounded text-14 font-bold bg-radial-gold hover:scale-[1.01] hover:drop-shadow-sm transition-all duration-75"
                 href="https://wallet.nimiq{import.meta.env.DEV
                     ? '-testnet'
                     : ''}.com/send/nim"
                 target="_blank"
             >
                 Fund Cashlink</a
+            >
+            <button
+                class="px-12 py-4 text-white rounded text-14 font-bold bg-radial-green hover:scale-[1.01] hover:drop-shadow-sm transition-all duration-75"
+                on:click={() => dispatch("goNext")}
+                >Login using Cashlinks</button
             >
         </div>
     </div>

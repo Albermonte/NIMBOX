@@ -36,7 +36,7 @@ module.exports = {
         'dark-darkened': '#151833',
       },
       green: {
-        DEFAULT: '#30D7B4',
+        DEFAULT: '#21BCA5',
         darkened: '#20B29E',
       },
       orange: {
