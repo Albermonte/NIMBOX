@@ -2,14 +2,42 @@
     import { createEventDispatcher } from "svelte";
     import { fly } from "svelte/transition";
 
+    import { wallet, url } from "../../store";
+    import {
+        isValidCashlink,
+        getCashlinkBalance,
+        getWalletFromCashlink,
+    } from "../../utils/cashlink";
+
     const dispatch = createEventDispatcher();
 
-    let btnDisabled = true;
-    let cashlink: string =
-        "https://hub.nimiq-testnet.com/cashlink/#ejClrJSNVqSooeG6L87PEobDP8UMY6VTAFahTwvZAcYAAAAAAJiWgA==";
+    let cashlink: string = "";
+    let isValid: boolean;
+    let errorMessage: string = "";
+    let balance = 0;
+    $: {
+        isValid = isValidCashlink(cashlink);
+        if (isValid) updateBalance();
+        else errorMessage = "Invalid Cashlink, check everything is OK";
+        if (!cashlink.length) isValid = true;
+    }
+
+    const updateBalance = async () => {
+        balance = await getCashlinkBalance(cashlink);
+        if (balance < 1) {
+            isValid = false;
+            errorMessage = "Cashlink needs to have 1 NIM or more";
+        } else isValid = true;
+    };
+
+    const handleLogin = () => {
+        if (balance < 1) return;
+        $wallet = getWalletFromCashlink(cashlink);
+        url.navigate("");
+    };
 </script>
 
-<div class="grid grid-rows-[1fr_auto]" in:fly={{ x: 25 }}>
+<div class="grid grid-rows-[1fr_auto]" in:fly={{ y: 25 }}>
     <div
         class="flex flex-col items-center justify-evenly gap-y-40 my-auto leading-1.6 text-blue-dark/60 text-20"
     >
@@ -23,7 +51,15 @@
             bind:value={cashlink}
             class="w-10/12 px-16 py-1 text-ellipsis text-center transition-colors duration-100 rounded outline-none xl:w-3/4 border-1 border-blue-dark/[0.15] hover:border-blue-dark/20 focus:border-blue-dark/30"
         />
-        <span>Balance: {0} NIM</span>
+        {#if isValid === false}
+            <span class="text-13 text-red font-light -mt-32">
+                Invalid Cashlink, check everything is OK</span
+            >
+        {/if}
+        <span
+            >Balance: <span class="text-gold font-bold">{balance} NIM</span
+            ></span
+        >
     </div>
     <!-- Buttons -->
     <div class="flex items-center justify-between px-8">
@@ -32,9 +68,11 @@
             on:click={() => dispatch("goBack")}>Go back</button
         >
         <button
-            disabled={btnDisabled}
-            class="px-12 py-2 font-semibold text-white rounded text-15 {btnDisabled ? "bg-blue-dark/80 text-grey-dark/90" : "bg-[#0582CA] text-white"} hover:drop-shadow-md transition-all duration-100"
-            >Login</button
+            disabled={!isValid}
+            class="px-12 py-2 font-semibold text-white rounded text-15 {!isValid
+                ? 'bg-blue-dark/80 text-grey-dark/90'
+                : 'bg-[#0582CA] text-white'} hover:drop-shadow-md transition-all duration-100"
+            on:click={handleLogin}>Login</button
         >
     </div>
 </div>

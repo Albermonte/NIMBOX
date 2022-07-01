@@ -7,7 +7,7 @@
 
 <div
     class="grid grid-cols-2 gap-26 leading-1.6 text-blue-dark/60 text-justify"
-    in:fly={{ x: -25 }}
+    in:fly={{ y: 25 }}
 >
     <div>
         <p>
