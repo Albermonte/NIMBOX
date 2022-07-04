@@ -3,6 +3,9 @@ import { indexedDBStorage, persist } from "@macfja/svelte-persistent-store";
 import { SupportedCurrencies } from "../types";
 import { derived, writable } from "svelte/store";
 
+import type Nimiq from "@nimiq/core-web/types"
+import type { Writable } from "svelte/store";
+
 export const selectedCurrency: PersistentStore<SupportedCurrencies> = persist(
     writable(SupportedCurrencies.NIM),
     indexedDBStorage(),
@@ -27,7 +30,7 @@ export const userCashlink: PersistentStore<string> = persist(
     "userCashlink",
 );
 
-export const wallet: Nimiq.Wallet = writable(null);
+export const wallet: Writable<Nimiq.Wallet | null> = writable(null);
 
 const createUrlStore = () => {
     const href = writable(window.location.href)

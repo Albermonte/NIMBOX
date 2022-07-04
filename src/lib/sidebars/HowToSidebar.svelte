@@ -13,9 +13,8 @@
         </p>
         <h1>How to play?</h1>
         <p>
-            Click <i>Play the game</i> button to submit a transaction of <b
-                class="font-bold text-blue-light">1 NIM</b
-            > to the game.
+            Click <i>Play the game</i> button to submit a transaction of
+            <b class="font-bold text-blue-light">1 NIM</b> to the game.
         </p>
         <ul class="list-disc ml-32 mt-18">
             <li>
@@ -30,6 +29,10 @@
                 There is no limit for the number of transactions sent to win, be
                 the last one to send a transaction and become the winner of the
                 Nimiq Treasury!
+            </li>
+            <li>
+                Given the nature of the blockchain, you can only send 1
+                transaction per block.
             </li>
         </ul>
     </div>

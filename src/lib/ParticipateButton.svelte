@@ -1,5 +1,6 @@
 <script lang="ts">
     import { established, height, client } from "nimiq-svelte-stores";
+    import type Nimiq from "@nimiq/core-web";
     import { fly } from "svelte/transition";
 
     import { participationCounter, userCashlink, url, wallet } from "../store";
@@ -16,8 +17,9 @@
 
     // TODO: Import from .env
     const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
+    let txHash = "";
 
-    const handlePlay = () => {
+    const handlePlay = async () => {
         try {
             const extraData = Nimiq.BufferUtils.fromUtf8(
                 "Trying to unlock the Nimiq Treasure 🙌"
@@ -46,9 +48,11 @@
             );
             tx.proof = proof.serialize();
 
-            client.sendTransaction(tx);
-
-            $participationCounter++;
+            const txDetails = await client.sendTransaction(tx);
+            if (txHash !== txDetails.transactionHash.toHex()) {
+                txHash = txDetails.transactionHash.toHex();
+                $participationCounter++;
+            }
         } catch (error) {
             console.log("Error sending tx:", error);
         }

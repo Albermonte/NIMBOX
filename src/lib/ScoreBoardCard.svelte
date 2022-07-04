@@ -7,10 +7,9 @@
 		FiatApiSupportedFiatCurrency,
 		getExchangeRates,
 	} from "@nimiq/utils";
-	import {
-		accounts,
-		transactions,
-	} from "nimiq-svelte-stores";
+	import type Nimiq from "@nimiq/core-web/types";
+
+	import { accounts, transactions } from "nimiq-svelte-stores";
 
 	import { selectedCurrency, selectedFiat } from "../store";
 	import { SupportedCurrencies } from "../types";

@@ -1,5 +1,5 @@
 import { client } from "nimiq-svelte-stores";
-
+import type Nimiq from "@nimiq/core-web"
 
 export const isValidCashlink = (cashlink: string): boolean => {
     if (!cashlink) return false;

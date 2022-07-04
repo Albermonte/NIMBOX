@@ -53,7 +53,7 @@
         />
         {#if isValid === false}
             <span class="text-13 text-red font-light -mt-32">
-                Invalid Cashlink, check everything is OK</span
+                {errorMessage}</span
             >
         {/if}
         <span
@@ -68,8 +68,9 @@
             on:click={() => dispatch("goBack")}>Go back</button
         >
         <button
-            disabled={!isValid}
-            class="px-12 py-2 font-semibold text-white rounded text-15 {!isValid
+            disabled={!isValid || !cashlink.length}
+            class="px-12 py-2 font-semibold text-white rounded text-15 {!isValid ||
+            !cashlink.length
                 ? 'bg-blue-dark/80 text-grey-dark/90'
                 : 'bg-[#0582CA] text-white'} hover:drop-shadow-md transition-all duration-100"
             on:click={handleLogin}>Login</button

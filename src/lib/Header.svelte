@@ -4,9 +4,12 @@
 		consensus,
 		established,
 		height,
+		transactions,
 	} from "nimiq-svelte-stores";
 	import { wallet } from "../store";
 	import { fly } from "svelte/transition";
+
+	import type Nimiq from "@nimiq/core-web/types";
 
 	import RouteButton from "./RouteButton.svelte";
 	import FiatSelector from "./FiatSelector.svelte";
@@ -19,6 +22,19 @@
 	let balance = 0;
 
 	$: $established && $wallet && $height && updateBalance();
+
+	$: {
+		if ($wallet)
+			$transactions.forEach((tx: Nimiq.Client.TransactionDetails) => {
+				if (tx.state !== Nimiq.Client.TransactionState.PENDING) return;
+				if (
+					tx.sender.toUserFriendlyAddress() !==
+					$wallet.address.toUserFriendlyAddress()
+				)
+					return;
+				balance -= tx.value / 1e5;
+			});
+	}
 
 	const updateBalance = async () => {
 		if (!$wallet) {

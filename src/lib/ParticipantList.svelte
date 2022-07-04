@@ -2,6 +2,7 @@
 	import { transactions } from "nimiq-svelte-stores";
 	import { wallet } from "../store";
 	import { onMount } from "svelte";
+
 	import LoadingSpinner from "./LoadingSpinner.svelte";
 
 	let componentClass: string = "";
@@ -10,7 +11,8 @@
 	let timestamp: Date = new Date();
 	let participants: Array<{ time: string; address: string; hash: string }> =
 		[];
-	$: {
+	$: {		
+		// TODO: check if sending account has more than 1 NIM of balance
 		participants = $transactions
 			.filter(
 				(tx: Nimiq.Client.TransactionDetails) => tx.value / 1e5 === 1
@@ -85,8 +87,9 @@
 						? 'test.'
 						: ''}nimiq.watch/#{participant.hash}"
 					target="_blank"
-					class="flex py-6 font-bold hover:font-extrabold {participant.address ===
-					$wallet.address.toUserFriendlyAddress()
+					class="flex py-6 font-bold hover:font-extrabold {$wallet &&
+					participant.address ===
+						$wallet.address.toUserFriendlyAddress()
 						? 'text-green-light'
 						: 'text-black/40'}"
 				>
