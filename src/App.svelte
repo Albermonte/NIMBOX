@@ -9,11 +9,15 @@
   import logo from "/assets/treasury-logo.svg";
 
   import { start } from "nimiq-svelte-stores";
+  import { userCashlink, wallet } from "./store";
+  import { getWalletFromCashlink } from "./utils/cashlink";
   import { onMount } from "svelte";
 
   let isMobile = false;
   let windowWidth = 0;
   $: windowWidth < 1152 ? (isMobile = true) : (isMobile = false);
+
+  $: $userCashlink && ($wallet = getWalletFromCashlink($userCashlink));
 
   onMount(async () => {
     // Only show error logs

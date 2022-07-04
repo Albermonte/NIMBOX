@@ -21,11 +21,13 @@ export const participationCounter: PersistentStore<number> = persist(
     "participationCounter",
 );
 
-export const wallet: PersistentStore<Nimiq.Wallet> = persist(
+export const userCashlink: PersistentStore<string> = persist(
     writable(null),
     indexedDBStorage(),
-    "wallet",
+    "userCashlink",
 );
+
+export const wallet: Nimiq.Wallet = writable(null);
 
 const createUrlStore = () => {
     const href = writable(window.location.href)

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { transactions } from "nimiq-svelte-stores";
+	import { wallet } from "../store";
 	import { onMount } from "svelte";
 	import LoadingSpinner from "./LoadingSpinner.svelte";
 
@@ -84,7 +85,10 @@
 						? 'test.'
 						: ''}nimiq.watch/#{participant.hash}"
 					target="_blank"
-					class="flex py-6 font-bold text-black/40 hover:text-black/[0.35]"
+					class="flex py-6 font-bold hover:font-extrabold {participant.address ===
+					$wallet.address.toUserFriendlyAddress()
+						? 'text-green-light'
+						: 'text-black/40'}"
 				>
 					<span class="w-1/5 text-center text-14"
 						>{participant.time}</span

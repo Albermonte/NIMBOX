@@ -1,5 +1,6 @@
 import { client } from "nimiq-svelte-stores";
 
+
 export const isValidCashlink = (cashlink: string): boolean => {
     if (!cashlink) return false;
     const regex = /(?<=\/cashlink\/#)(.{54})(==)/

@@ -2,7 +2,7 @@
     import { createEventDispatcher } from "svelte";
     import { fly } from "svelte/transition";
 
-    import { wallet, url } from "../../store";
+    import { wallet, url, userCashlink } from "../../store";
     import {
         isValidCashlink,
         getCashlinkBalance,
@@ -32,7 +32,7 @@
 
     const handleLogin = () => {
         if (balance < 1) return;
-        $wallet = getWalletFromCashlink(cashlink);
+        $userCashlink = cashlink;
         url.navigate("");
     };
 </script>

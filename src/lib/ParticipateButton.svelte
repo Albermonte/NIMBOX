@@ -1,30 +1,72 @@
 <script lang="ts">
-    import { client, height } from "nimiq-svelte-stores";
+    import { established, height, client } from "nimiq-svelte-stores";
+    import { fly } from "svelte/transition";
 
-    import { participationCounter, url, wallet } from "../store";
+    import { participationCounter, userCashlink, url, wallet } from "../store";
 
     import InfoIcon from "./InfoIcon.svelte";
 
     let componentClass: string = "";
     export { componentClass as class };
 
-    let balance = 0;
+    const handleLogout = () => {
+        $userCashlink = null;
+        $wallet = null;
+    };
 
-    $: $height && updateBalance();
+    // TODO: Import from .env
+    const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
 
-    const updateBalance = async () => {
-        const account = await client.getAccount($wallet.address);
-        balance = account.balance / 1e5;
+    const handlePlay = () => {
+        try {
+            const extraData = Nimiq.BufferUtils.fromUtf8(
+                "Trying to unlock the Nimiq Treasure 🙌"
+            );
+
+            const tx = new Nimiq.ExtendedTransaction(
+                $wallet.address, // sender address
+                Nimiq.Account.Type.BASIC, // and account type
+                Nimiq.Address.fromUserFriendlyAddress(gameAddress), // recipient address
+                Nimiq.Account.Type.BASIC, // and type
+                1 * 1e5, // amount
+                0, // fee
+                $height,
+                Nimiq.Transaction.Flag.NONE,
+                extraData // the message
+            );
+            const keyPair = $wallet.keyPair;
+            const signature = Nimiq.Signature.create(
+                keyPair.privateKey,
+                keyPair.publicKey,
+                tx.serializeContent()
+            );
+            const proof = Nimiq.SignatureProof.singleSig(
+                keyPair.publicKey,
+                signature
+            );
+            tx.proof = proof.serialize();
+
+            client.sendTransaction(tx);
+
+            $participationCounter++;
+        } catch (error) {
+            console.log("Error sending tx:", error);
+        }
     };
 </script>
 
 <div class={componentClass}>
-    {#if $wallet}
+    {#if !$established}
+        <button
+            class="min-w-full py-8 text-white rounded bg-blue-light px-18"
+            disabled
+        >
+            Loading...
+        </button>
+    {:else if $wallet}
         <button
             class="py-8 text-white rounded bg-blue-light px-18"
-            on:click={() => {
-                $participationCounter++;
-            }}
+            on:click={handlePlay}
         >
             Play the game <span class="font-light">➞</span>
         </button>
@@ -39,7 +81,7 @@
             Login <span class="font-light">➞</span>
         </button>
     {/if}
-    <div class="flex items-center mt-16">
+    <div class="flex items-center my-16">
         <InfoIcon />
         <span class="mx-6 font-[650]">
             Participated: <span class="font-black text-20">
@@ -47,9 +89,14 @@
             </span></span
         >
     </div>
-    {#if $wallet}
-        <span class="font-semibold text-15 mt-4 text-blue-dark/80"
-            >Balance: {balance} NIM</span
+    {#if $established && $wallet}
+        <button
+            class="bg-radial-red rounded px-12 py-2 text-white font-semibold text-14"
+            on:click={handleLogout}
+            in:fly={{ y: 10, delay: 250 }}
+            out:fly={{ y: 10, delay: 50 }}
         >
+            Logout
+        </button>
     {/if}
 </div>

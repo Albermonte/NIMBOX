@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { consensus, height } from "nimiq-svelte-stores";
+	import {
+		client,
+		consensus,
+		established,
+		height,
+	} from "nimiq-svelte-stores";
+	import { wallet } from "../store";
+	import { fly } from "svelte/transition";
 
 	import RouteButton from "./RouteButton.svelte";
 	import FiatSelector from "./FiatSelector.svelte";
@@ -8,6 +15,19 @@
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
 	import hamburguerIcon from "/assets/icons/hamburguer.svg";
 	import nimiqIcon from "/assets/icons/nimiq-hex.svg";
+
+	let balance = 0;
+
+	$: $established && $wallet && $height && updateBalance();
+
+	const updateBalance = async () => {
+		if (!$wallet) {
+			balance = 0;
+			return;
+		}
+		const account = await client.getAccount($wallet.address);
+		balance = account.balance / 1e5;
+	};
 </script>
 
 <!-- TODO: background when scrolling -->
@@ -35,7 +55,7 @@
 				>
 			</div>
 		</div>
-		<div class="flex flex-col">
+		<div class="flex flex-col mr-40">
 			<span class="font-medium uppercase text-13 text-blue-dark/40"
 				>Block Height</span
 			>
@@ -43,14 +63,22 @@
 				># {$height.toLocaleString("en-US").replaceAll(",", " ")}</span
 			>
 		</div>
+		{#if $wallet}
+			<div class="flex flex-col" transition:fly={{ y: 10 }}>
+				<span class="font-medium uppercase text-13 text-blue-dark/40"
+					>Balance</span
+				>
+				<span class="font-bold text-18"
+					>{balance} <span class="text-gold text-14">NIM</span></span
+				>
+			</div>
+		{/if}
 	</div>
 	<div class="flex">
 		<FiatSelector />
 		<RouteButton route="how-to">
 			<img src={hamburguerIcon} alt="" />
-			<span class="font-bold text-14 leading-[14px]">
-				How to play?
-			</span>
+			<span class="font-bold text-14 leading-[14px]"> How to play? </span>
 		</RouteButton>
 		<RouteButton color="bg-blue-light" route="free-nim">
 			<span class="font-bold text-14 leading-[14px] text-white">
