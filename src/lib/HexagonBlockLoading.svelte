@@ -10,11 +10,19 @@
 	let color = "#FAFBFD";
 
 	$: {
-		if ($transactions[0])
+		if ($transactions[0]) {
 			currentBlock =
 				$height -
 				($transactions[0].blockHeight ||
 					$transactions[0].validityStartHeight);
+			console.log("currentBlock", currentBlock);
+			console.log("height", $height);
+			console.log("transactions height", $transactions[0].blockHeight);
+			console.log(
+				"transactions validity",
+				$transactions[0].validityStartHeight
+			);
+		}
 
 		if (currentBlock < 0) currentBlock = 0;
 		else if (currentBlock > 6) currentBlock = 6;

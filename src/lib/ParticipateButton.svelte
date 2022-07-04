@@ -21,6 +21,11 @@
 
     const handlePlay = async () => {
         try {
+            const account = await client.getAccount($wallet.address);
+            const balance = account.balance / 1e5;
+            // TODO: if no balance, show error
+            if (balance < 1) return;
+
             const extraData = Nimiq.BufferUtils.fromUtf8(
                 "Trying to unlock the Nimiq Treasure 🙌"
             );

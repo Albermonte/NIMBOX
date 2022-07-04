@@ -27,8 +27,8 @@
             </li>
             <li>
                 There is no limit for the number of transactions sent to win, be
-                the last one to send a transaction and become the winner of the
-                Nimiq Treasury!
+                the last one to send a transaction before the counter reaches 6
+                blocks and become the winner of the Nimiq Treasury!
             </li>
             <li>
                 Given the nature of the blockchain, you can only send 1

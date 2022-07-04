@@ -3,7 +3,7 @@ import type Nimiq from "@nimiq/core-web"
 
 export const isValidCashlink = (cashlink: string): boolean => {
     if (!cashlink) return false;
-    const regex = /(?<=\/cashlink\/#)(.{54})(==)/
+    const regex = /(?<=\/cashlink\/#)(.{54,})(==)/
     return regex.test(cashlink);
 }
 
