@@ -11,7 +11,7 @@
 	let timestamp: Date = new Date();
 	let participants: Array<{ time: string; address: string; hash: string }> =
 		[];
-	$: {		
+	$: {
 		// TODO: check if sending account has more than 1 NIM of balance
 		participants = $transactions
 			.filter(
@@ -26,21 +26,21 @@
 						(timestamp.getTime() - txDate.getTime()) /
 						(1e3 * 3600 * 24);
 					if (d >= 1) {
-						time = `${Math.ceil(d)} days`;
+						time = `${Math.ceil(d) - 1} days`;
 						break calc;
 					}
 
 					const h =
 						(timestamp.getTime() - txDate.getTime()) / (1e3 * 3600);
 					if (h >= 1) {
-						time = `${Math.ceil(h)} h`;
+						time = `${Math.ceil(h) - 1} h`;
 						break calc;
 					}
 
 					const m =
 						(timestamp.getTime() - txDate.getTime()) / (1e3 * 60);
 					if (m >= 1) {
-						time = `${Math.ceil(m)} min`;
+						time = `${Math.ceil(m) - 1} min`;
 						break calc;
 					}
 					const s = (timestamp.getTime() - txDate.getTime()) / 1e3;
