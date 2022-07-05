@@ -11,12 +11,15 @@
 
 	$: {
 		if ($transactions[0]) {
+			const txHeight = Math.min(
+				$transactions[0].blockHeight,
+				$transactions[0].validityStartHeight
+			);
 			currentBlock =
-				$height -
-				($transactions[0].blockHeight ||
-					$transactions[0].validityStartHeight);
+				$height - (txHeight || $transactions[0].validityStartHeight);
 			console.log("currentBlock", currentBlock);
 			console.log("height", $height);
+			console.log("txHeight", txHeight);
 			console.log("transactions height", $transactions[0].blockHeight);
 			console.log(
 				"transactions validity",

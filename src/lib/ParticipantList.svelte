@@ -12,7 +12,6 @@
 	let participants: Array<{ time: string; address: string; hash: string }> =
 		[];
 	$: {
-		// TODO: check if sending account has more than 1 NIM of balance
 		participants = $transactions
 			.filter(
 				(tx: Nimiq.Client.TransactionDetails) => tx.value / 1e5 === 1
