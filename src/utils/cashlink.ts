@@ -1,5 +1,5 @@
 import { client } from "nimiq-svelte-stores";
-import type Nimiq from "@nimiq/core-web"
+import type * as NimiqType from "@nimiq/core-web/types"
 
 export const isValidCashlink = (cashlink: string): boolean => {
     if (!cashlink) return false;
@@ -21,12 +21,15 @@ export const getCashlinkBalance = async (cashlink: string): Promise<number> => {
     }
 }
 
-export const getWalletFromCashlink = (cashlink: string): Nimiq.Wallet | null => {
+export const getWalletFromCashlink = (cashlink: string): NimiqType.Wallet | null => {
     if (!cashlink) return null;
     try {
         cashlink = cashlink.split("cashlink/#")[1].replace(/~/g, '').replace(/=*$/, (match) => new Array(match.length).fill('.').join(''));
+        // @ts-ignore
         const buf = Nimiq.BufferUtils.fromBase64Url(cashlink);
+        // @ts-ignore
         const keyPair = Nimiq.KeyPair.derive(Nimiq.PrivateKey.unserialize(buf));
+        // @ts-ignore
         return new Nimiq.Wallet(keyPair);
     } catch (e) {
         console.error('Error parsing Cashlink:', e);
