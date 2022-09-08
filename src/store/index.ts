@@ -1,5 +1,5 @@
 import type { PersistentStore } from "@macfja/svelte-persistent-store";
-import { indexedDBStorage, persist } from "@macfja/svelte-persistent-store";
+import { createIndexedDBStorage, persist } from "@macfja/svelte-persistent-store";
 import { SupportedCurrencies } from "../types";
 import { derived, writable } from "svelte/store";
 
@@ -8,25 +8,25 @@ import type { Writable } from "svelte/store";
 
 export const selectedCurrency: PersistentStore<SupportedCurrencies> = persist(
     writable(SupportedCurrencies.NIM),
-    indexedDBStorage(),
+    createIndexedDBStorage(),
     "selectedCurrency",
 );
 
 export const selectedFiat: PersistentStore<SupportedCurrencies> = persist(
     writable(SupportedCurrencies.EUR),
-    indexedDBStorage(),
+    createIndexedDBStorage(),
     "selectedFiat",
 );
 
 export const participationCounter: PersistentStore<number> = persist(
     writable(0),
-    indexedDBStorage(),
+    createIndexedDBStorage(),
     "participationCounter",
 );
 
 export const userCashlink: PersistentStore<string> = persist(
     writable(null),
-    indexedDBStorage(),
+    createIndexedDBStorage(),
     "userCashlink",
 );
 
