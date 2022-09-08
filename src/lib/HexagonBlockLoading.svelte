@@ -142,5 +142,7 @@
 <style>
 	g {
 		filter: drop-shadow(0px 0px 8px rgb(0 0 0 / 0.15));
+		/* This way the shadow is not cut */
+		transform: scale(0.9) translate(5%, 6.5%); 
 	}
 </style>
