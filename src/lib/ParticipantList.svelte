@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type Nimiq from "@nimiq/core-web/types";
+
 	import { transactions } from "nimiq-svelte-stores";
 	import { wallet } from "../store";
 	import { onMount } from "svelte";
@@ -86,7 +88,7 @@
 						? 'test.'
 						: ''}nimiq.watch/#{participant.hash}"
 					target="_blank"
-					class="flex py-6 font-bold hover:font-extrabold {$wallet &&
+					class="flex items-baseline py-6 font-bold hover:font-extrabold {$wallet &&
 					participant.address ===
 						$wallet.address.toUserFriendlyAddress()
 						? 'text-green-light'

@@ -21,7 +21,7 @@ export const getCashlinkBalance = async (cashlink: string): Promise<number> => {
     }
 }
 
-export const getWalletFromCashlink = (cashlink: string): Nimiq.Wallet => {
+export const getWalletFromCashlink = (cashlink: string): Nimiq.Wallet | null => {
     if (!cashlink) return null;
     try {
         cashlink = cashlink.split("cashlink/#")[1].replace(/~/g, '').replace(/=*$/, (match) => new Array(match.length).fill('.').join(''));

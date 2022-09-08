@@ -10,21 +10,24 @@
 	let color = "#FAFBFD";
 
 	$: {
-		if ($transactions[0]) {
+		let index = 0;
+		let lastTx = $transactions[index];
+		while (lastTx && lastTx.value !== 1 * 1e5) {
+			lastTx = $transactions[index++];
+			if (index >= $transactions.length) break;
+		}
+
+		if (lastTx) {
 			const txHeight = Math.min(
-				$transactions[0].blockHeight,
-				$transactions[0].validityStartHeight
+				lastTx.blockHeight,
+				lastTx.validityStartHeight
 			);
-			currentBlock =
-				$height - (txHeight || $transactions[0].validityStartHeight);
+			currentBlock = $height - (txHeight || lastTx.validityStartHeight);
 			console.log("currentBlock", currentBlock);
 			console.log("height", $height);
 			console.log("txHeight", txHeight);
-			console.log("transactions height", $transactions[0].blockHeight);
-			console.log(
-				"transactions validity",
-				$transactions[0].validityStartHeight
-			);
+			console.log("transactions height", lastTx.blockHeight);
+			console.log("transactions validity", lastTx.validityStartHeight);
 		}
 
 		if (currentBlock < 0) currentBlock = 0;
