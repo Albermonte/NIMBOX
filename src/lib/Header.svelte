@@ -9,7 +9,7 @@
 	import { wallet } from "../store";
 	import { fly } from "svelte/transition";
 
-	import type Nimiq from "@nimiq/core-web/types";
+	import type * as NimiqType from "@nimiq/core-web/types";
 
 	import RouteButton from "./RouteButton.svelte";
 	import FiatSelector from "./FiatSelector.svelte";
@@ -25,7 +25,8 @@
 
 	$: {
 		if ($wallet)
-			$transactions.forEach((tx: Nimiq.Client.TransactionDetails) => {
+			$transactions.forEach((tx: NimiqType.Client.TransactionDetails) => {
+				// @ts-ignore
 				if (tx.state !== Nimiq.Client.TransactionState.PENDING) return;
 				if (
 					tx.sender.toUserFriendlyAddress() !==
@@ -70,14 +71,6 @@
 					>{$consensus}</span
 				>
 			</div>
-		</div>
-		<div class="flex flex-col mr-40">
-			<span class="font-medium uppercase text-13 text-blue-dark/40"
-				>Block Height</span
-			>
-			<span class="font-bold text-18"
-				># {$height.toLocaleString("en-US").replaceAll(",", " ")}</span
-			>
 		</div>
 		{#if $wallet}
 			<div class="flex flex-col" transition:fly={{ y: 10 }}>

@@ -21,7 +21,7 @@ module.exports = {
         dark: '#E9EAEF',
       },
       black: {
-        DEFAULT: '#000000',
+        DEFAULT: '#676975',
       },
       gold: {
         DEFAULT: '#E9B213',

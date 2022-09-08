@@ -30,8 +30,12 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<main class="w-full h-screen overflow-x-hidden bg-grey-dark ">
-  <div class="bg-grey flex flex-col md:h-[40vh] xl:h-[35vh]">
+<main
+  class="w-full h-screen overflow-x-hidden bg-gradient-to-b from-white to-[#F1F4F8]"
+>
+  <div
+    class="bg-gradient-to-b from-white to-[#F1F1F1] flex flex-col md:h-[40vh] xl:h-[35vh]"
+  >
     <Header />
     <img
       class="game-logo self-center flex-1 max-w-[min(80vw,28rem)] object-contain mt-6 mb-32"
@@ -53,31 +57,37 @@
 
   <!-- Desktop -->
   <div
-    class="grid h-[45px] bg-grey invisible xl:visible xl:grid-cols-[2fr_532px_2fr]"
+    class="grid h-[45px] bg-[#F1F1F1] invisible xl:visible xl:grid-cols-[2fr_532px_2fr]"
   >
     <div />
-    <div class="rounded-t-[28px] bg-grey-dark" />
+    <div class="rounded-t-[28px] bg-[#F9FCFC] shadow-inset" />
     <div />
   </div>
 
   <div
     class="w-full grid h-[32px] grid-cols-2 xl:grid-cols-[2fr_500px_2fr] gap-x-16"
   >
-    <div class="w-full rounded-br-[28px] bg-grey relative hidden xl:block">
+    <!-- Left side bg grey -->
+    <div
+      class="w-full rounded-br-[28px] bg-[#F1F1F1] relative hidden xl:block shadow-bottom-left"
+    >
       <ParticipateButton
         class="absolute flex flex-col items-center -translate-x-1/2 w-max top-1/3 left-1/2"
       />
     </div>
-    <div class="bg-grey-dark relative col-span-2 xl:col-[2_/_span_1]">
+    <div class="bg-[#F8FAFC] relative col-span-2 xl:col-[2_/_span_1]">
       <div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]">
         <ScoreBoardCard class="w-[calc(100vw-20px)] xl:w-unset overflow-auto" />
         <ParticipantList class="mt-26 w-[calc(100vw-20px)] xl:w-unset mb-6" />
       </div>
     </div>
-    <div class="w-full rounded-bl-[28px] bg-grey relative hidden xl:block">
+    <!-- Right side bg grey -->
+    <div
+      class="w-full rounded-bl-[28px] bg-[#F1F1F1] relative hidden xl:block shadow-bottom-right"
+    >
       {#if !isMobile}
         <HexagonBlockLoading
-          class="absolute -translate-x-1/2 w-max top-1/2 left-1/2 -translate-y-4/10"
+          class="absolute -translate-x-1/2 w-max top-1/2 left-1/2 -translate-y-1/3"
         />
       {/if}
     </div>
@@ -86,3 +96,17 @@
 </main>
 
 <SidebarsManager />
+
+<style>
+  .shadow-bottom-right {
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.05),
+      -3px 1px 2px rgba(0, 0, 0, 0.02);
+  }
+  .shadow-bottom-left {
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.05), 3px 1px 2px rgba(0, 0, 0, 0.02);
+  }
+
+  .shadow-inset {
+    box-shadow: inset 0px 3px 2px rgba(0, 0, 0, 0.07);
+  }
+</style>

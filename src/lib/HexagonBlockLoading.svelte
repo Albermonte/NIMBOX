@@ -128,6 +128,15 @@
 			/>
 		</div>
 	</div>
+
+	<div class="flex flex-col text-center mt-6">
+		<span class="font-bold uppercase text-12 text-[#201F44]/40"
+			>Block Height</span
+		>
+		<span class="font-extrabold text-18 text-black"
+			># {$height.toLocaleString("en-US").replaceAll(",", " ")}</span
+		>
+	</div>
 </div>
 
 <style>
