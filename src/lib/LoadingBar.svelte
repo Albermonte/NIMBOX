@@ -1,7 +1,20 @@
 <script lang="ts">
     export let percentage = 0,
         height = 20,
-        color = "#fff";
+        currentBlock = 0;
+    
+        let bgColor = "bg-linear-button-green"
+    $: {
+        if (currentBlock < 2) {
+            bgColor = "bg-linear-button-green";
+        } else if (currentBlock < 4) {
+            bgColor = "bg-linear-button-blue";
+        } else if (currentBlock < 6) {
+            bgColor = "bg-linear-button-red";
+        } else {
+            bgColor = "bg-linear-button-gold";
+        }
+    }
 
     let componentClass: string = "";
     export { componentClass as class };
@@ -12,10 +25,11 @@
     style="height: {height}px;"
 >
     <div
-        class="bg-current -ml-1 flex items-center justify-center transition-all duration-1000 ease-in-out rounded-l {
-            percentage >= 100 ? "rounded" : ""
-        }"
-        style="height: {height}px; width: {Math.max(percentage + 5, 10)}%; color: {color};"
+        class="{bgColor} -ml-1 flex items-center justify-center transition-all duration-1000 ease-in-out rounded-l {percentage >=
+        100
+            ? 'rounded'
+            : ''}"
+        style="height: {height}px; width: {Math.max(percentage + 5, 10)}%;"
     >
         {#if percentage >= 50}
             <span
@@ -35,3 +49,7 @@
         </span>
     {/if}
 </div>
+
+<style>
+    /* box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.1); */
+</style>

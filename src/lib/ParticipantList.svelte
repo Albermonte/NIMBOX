@@ -70,13 +70,13 @@
 </script>
 
 <div
-	class="flex flex-col p-10 pt-16 pb-16 max-h-320 min-h-[200px] bg-white rounded-24 {componentClass}"
+	class="flex flex-col p-10 pt-26 pb-18 max-h-320 min-h-[200px] bg-grey-dark rounded-32 shadow-inset {componentClass}"
 >
 	<div class="flex pb-4 pr-32">
-		<span class="w-1/5 font-bold text-center text-18 text-blue-light"
+		<span class="w-1/5 font-extrabold text-center text-20 text-blue-light"
 			>Age.</span
 		>
-		<span class="w-4/5 font-bold text-left text-18 text-blue-light"
+		<span class="w-4/5 font-extrabold text-left text-20 text-blue-light"
 			>Participant.</span
 		>
 	</div>
@@ -92,9 +92,9 @@
 					participant.address ===
 						$wallet.address.toUserFriendlyAddress()
 						? 'text-green-light'
-						: 'text-black/40'}"
+						: 'text-black'}"
 				>
-					<span class="w-1/5 text-center text-14"
+					<span class="w-1/5 text-center text-12"
 						>{participant.time}</span
 					>
 					<span
@@ -105,7 +105,7 @@
 			{/each}
 		</div>
 		<div
-			class="bg-gradient-to-t from-white to-transparent h-72 -mt-32 mr-16 relative"
+			class="bg-gradient-to-t from-grey-dark to-transparent h-104 -mt-48 mr-16 relative"
 		/>
 	{:else}
 		<div class="m-auto h-full flex justify-center items-center">
@@ -114,3 +114,9 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.shadow-inset {
+		box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.05);
+	}
+</style>

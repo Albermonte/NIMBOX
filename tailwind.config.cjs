@@ -18,10 +18,11 @@ module.exports = {
       grey: {
         light: '#FAFAFA',
         DEFAULT: '#F3F3F3',
-        dark: '#E9EAEF',
+        dark: '#EFEFEF',
       },
       black: {
         DEFAULT: '#676975',
+        light: "#201F44"
       },
       gold: {
         DEFAULT: '#E9B213',
@@ -36,8 +37,8 @@ module.exports = {
         'dark-darkened': '#151833',
       },
       green: {
-        DEFAULT: '#21BCA5',
-        light: '#30D7B4',
+        DEFAULT: '#2AB799',
+        light: '#24CFAB',
         darkened: '#20B29E',
       },
       orange: {
@@ -107,6 +108,7 @@ module.exports = {
       300: '18.75rem',
       320: '20rem',
       360: '22.5rem',
+      456: '28.5rem',
 
       // Utilities
       full: '100%',
@@ -162,6 +164,7 @@ module.exports = {
       extrablack: '1000',
     },
     fontSize: {
+      11: '0.688rem',
       12: '0.75rem',
       13: '0.8125rem',
       14: '0.875rem',
@@ -274,6 +277,12 @@ module.exports = {
           'radial-gradient(100% 100% at 100% 100%, #70B069, theme(colors.lime.DEFAULT))',
         'radial-transparent':
           'radial-gradient(100% 100% at 100% 100%, transparent, transparent)',
+
+        // Custom button gradients
+        'linear-button-green': 'linear-gradient(112.53deg, theme(colors.green.DEFAULT) 0%, theme(colors.green.light) 95.63%)',
+        'linear-button-blue': 'linear-gradient(148.39deg, #289FEE 17.98%, #1D97EA 86.81%)',
+        'linear-button-red': 'linear-gradient(297.62deg, #F25454 0.43%, #D63B3B 100.37%)',
+        'linear-button-gold': 'linear-gradient(131.27deg, #EAB114 -8.75%, #EC9B1C 122.7%)',
       },
       transitionProperty: {
         'transform-opacity': 'transform, opacity',

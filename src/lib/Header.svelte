@@ -54,7 +54,7 @@
 	<div class="flex">
 		<div class="flex flex-col mr-40">
 			<!-- TODO: add tooltip with network statistics like peer count, bandwith... -->
-			<span class="font-medium uppercase text-13 text-blue-dark/40"
+			<span class="font-extrabold uppercase text-13 text-black-light/40"
 				>Consensus</span
 			>
 			<div class="flex items-center">
@@ -62,23 +62,23 @@
 					{#if $consensus === "connecting"}
 						<WorldIcon />
 					{:else if $consensus === "established"}
-						<WorldCheckIcon class=" text-green-light" />
+						<WorldCheckIcon class=" text-green" />
 					{:else}
 						<WorldAlertIcon class=" text-orange" />
 					{/if}
 				</div>
-				<span class="ml-6 font-bold capitalize text-18"
+				<span class="ml-6 font-extrabold capitalize text-18 text-black"
 					>{$consensus}</span
 				>
 			</div>
 		</div>
 		{#if $wallet}
 			<div class="flex flex-col" transition:fly={{ y: 10 }}>
-				<span class="font-medium uppercase text-13 text-blue-dark/40"
-					>Balance</span
+				<span class="font-extrabold uppercase text-13 text-black-light/40"
+					>Cashlink Balance</span
 				>
-				<span class="font-bold text-18"
-					>{balance} <span class="text-gold text-14">NIM</span></span
+				<span class="font-extrabold text-18 text-black"
+					>{balance} <span class="text-14">NIM</span></span
 				>
 			</div>
 		{/if}
@@ -89,7 +89,7 @@
 			<img src={hamburguerIcon} alt="" />
 			<span class="font-bold text-14 leading-[14px]"> How to play? </span>
 		</RouteButton>
-		<RouteButton color="bg-blue-light" route="free-nim">
+		<RouteButton color="bg-linear-button-blue" route="free-nim">
 			<span class="font-bold text-14 leading-[14px] text-white">
 				Get FREE NIM
 			</span>

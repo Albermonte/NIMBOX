@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { height, transactions } from "nimiq-svelte-stores";
+	import InfoIcon from "./InfoIcon.svelte";
 	import LoadingBar from "./LoadingBar.svelte";
 
 	let componentClass: string = "";
@@ -7,7 +8,8 @@
 
 	let currentBlock = 0;
 	let maxBlocks = 6;
-	let color = "#FAFBFD";
+	let color = "#FAFBFD",
+		color2 = "#FAFBFD";
 
 	$: {
 		let index = 0;
@@ -46,10 +48,19 @@
 		const el = document.getElementById(`Triangle-${currentBlock}`);
 		if (el) el.setAttribute("class", "fill-linear-gradient animate-pulse");
 
-		if (currentBlock < 2) color = "#1BD1AB";
-		else if (currentBlock < 4) color = "#169FEE";
-		else if (currentBlock < 6) color = "#FF6363";
-		else color = "#EAAA15";
+		if (currentBlock < 2) {
+			color = "#2AB799";
+			color2 = "#24CFAB";
+		} else if (currentBlock < 4) {
+			color = "#289FEE";
+			color2 = "#1D97EA";
+		} else if (currentBlock < 6) {
+			color = "#F25454";
+			color2 = "#D63B3B";
+		} else {
+			color = "#EAB114";
+			color2 = "#EC9B1C";
+		}
 	}
 </script>
 
@@ -84,10 +95,10 @@
 			<defs>
 				<linearGradient
 					id="linearGradient"
-					x1="55"
+					x1="4"
 					y1="6"
-					x2="55"
-					y2="96"
+					x2="117.018"
+					y2="59.147"
 					gradientUnits="userSpaceOnUse"
 				>
 					<stop
@@ -98,7 +109,6 @@
 						class="transition-all duration-1000 ease-in-out"
 						offset="1"
 						stop-color={color}
-						stop-opacity="0.5"
 					/>
 				</linearGradient>
 			</defs>
@@ -124,13 +134,17 @@
 				percentage={(currentBlock / maxBlocks) * 100}
 				height={18}
 				class="mt-8"
-				{color}
+				{currentBlock}
 			/>
+		</div>
+
+		<div class="absolute bottom-12 left-24">
+			<InfoIcon class="" />
 		</div>
 	</div>
 
 	<div class="flex flex-col text-center mt-6">
-		<span class="font-bold uppercase text-12 text-[#201F44]/40"
+		<span class="font-bold uppercase text-12 text-black-light/40"
 			>Block Height</span
 		>
 		<span class="font-extrabold text-18 text-black"
@@ -143,6 +157,6 @@
 	g {
 		filter: drop-shadow(0px 0px 8px rgb(0 0 0 / 0.15));
 		/* This way the shadow is not cut */
-		transform: scale(0.9) translate(5%, 6.5%); 
+		transform: scale(0.9) translate(5%, 6.5%);
 	}
 </style>

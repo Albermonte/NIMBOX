@@ -92,8 +92,8 @@
     {/if}
     <div class="flex items-center my-16">
         <InfoIcon />
-        <span class="mx-6 font-[650]">
-            Participated: <span class="font-black text-20">
+        <span class="mx-10 mb-4 text-18 font-semibold text-black">
+            Times played: <span class="font-extrabold text-20">
                 {$participationCounter}
             </span></span
         >

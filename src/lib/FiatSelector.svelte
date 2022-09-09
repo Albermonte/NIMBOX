@@ -26,13 +26,13 @@
 >
     <div>
         <div
-            class="flex px-12 py-6 rounded-tl-16 min-w-[90px] w-90 hover:bg-blue-dark/80 {hover
+            class="flex px-12 py-6 rounded-tl-16 min-w-[96px] w-96 hover:bg-blue-dark/80 {hover
                 ? 'bg-blue-dark'
                 : ''}"
         >
             <img src="/assets/icons/{$selectedFiat}-icon.svg" alt="" />
             <span
-                class="ml-8 font-bold text-{hover
+                class="mx-auto font-bold text-{hover
                     ? 'white'
                     : 'black'} uppercase text-15">{$selectedFiat}</span
             >
@@ -43,7 +43,7 @@
         {#if hover}
             {#each SupportedCurrenciesList as currency, i}
                 <div
-                    class="flex px-12 py-6 min-w-[90px] w-90 hover:bg-blue-dark/80 {hover
+                    class="flex px-12 py-6 min-w-[96px] w-96 hover:bg-blue-dark/80 {hover
                         ? 'bg-blue-dark absolute'
                         : ''} {i === SupportedCurrenciesList.length - 1
                         ? 'rounded-b-16'
@@ -55,7 +55,7 @@
                     <img src="/assets/icons/{currency}-icon.svg" alt="" />
 
                     <span
-                        class="ml-8 font-bold text-{hover
+                        class="mx-auto font-bold text-{hover
                             ? 'white'
                             : 'black'} uppercase text-15">{currency}</span
                     >

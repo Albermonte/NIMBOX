@@ -77,8 +77,8 @@
     </div>
     <div class="bg-[#F8FAFC] relative col-span-2 xl:col-[2_/_span_1]">
       <div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]">
-        <ScoreBoardCard class="w-[calc(100vw-20px)] xl:w-unset overflow-auto" />
-        <ParticipantList class="mt-26 w-[calc(100vw-20px)] xl:w-unset mb-6" />
+        <ScoreBoardCard class="w-456 overflow-auto" />
+        <ParticipantList class="mt-26 w-456 mb-6" />
       </div>
     </div>
     <!-- Right side bg grey -->
