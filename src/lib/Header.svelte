@@ -52,9 +52,10 @@
 	class="flex items-center justify-between w-full px-20 h-136 sm:px-28 md:px-56"
 >
 	<div class="flex">
-		<div class="flex flex-col mr-40">
+		<div class="flex flex-col mr-32">
 			<!-- TODO: add tooltip with network statistics like peer count, bandwith... -->
-			<span class="font-extrabold uppercase text-13 text-black-light/40"
+			<span
+				class="font-extrabold uppercase text-13 text-black-light/40 mb-4"
 				>Consensus</span
 			>
 			<div class="flex items-center">
@@ -72,9 +73,17 @@
 				>
 			</div>
 		</div>
+		<div class="flex flex-col mr-40">
+			<span
+				class="font-extrabold uppercase text-13 text-black-light/40 mb-4"
+				>Logged In</span
+			>
+			<img class="w-26 mx-auto" src="/assets/icons/check-mark-icon.svg" alt="" />
+		</div>
 		{#if $wallet}
 			<div class="flex flex-col" transition:fly={{ y: 10 }}>
-				<span class="font-extrabold uppercase text-13 text-black-light/40"
+				<span
+					class="font-extrabold uppercase text-13 text-black-light/40 mb-4"
 					>Cashlink Balance</span
 				>
 				<span class="font-extrabold text-18 text-black"
