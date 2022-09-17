@@ -138,8 +138,8 @@
 			/>
 		</div>
 
-		<div class="absolute bottom-12 left-24">
-			<InfoIcon class="" />
+		<div class="absolute bottom-12 left-18">
+			<InfoIcon class="w-22" />
 		</div>
 	</div>
 

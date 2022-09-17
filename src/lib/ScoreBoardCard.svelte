@@ -41,12 +41,12 @@
 
 		if ($selectedCurrency === SupportedCurrencies.NIM) {
 			smallBalance = (balance * price[$selectedFiat]).toFixed(2);
-			bigBalance = balance.toString().padStart(9, "0");
+			bigBalance = balance.toString().padStart(7, "0");
 		} else {
 			smallBalance = balance.toString();
 			bigBalance = (balance * price[$selectedFiat])
 				.toFixed(2)
-				.padStart(9, "0");
+				.padStart(7, "0");
 		}
 	}
 	let currencyIcon = "NIM";
@@ -86,37 +86,36 @@
 </script>
 
 <div
-	class="bg-white shadow-around rounded-[18px] px-20 py-10 flex flex-col xs:items-center {componentClass}"
+	class="px-20 py-10 flex flex-col xs:items-center {componentClass}"
 >
-	<div class="flex items-center gap-x-14">
+	<div class="flex gap-x-14">
 		<!-- Currency Logo -->
-		<div class="flex flex-col items-center justify-between w-40">
-			{#key $selectedCurrency}
-				<div in:fly={{ y: 10 }} class="h-[50px]">
-					<img
-						src="/assets/{$selectedCurrency}-logo.svg"
-						preload="true"
-						alt="{$selectedCurrency} logo"
-						class="object-cover min-w-[35px]"
-					/>
+		
+		<div>
+			<div class="flex items-center">
+				<div class="w-[46px] mt-2 mr-10">
+					{#key $selectedCurrency}
+						<div in:fly={{ y: 10 }}>
+							<img
+								src="/assets/{$selectedCurrency}-logo.svg"
+								preload="true"
+								alt="{$selectedCurrency} logo"
+								class="object-cover"
+							/>
+						</div>
+					{/key}
 				</div>
-			{/key}
-			<InfoIcon class="mt-14" />
-		</div>
-
-		<div class="flex-1 self-center">
-			<div class="flex justify-between gap-x-6">
 				{#each Array.from(bigBalance) as number}
 					{#key number}
-						<div class="counter shadow flex-1 rounded-6">
+						<div class="counter">
 							<div
 								class="counter__content counter__content--animate "
 							>
 								<div
-									class="counter__content__digit inner-shadow rounded-6 px-6 py-14"
+									class="counter__content__digit"
 								>
 									<span
-										class="font-black text-26 counter__item counter__item--{number} counter__item--digit -translate-y-150"
+										class="font-semibold text-[#1F2145] text-60 counter__item counter__item--{number} counter__item--digit -translate-y-344"
 										>&nbsp;</span
 									>
 								</div>
@@ -126,19 +125,9 @@
 				{/each}
 			</div>
 
-			<a
-				href="https://{import.meta.env.DEV
-					? 'test.'
-					: ''}nimiq.watch/#{gameAddress}"
-				target="_blank"
-				class="text-13 font-bold text-black/50 text-ellipsis truncate"
-			>
-				{gameAddress}
-			</a>
-
 			{#key smallBalance}
 				<div
-					class="ml-auto font-extrabold text-right flex justify-end gap-x-4 {smallBalanceColor}"
+					class="ml-auto font-bold text-22 text-right text-black"
 					in:fly={{ y: 10 }}
 				>
 					{smallBalance}
@@ -147,9 +136,11 @@
 			{/key}
 		</div>
 
-		<div class="self-start">
+		<div class="flex self-start flex-row">
 			<CoinSelector />
+			<InfoIcon class="w-20 mt-auto ml-12" />
 		</div>
+
 	</div>
 </div>
 

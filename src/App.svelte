@@ -72,12 +72,12 @@
       class="w-full rounded-br-[28px] bg-[#F1F1F1] relative hidden xl:block shadow-bottom-left"
     >
       <ParticipateButton
-        class="absolute flex flex-col items-center -translate-x-1/2 w-max top-1/3 left-1/2"
+        class="absolute flex flex-col items-center -translate-x-1/2 w-max -top-18 left-1/2"
       />
     </div>
     <div class="bg-[#F8FAFC] relative col-span-2 xl:col-[2_/_span_1]">
       <div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]">
-        <ScoreBoardCard class="w-456 overflow-auto" />
+        <ScoreBoardCard />
         <ParticipantList class="mt-26 w-456 mb-6" />
       </div>
     </div>

@@ -107,6 +107,7 @@ module.exports = {
       280: '17.5rem',
       300: '18.75rem',
       320: '20rem',
+      344: '21.5rem',
       360: '22.5rem',
       456: '28.5rem',
 
@@ -183,6 +184,7 @@ module.exports = {
       40: '2.5rem',
       44: '2.75rem',
       48: '3rem',
+      60: '3.75rem',
     },
     letterSpacing: {
       normal: '0em',
