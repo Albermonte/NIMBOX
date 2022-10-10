@@ -10,9 +10,9 @@ export const isValidCashlink = (cashlink: string): boolean => {
 export const getCashlinkBalance = async (cashlink: string): Promise<number> => {
     if (!cashlink) return 0;
     try {
+        await client.waitForConsensusEstablished()
         const wallet = getWalletFromCashlink(cashlink);
         if (!wallet) return 0;
-        await client.waitForConsensusEstablished()
         const account = await client.getAccount(wallet.address);
         return account.balance / 1e5;
     } catch (e) {

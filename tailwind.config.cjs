@@ -21,8 +21,8 @@ module.exports = {
         dark: '#EFEFEF',
       },
       black: {
-        DEFAULT: '#676975',
-        light: "#201F44"
+        DEFAULT: '#1F2248',
+        light: "#201F44",
       },
       gold: {
         DEFAULT: '#E9B213',
@@ -62,6 +62,7 @@ module.exports = {
       lime: {
         DEFAULT: '#88B04B',
       },
+
 
       // Utilities
       transparent: {

@@ -6,7 +6,7 @@
 		height,
 		transactions,
 	} from "nimiq-svelte-stores";
-	import { wallet } from "../store";
+	import { wallet, userCashlink } from "../store";
 	import { fly } from "svelte/transition";
 
 	import type * as NimiqType from "@nimiq/core-web/types";
@@ -78,7 +78,19 @@
 				class="font-extrabold uppercase text-13 text-black-light/40 mb-4"
 				>Logged In</span
 			>
-			<img class="w-26 mx-auto" src="/assets/icons/check-mark-icon.svg" alt="" />
+			{#if $userCashlink}
+				<img
+					class="w-26 mx-auto"
+					src="/assets/icons/check-mark-icon.svg"
+					alt=""
+				/>
+			{:else}
+				<img
+					class="w-26 mx-auto"
+					src="/assets/icons/cross-mark-icon.svg"
+					alt=""
+				/>
+			{/if}
 		</div>
 		{#if $wallet}
 			<div class="flex flex-col" transition:fly={{ y: 10 }}>

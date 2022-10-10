@@ -70,7 +70,7 @@
 </script>
 
 <div
-	class="flex flex-col p-10 pt-26 pb-18 max-h-320 min-h-[200px] bg-grey-dark rounded-32 shadow-inset {componentClass}"
+	class="flex flex-col p-10 pt-26 pb-18 max-h-320 min-h-[200px] bg-[#F2F5F9] {componentClass}"
 >
 	<div class="flex pb-4 pr-32">
 		<span class="w-1/5 font-extrabold text-center text-20 text-blue-light"
@@ -105,7 +105,7 @@
 			{/each}
 		</div>
 		<div
-			class="bg-gradient-to-t from-grey-dark to-transparent h-104 -mt-48 mr-16 relative"
+			class="bg-gradient-to-t from-[#F2F5F9] to-transparent h-104 -mt-48 mr-16 relative"
 		/>
 	{:else}
 		<div class="m-auto h-full flex justify-center items-center">

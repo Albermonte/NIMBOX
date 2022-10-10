@@ -8,7 +8,7 @@
   import SidebarsManager from "./lib/sidebars/SidebarsManager.svelte";
   import logo from "/assets/treasury-logo.svg";
 
-  import { start } from "nimiq-svelte-stores";
+  import { start, established } from "nimiq-svelte-stores";
   import { userCashlink, wallet } from "./store";
   import { getWalletFromCashlink } from "./utils/cashlink";
   import { onMount } from "svelte";
@@ -17,7 +17,9 @@
   let windowWidth = 0;
   $: windowWidth < 1152 ? (isMobile = true) : (isMobile = false);
 
-  $: $userCashlink && ($wallet = getWalletFromCashlink($userCashlink));
+  $: $established &&
+    $userCashlink &&
+    ($wallet = getWalletFromCashlink($userCashlink));
 
   onMount(async () => {
     // Only show error logs
@@ -30,12 +32,8 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<main
-  class="w-full h-screen overflow-x-hidden bg-gradient-to-b from-white to-[#F1F4F8]"
->
-  <div
-    class="bg-gradient-to-b from-white to-[#F1F1F1] flex flex-col md:h-[40vh] xl:h-[35vh]"
-  >
+<main class="w-full h-screen overflow-x-hidden bg-white">
+  <div class="bg-[#EDF1F7] flex flex-col md:h-[40vh] xl:h-[35vh]">
     <Header />
     <img
       class="game-logo self-center flex-1 max-w-[min(80vw,28rem)] object-contain mt-6 mb-32"
@@ -46,7 +44,7 @@
 
   <!-- Mobile -->
   <div
-    class="flex flex-col items-center justify-center pt-10 xl:hidden xs:flex-row gap-x-16 bg-grey"
+    class="flex flex-col items-center justify-center pt-10 xl:hidden xs:flex-row gap-x-16 bg-white"
   >
     <ParticipateButton class="flex flex-col items-center" />
     {#if isMobile}
@@ -57,10 +55,10 @@
 
   <!-- Desktop -->
   <div
-    class="grid h-[45px] bg-[#F1F1F1] invisible xl:visible xl:grid-cols-[2fr_532px_2fr]"
+    class="grid h-[45px] bg-[#EDF1F7] invisible xl:visible xl:grid-cols-[2fr_532px_2fr]"
   >
     <div />
-    <div class="rounded-t-[28px] bg-[#F9FCFC] shadow-inset" />
+    <div class="rounded-t-[28px] bg-white shadow-inset" />
     <div />
   </div>
 
@@ -69,13 +67,13 @@
   >
     <!-- Left side bg grey -->
     <div
-      class="w-full rounded-br-[28px] bg-[#F1F1F1] relative hidden xl:block shadow-bottom-left"
+      class="w-full rounded-br-[28px] bg-[#EDF1F7] relative hidden xl:block shadow-bottom-left"
     >
       <ParticipateButton
-        class="absolute flex flex-col items-center -translate-x-1/2 w-max -top-18 left-1/2"
+        class="absolute flex flex-col items-center justify-center -translate-x-1/2 w-max left-1/2 -translate-y-56"
       />
     </div>
-    <div class="bg-[#F8FAFC] relative col-span-2 xl:col-[2_/_span_1]">
+    <div class="bg-white relative col-span-2 xl:col-[2_/_span_1]">
       <div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]">
         <ScoreBoardCard />
         <ParticipantList class="mt-26 w-456 mb-6" />
@@ -83,11 +81,11 @@
     </div>
     <!-- Right side bg grey -->
     <div
-      class="w-full rounded-bl-[28px] bg-[#F1F1F1] relative hidden xl:block shadow-bottom-right"
+      class="w-full rounded-bl-[28px] bg-[#EDF1F7] relative hidden xl:block shadow-bottom-right"
     >
       {#if !isMobile}
         <HexagonBlockLoading
-          class="absolute -translate-x-1/2 w-max top-1/2 left-1/2 -translate-y-1/3"
+          class="absolute -translate-x-1/2 w-max left-1/2 -translate-y-[68px]"
         />
       {/if}
     </div>
