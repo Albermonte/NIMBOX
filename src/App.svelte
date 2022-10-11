@@ -13,6 +13,9 @@
   import { getWalletFromCashlink } from "./utils/cashlink";
   import { onMount } from "svelte";
 
+  // TODO: Import from .env
+  const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
+
   let isMobile = false;
   let windowWidth = 0;
   $: windowWidth < 1152 ? (isMobile = true) : (isMobile = false);
@@ -33,18 +36,28 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 <main class="w-full h-screen overflow-x-hidden bg-white">
-  <div class="bg-[#EDF1F7] flex flex-col md:h-[40vh] xl:h-[35vh]">
+  <div class="bg-[#EDF1F7] flex flex-col items-center h-[calc(50%-45px-32px)]">
     <Header />
-    <img
-      class="game-logo self-center flex-1 max-w-[min(80vw,28rem)] object-contain mt-6 mb-32"
-      src={logo}
-      alt="Nimiq Game Treasure Logo"
-    />
+    <div class="my-auto text-center">
+      <img
+        class="max-w-[min(80vw,26rem)] mb-20"
+        src={logo}
+        alt="Nimiq Game Treasure Logo"
+      />
+      <a
+        class="px-16 py-4 mx-auto font-extrabold bg-white cursor-pointer text-black/50 text-16 rounded-8"
+        href="https://{import.meta.env.DEV &&
+          'test.'}nimiq.watch/#{gameAddress}"
+        target="_blank"
+      >
+        Treasury address ➞
+      </a>
+    </div>
   </div>
 
   <!-- Mobile -->
   <div
-    class="flex flex-col items-center justify-center pt-10 xl:hidden xs:flex-row gap-x-16 bg-white"
+    class="flex flex-col items-center justify-center pt-10 bg-white xl:hidden xs:flex-row gap-x-16"
   >
     <ParticipateButton class="flex flex-col items-center" />
     {#if isMobile}
@@ -70,13 +83,13 @@
       class="w-full rounded-br-[28px] bg-[#EDF1F7] relative hidden xl:block shadow-bottom-left"
     >
       <ParticipateButton
-        class="absolute flex flex-col items-center justify-center -translate-x-1/2 w-max left-1/2 -translate-y-56"
+        class="absolute flex flex-col items-center justify-center -translate-x-1/2 -translate-y-56 w-max left-1/2"
       />
     </div>
     <div class="bg-white relative col-span-2 xl:col-[2_/_span_1]">
       <div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]">
         <ScoreBoardCard />
-        <ParticipantList class="mt-26 w-456 mb-6" />
+        <ParticipantList class="mb-6 mt-26 w-456" />
       </div>
     </div>
     <!-- Right side bg grey -->

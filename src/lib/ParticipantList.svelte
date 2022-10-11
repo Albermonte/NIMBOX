@@ -81,24 +81,23 @@
 		>
 	</div>
 	{#if participants.length > 0}
-		<div class="overflow-auto scrollbar scroll-smooth mb-16">
+		<div class="mb-16 overflow-auto scrollbar scroll-smooth">
 			{#each participants as participant}
 				<a
-					href="https://{import.meta.env.DEV
-						? 'test.'
-						: ''}nimiq.watch/#{participant.hash}"
+					href="https://{import.meta.env.DEV &&
+						'test.'}nimiq.watch/#{participant.hash}"
 					target="_blank"
 					class="flex items-baseline py-6 font-bold hover:font-extrabold {$wallet &&
 					participant.address ===
 						$wallet.address.toUserFriendlyAddress()
 						? 'text-green-light'
-						: 'text-black'}"
+						: 'text-[#676975]'}"
 				>
 					<span class="w-1/5 text-center text-12"
 						>{participant.time}</span
 					>
 					<span
-						class="w-4/5 text-12 text-ellipsis truncate text-justify"
+						class="w-4/5 text-justify truncate text-12 text-ellipsis"
 						>{participant.address}</span
 					>
 				</a>
@@ -108,7 +107,7 @@
 			class="bg-gradient-to-t from-[#F2F5F9] to-transparent h-104 -mt-48 mr-16 relative"
 		/>
 	{:else}
-		<div class="m-auto h-full flex justify-center items-center">
+		<div class="flex items-center justify-center h-full m-auto">
 			<span class="mr-10"> Loading participants... </span>
 			<LoadingSpinner height={25} width={25} strokeWidth={5} />
 		</div>

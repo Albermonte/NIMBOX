@@ -17,6 +17,7 @@
     // TODO: Import from .env
     const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
     let txHash = "";
+    let isHovering = false;
 
     const handlePlay = async () => {
         try {
@@ -67,6 +68,8 @@
     <div
         class="w-96 h-96 m-40 rounded bg-[#269EEE] shadow flex justify-center items-center cursor-pointer"
         on:click={handlePlay}
+        on:mouseenter={() => (isHovering = true)}
+        on:mouseleave={() => (isHovering = false)}
     >
         <InfoIcon class="absolute -left-40" />
         {#if $wallet && $established}
@@ -75,7 +78,7 @@
                 height="50"
                 viewBox="0 0 46.78 53.7"
                 xmlns="http://www.w3.org/2000/svg"
-                class="ml-10"
+                class="ml-10 transition duration-100 ease-in-out transform {isHovering ? 'scale-110' : 'scale-100'}"
             >
                 <g>
                     <path
@@ -100,11 +103,11 @@
         {/if}
     </div>
     <div class="bg-[#EDF1F7] stroke-[#E9E9E9] stroke-2 rounded-8 py-6 px-16">
-        <span class="font-bold text-18 text-black opacity-[0.65]"
+        <span class="font-bold text-18 text-black/50"
             >Times played</span
         >
     </div>
-    <span class="my-8 font-extrabold text-20 text-black"
+    <span class="my-8 font-extrabold text-black text-20"
         >{$participationCounter}</span
     >
 </div>

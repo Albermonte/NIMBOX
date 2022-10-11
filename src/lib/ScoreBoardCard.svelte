@@ -127,7 +127,7 @@
 
 			{#key smallBalance}
 				<div
-					class="ml-auto font-bold text-22 text-right text-black"
+					class="ml-auto font-bold text-22 text-right text-black/50"
 					in:fly={{ y: 10 }}
 				>
 					{smallBalance}

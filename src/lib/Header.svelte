@@ -49,13 +49,13 @@
 
 <!-- TODO: background when scrolling -->
 <header
-	class="flex items-center justify-between w-full px-20 h-136 sm:px-28 md:px-56"
+	class="flex items-center justify-between w-full px-20 pt-48 sm:px-28 md:px-56"
 >
 	<div class="flex">
 		<div class="flex flex-col mr-32">
 			<!-- TODO: add tooltip with network statistics like peer count, bandwith... -->
 			<span
-				class="font-extrabold uppercase text-13 text-black-light/40 mb-4"
+				class="mb-4 font-extrabold uppercase text-13 text-black-light/40"
 				>Consensus</span
 			>
 			<div class="flex items-center">
@@ -68,25 +68,25 @@
 						<WorldAlertIcon class=" text-orange" />
 					{/if}
 				</div>
-				<span class="ml-6 font-extrabold capitalize text-18 text-black"
+				<span class="ml-6 font-extrabold text-[#676975] capitalize text-18"
 					>{$consensus}</span
 				>
 			</div>
 		</div>
 		<div class="flex flex-col mr-40">
 			<span
-				class="font-extrabold uppercase text-13 text-black-light/40 mb-4"
+				class="mb-4 font-extrabold uppercase text-13 text-black-light/40"
 				>Logged In</span
 			>
 			{#if $userCashlink}
 				<img
-					class="w-26 mx-auto"
+					class="mx-auto w-26"
 					src="/assets/icons/check-mark-icon.svg"
 					alt=""
 				/>
 			{:else}
 				<img
-					class="w-26 mx-auto"
+					class="mx-auto w-26"
 					src="/assets/icons/cross-mark-icon.svg"
 					alt=""
 				/>
@@ -95,12 +95,23 @@
 		{#if $wallet}
 			<div class="flex flex-col" transition:fly={{ y: 10 }}>
 				<span
-					class="font-extrabold uppercase text-13 text-black-light/40 mb-4"
+					class="mb-4 font-extrabold uppercase text-13 text-black-light/40"
 					>Cashlink Balance</span
 				>
-				<span class="font-extrabold text-18 text-black"
-					>{balance} <span class="text-14">NIM</span></span
-				>
+				<div class="flex items-center">
+					<span class="font-extrabold text-[#676975] text-18"
+						>{balance} <span class="text-14">NIM</span></span
+					>
+					<div
+						class="px-10 py-2 ml-14 text-center rounded border-1 border-black/50 font-extrabold text-12 text-[#676975] cursor-pointer"
+						on:click={() => {
+							// TODO: fund cashlink
+							alert("TODO");
+						}}
+					>
+						Fund Cashlink
+					</div>
+				</div>
 			</div>
 		{/if}
 	</div>
