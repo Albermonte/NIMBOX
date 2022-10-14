@@ -3,7 +3,7 @@
 	import { SupportedCurrencies } from "../types";
 </script>
 
-<div class="bg-[#E7E7E8] rounded-[17.25px] p-4">
+<div class="bg-[#E7E7E8] rounded-[17.25px] p-4 h-fit-content">
 	<!-- Fiat -->
 	<div
 		class="mb-6 cursor-pointer"

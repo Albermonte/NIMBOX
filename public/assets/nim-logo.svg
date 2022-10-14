@@ -1,11 +1,10 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72 64">
+<svg width="48" height="42" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M47.4453 19.0337L37.4442 1.96092C36.7299 0.746004 35.4094 0 33.9807 0L13.9895 0C12.5608 0 11.2511 0.746004 10.5368 1.96092L0.535768 19.0337C-0.178589 20.2487 -0.178589 21.7513 0.535768 22.9662L10.526 40.0391C11.2403 41.254 12.5608 42 13.9895 42H33.9807C35.4094 42 36.7299 41.254 37.4442 40.0391L47.4344 23.0409C48.1813 21.8046 48.1921 20.27 47.4453 19.0337Z" fill="url(#paint0_linear_1298_3860)" />
     <defs>
-        <style>.cls-1{fill:url(#radial-gradient);}</style>
-        <radialGradient id="radial-gradient" cx="54.17" cy="63.17" r="72.02" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#ec991c" />
-            <stop offset="1" stop-color="#e9b213" />
-        </radialGradient>
+        <linearGradient id="paint0_linear_1298_3860" x1="-3.42857" y1="-4.44231" x2="55.6263" y2="54.7942" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#EAB114" />
+            <stop offset="1" stop-color="#EC9B1C" />
+        </linearGradient>
     </defs>
-    <title>nimiq_signet_rgb_base_size</title>
-    <path class="cls-1" d="M71.2,29l-15-26A6,6,0,0,0,51,0H21a6,6,0,0,0-5.19,3L.8,29a6,6,0,0,0,0,6l15,26A6,6,0,0,0,21,64H51a6,6,0,0,0,5.19-3l15-26A6,6,0,0,0,71.2,29Z" />
 </svg>
+    

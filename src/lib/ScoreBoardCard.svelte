@@ -127,7 +127,7 @@
 
 			{#key smallBalance}
 				<div
-					class="ml-auto font-bold text-22 text-right text-black/50"
+					class="ml-auto font-bold text-right text-22 text-black/50"
 					in:fly={{ y: 10 }}
 				>
 					{smallBalance}
@@ -136,10 +136,7 @@
 			{/key}
 		</div>
 
-		<div class="flex self-start flex-row">
-			<CoinSelector />
-			<InfoIcon class="w-20 mt-auto ml-12" />
-		</div>
+		<CoinSelector />
 
 	</div>
 </div>

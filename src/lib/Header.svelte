@@ -68,7 +68,8 @@
 						<WorldAlertIcon class=" text-orange" />
 					{/if}
 				</div>
-				<span class="ml-6 font-extrabold text-[#676975] capitalize text-18"
+				<span
+					class="ml-6 font-extrabold text-[#676975] capitalize text-18"
 					>{$consensus}</span
 				>
 			</div>
@@ -115,17 +116,35 @@
 			</div>
 		{/if}
 	</div>
-	<div class="flex">
-		<FiatSelector />
-		<RouteButton route="how-to">
-			<img src={hamburguerIcon} alt="" />
-			<span class="font-bold text-14 leading-[14px]"> How to play? </span>
-		</RouteButton>
-		<RouteButton color="bg-linear-button-blue" route="free-nim">
-			<span class="font-bold text-14 leading-[14px] text-white">
-				Get FREE NIM
-			</span>
-			<img src={nimiqIcon} alt="" />
-		</RouteButton>
+	<div class="flex items-center">
+		<FiatSelector class="mr-32" />
+		<div>
+			<svg
+				width="36"
+				height="25"
+				viewBox="0 0 36 25"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M2 2H34"
+					stroke="#1F2145"
+					stroke-width="3"
+					stroke-linecap="round"
+				/>
+				<path
+					d="M2 12H34"
+					stroke="#1F2145"
+					stroke-width="3"
+					stroke-linecap="round"
+				/>
+				<path
+					d="M2 23H34"
+					stroke="#1F2145"
+					stroke-width="3"
+					stroke-linecap="round"
+				/>
+			</svg>
+		</div>
 	</div>
 </header>
