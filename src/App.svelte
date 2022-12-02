@@ -89,7 +89,7 @@
     <div class="bg-white relative col-span-2 xl:col-[2_/_span_1]">
       <div class="xl:mx-auto xl:absolute px-10 top-[-24px] w-[500px]">
         <ScoreBoardCard />
-        <ParticipantList class="mb-6 mt-26 w-456" />
+        <ParticipantList class="mt-26 w-456" />
       </div>
     </div>
     <!-- Right side bg grey -->

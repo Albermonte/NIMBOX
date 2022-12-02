@@ -11,15 +11,14 @@
 
 	import type * as NimiqType from "@nimiq/core-web/types";
 
-	import RouteButton from "./RouteButton.svelte";
 	import FiatSelector from "./FiatSelector.svelte";
 	import WorldIcon from "./icons/WorldIcon.svelte";
 	import WorldCheckIcon from "./icons/WorldCheckIcon.svelte";
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
-	import hamburguerIcon from "/assets/icons/hamburguer.svg";
-	import nimiqIcon from "/assets/icons/nimiq-hex.svg";
+	import HamburguerMenu from "./HamburguerMenu.svelte";
 
-	let balance = 0;
+	let balance = 0,
+		showHambuguerMenu = false;
 
 	$: $established && $wallet && $height && updateBalance();
 
@@ -118,33 +117,39 @@
 	</div>
 	<div class="flex items-center">
 		<FiatSelector class="mr-32" />
-		<div>
-			<svg
-				width="36"
-				height="25"
-				viewBox="0 0 36 25"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M2 2H34"
-					stroke="#1F2145"
-					stroke-width="3"
-					stroke-linecap="round"
-				/>
-				<path
-					d="M2 12H34"
-					stroke="#1F2145"
-					stroke-width="3"
-					stroke-linecap="round"
-				/>
-				<path
-					d="M2 23H34"
-					stroke="#1F2145"
-					stroke-width="3"
-					stroke-linecap="round"
-				/>
-			</svg>
+		<!-- Hamburguer -->
+		<div on:mouseleave={() => (showHambuguerMenu = false)}>
+			<div class="cursor-pointer" on:mouseenter={() => (showHambuguerMenu = true)}>
+				<svg
+					width="36"
+					height="25"
+					viewBox="0 0 36 25"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M2 2H34"
+						stroke="#1F2145"
+						stroke-width="3"
+						stroke-linecap="round"
+					/>
+					<path
+						d="M2 12H34"
+						stroke="#1F2145"
+						stroke-width="3"
+						stroke-linecap="round"
+					/>
+					<path
+						d="M2 23H34"
+						stroke="#1F2145"
+						stroke-width="3"
+						stroke-linecap="round"
+					/>
+				</svg>
+			</div>
+			{#if showHambuguerMenu}
+				<HamburguerMenu class="right-18" />
+			{/if}
 		</div>
 	</div>
 </header>

@@ -31,7 +31,7 @@
         class="h-40 bg-white w-104 hover:bg-blue-dark/5 rounded-l-24"
     >
         <div
-            class="flex items-center pl-16  rounded-tl-[20px] hover:bg-blue-dark/80 {hover
+            class="flex items-center pl-16 rounded-tl-[20px] hover:bg-blue-dark/80 {hover
                 ? 'bg-blue-dark'
                 : ''}"
             style="width: inherit; height: inherit;"

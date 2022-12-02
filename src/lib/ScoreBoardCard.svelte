@@ -93,7 +93,7 @@
 		
 		<div>
 			<div class="flex items-center">
-				<div class="w-[46px] mt-2 mr-10">
+				<div class="w-[46px] mt-2 mr-16">
 					{#key $selectedCurrency}
 						<div in:fly={{ y: 10 }}>
 							<img
