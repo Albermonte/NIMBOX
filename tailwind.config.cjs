@@ -2,6 +2,7 @@ const plugin = require('tailwindcss/plugin')
 
 const NIMIQ_COMPONENTS_PREXIX = 'nq_'
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./index.html",
