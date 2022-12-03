@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { url } from "../store";
+	import { url } from "$store";
 	export let color = "bg-grey",
 		route = "";
 	const navigate = () => {

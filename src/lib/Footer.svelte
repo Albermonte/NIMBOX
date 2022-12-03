@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RouteButton from "./RouteButton.svelte";
+	import RouteButton from "./buttons/RouteButton.svelte";
 	import nimiqCommunity from "/assets/nimiq-community-logo.svg";
 	import hamburguerIcon from "/assets/icons/hamburguer.svg";
 </script>

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import CloseButton from "../CloseButton.svelte";
+    import CloseButton from "../buttons/CloseButton.svelte";
     import { fly } from "svelte/transition";
 
-    import { background } from "../../utils/transitions";
-    import { url } from "../../store";
+    import { background } from "$utils/transitions";
+    import { url } from "$store";
     import CashlinkInfo from "./CashlinkInfo.svelte";
     import CashlinkLogin from "./CashlinkLogin.svelte";
 

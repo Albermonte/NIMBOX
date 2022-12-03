@@ -2,10 +2,10 @@
 	import type Nimiq from "@nimiq/core-web/types";
 
 	import { transactions } from "nimiq-svelte-stores";
-	import { wallet } from "../store";
+	import { wallet } from "$store";
 	import { onMount } from "svelte";
 
-	import LoadingSpinner from "./LoadingSpinner.svelte";
+	import LoadingSpinner from "./icons/LoadingSpinner.svelte";
 
 	let componentClass: string = "";
 	export { componentClass as class };
@@ -87,6 +87,7 @@
 					href="https://{import.meta.env.DEV &&
 						'test.'}nimiq.watch/#{participant.hash}"
 					target="_blank"
+					rel="noopener noreferrer"
 					class="flex items-baseline py-6 font-bold hover:font-extrabold {$wallet &&
 					participant.address ===
 						$wallet.address.toUserFriendlyAddress()

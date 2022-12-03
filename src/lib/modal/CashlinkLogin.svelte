@@ -2,11 +2,11 @@
     import { createEventDispatcher } from "svelte";
     import { fly } from "svelte/transition";
 
-    import { url, userCashlink } from "../../store";
+    import { url, userCashlink } from "$store";
     import {
         isValidCashlink,
         getCashlinkBalance,
-    } from "../../utils/cashlink";
+    } from "$utils/cashlink";
 
     const dispatch = createEventDispatcher();
 

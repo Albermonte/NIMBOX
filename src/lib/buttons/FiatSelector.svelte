@@ -1,7 +1,7 @@
 <script lang="ts">
     import { fly } from "svelte/transition";
-    import { selectedFiat, selectedCurrency } from "../store";
-    import { SupportedCurrencies } from "../types";
+    import { selectedFiat, selectedCurrency } from "$store";
+    import { SupportedCurrencies } from "../../types";
 
     let componentClass: string = "";
     export { componentClass as class };

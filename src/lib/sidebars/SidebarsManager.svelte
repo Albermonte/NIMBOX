@@ -1,20 +1,29 @@
 <script lang="ts">
-    import { url } from "../../store";
-    import ModalContainer from "../modal/ModalContainer.svelte";
+    import { url, userCashlink, wallet } from "$store";
+    import ModalContainer from "$lib/modal/ModalContainer.svelte";
     import FreeNimSidebar from "./FreeNimSidebar.svelte";
     import HallOfFameSidebar from "./HallOfFameSidebar.svelte";
     import HowToSidebar from "./HowToSidebar.svelte";
 
-    import { background } from "../../utils/transitions";
+    import { background } from "$utils/transitions";
 
     let route = "";
     $: route = $url.hash.replace("#/", "");
+    $: {
+        console.log("route", route);
+        
+        if (route === "log-out") {
+            $userCashlink = null;
+            $wallet = null;
+            window.location.href = "";
+        }
+    }
 </script>
 
 {#if route === "login"}
     <ModalContainer />
 {:else if route}
-    <div
+    <button
         class="absolute top-0 order-1 w-full h-full cursor-pointer bg-blue-dark/20"
         on:click={() => url.navigate("")}
         in:background={{ duration: 500 }}
@@ -22,7 +31,7 @@
     />
     {#if route === "free-nim"}
         <FreeNimSidebar />
-    {:else if route === "how-to"}
+    {:else if route === "how-to-play"}
         <HowToSidebar />
     {:else if route === "hall-of-fame"}
         <HallOfFameSidebar />

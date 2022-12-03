@@ -55,7 +55,7 @@ const createUrlStore = () => {
 
     return {
         subscribe: derived(href, ($href) => new URL($href)).subscribe,
-        navigate: (route: string) => window.location.href = "#/" + route
+        navigate: (route: string) => setTimeout(() => window.location.href = "#/" + route, 10)
     }
 }
 

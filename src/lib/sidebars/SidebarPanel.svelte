@@ -1,6 +1,6 @@
 <script lang="ts">
     import { fly } from "svelte/transition";
-    import CloseButton from "../CloseButton.svelte";
+    import CloseButton from "../buttons/CloseButton.svelte";
     import logo from "/assets/treasury-logo.svg";
 
     export let right = true,

@@ -6,16 +6,17 @@
 		height,
 		transactions,
 	} from "nimiq-svelte-stores";
-	import { wallet, userCashlink } from "../store";
+	import { wallet, userCashlink } from "$store";
 	import { fly } from "svelte/transition";
 
 	import type * as NimiqType from "@nimiq/core-web/types";
 
-	import FiatSelector from "./FiatSelector.svelte";
+	import FiatSelector from "./buttons/FiatSelector.svelte";
 	import WorldIcon from "./icons/WorldIcon.svelte";
 	import WorldCheckIcon from "./icons/WorldCheckIcon.svelte";
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
-	import HamburguerMenu from "./HamburguerMenu.svelte";
+	import HamburguerMenu from "./buttons/HamburguerMenu.svelte";
+	import Icon from "./icons/Icon.svelte";
 
 	let balance = 0,
 		showHambuguerMenu = false;
@@ -99,18 +100,18 @@
 					>Cashlink Balance</span
 				>
 				<div class="flex items-center">
-					<span class="font-extrabold text-[#676975] text-18"
-						>{balance} <span class="text-14">NIM</span></span
+					<button
+						class="p-4 rounded bg-black/20 w-20 h-20 flex items-center mr-10"
 					>
-					<div
-						class="px-10 py-2 ml-14 text-center rounded border-1 border-black/50 font-extrabold text-12 text-[#676975] cursor-pointer"
-						on:click={() => {
-							// TODO: fund cashlink
-							alert("TODO");
-						}}
-					>
-						Fund Cashlink
-					</div>
+						<Icon
+							height="14"
+							name="nq-cashlink-big"
+							class="text-white"
+						/>
+					</button>
+					<span class="font-extrabold text-[#676975] text-18">
+						{balance} <span class="text-14">NIM</span>
+					</span>
 				</div>
 			</div>
 		{/if}
@@ -119,7 +120,10 @@
 		<FiatSelector class="mr-32" />
 		<!-- Hamburguer -->
 		<div on:mouseleave={() => (showHambuguerMenu = false)}>
-			<div class="cursor-pointer" on:mouseenter={() => (showHambuguerMenu = true)}>
+			<div
+				class="cursor-pointer"
+				on:mouseenter={() => (showHambuguerMenu = true)}
+			>
 				<svg
 					width="36"
 					height="25"

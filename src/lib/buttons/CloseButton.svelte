@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { url } from "../store";
+    import { url } from "$store";
 </script>
 
-<div class="cursor-pointer w-fit-content" on:click={() => url.navigate("")}>
+<button class="cursor-pointer w-fit-content" on:click={() => url.navigate("")}>
     <svg
         width="40"
         height="40"
@@ -17,4 +17,4 @@
             fill="#737373"
         />
     </svg>
-</div>
+</button>

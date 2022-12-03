@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { selectedCurrency, selectedFiat } from "../store";
-	import { SupportedCurrencies } from "../types";
+	import { selectedCurrency, selectedFiat } from "$store";
+	import { SupportedCurrencies } from "../../types";
 </script>
 
 <div class="bg-[#E7E7E8] rounded-[17.25px] p-4 h-fit-content">
 	<!-- Fiat -->
-	<div
+	<button
 		class="mb-6 cursor-pointer"
 		on:click={() => ($selectedCurrency = $selectedFiat)}
 	>
@@ -17,7 +17,7 @@
 				? "filter: grayscale(100%)"
 				: ""}
 		/>
-	</div>
+	</button>
 	<!-- NIM -->
 	<svg
 		width="34"
@@ -30,6 +30,7 @@
 			? "filter: grayscale(100%)"
 			: ""}
 		on:click={() => ($selectedCurrency = SupportedCurrencies.NIM)}
+		on:keypress={() => ($selectedCurrency = SupportedCurrencies.NIM)}
 	>
 		<circle
 			cx="16.9195"

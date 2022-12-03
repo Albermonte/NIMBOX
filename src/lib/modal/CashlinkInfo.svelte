@@ -28,6 +28,7 @@
             <a
                 href="https://hub.nimiq.com/cashlink/#GGX0PrYucAIkgTQryvCel3877AJRaVoA2_JUUmPX0SYAAAAAAAGGoA=="
                 target="_blank"
+                rel="noopener noreferrer"
                 class="w-full italic break-words text-15 text-blue-dark/50"
             >
                 https://hub.nimiq.com/cashlink/#GGX0PrYucAIkgTQryvCel3877AJRaVoA2_JUUmPX0SYAAAAAAAGGoA==
@@ -37,7 +38,8 @@
             >More info: <a
                 class="text-blue-light"
                 href="https://www.nimiq.com/blog/nimiq-cashlinks/"
-                target="_blank">Nimiq Cashlinks</a
+                target="_blank"
+                rel="noopener noreferrer">Nimiq Cashlinks</a
             ></span
         >
         <p>
@@ -63,6 +65,7 @@
                 href="https://wallet.nimiq{import.meta.env.DEV &&
                     '-testnet'}.com/send/nim"
                 target="_blank"
+                rel="noopener noreferrer"
             >
                 Fund Cashlink</a
             >

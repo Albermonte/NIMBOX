@@ -1,5 +1,6 @@
 <script lang="ts">
-    import Icon from "./Icon.svelte";
+    import Icon from "../icons/Icon.svelte";
+    import { url, userCashlink, wallet } from "$store";
 
     let componentClass: string = "";
     export { componentClass as class };
@@ -8,34 +9,53 @@
         {
             text: "How to play?",
             icon: "question-mark-circle",
-            link: "/how-to-play",
+            link: "how-to-play",
         },
         {
             text: "Fund your Cashlink",
-            icon: "nq-cashlink",
-            link: "/fund-your-cashlink",
+            icon: "nq-cashlink-big",
+            link: "fund-your-cashlink",
         },
         {
             text: "Get FREE NIM",
             icon: "nq-hexagon",
-            link: "/get-free-nim",
+            link: "free-nim",
         },
         {
             text: "Hall of fame",
             icon: "trophy",
-            link: "/hall-of-fame",
+            link: "hall-of-fame",
         },
         {
             text: "Share and WIN",
             icon: "twitter-logo",
-            link: "/share-and-win",
+            link: "share-and-win",
         },
         {
             text: "Log out",
             icon: "power",
-            link: "/log-out",
+            link: "log-out",
         },
     ];
+
+    $: {
+        // Last button will always be the log in/out button
+        if ($userCashlink && $wallet) {
+            // Change last button to "Log out"
+            buttons[buttons.length - 1].text = "Log out";
+            buttons[buttons.length - 1].link = "log-out";
+            buttons[buttons.length - 1].icon = "power";
+        } else {
+            // Change last button to "Log in"
+            buttons[buttons.length - 1].text = "Log in";
+            buttons[buttons.length - 1].link = "login";
+            buttons[buttons.length - 1].icon = "nq-login";
+        }
+    }
+
+    const navigate = (route: string) => {
+        url.navigate(route);
+    };
 </script>
 
 <div class="absolute {componentClass}">
@@ -49,6 +69,8 @@
             {#each buttons as button}
                 <li
                     class="hover:bg-[#464864] px-20 py-10 hover:cursor-pointer transition-colors duration-300 flex items-center"
+                    on:click={() => navigate(button.link)}
+                    on:keypress={() => navigate(button.link)}
                 >
                     <Icon
                         name={button.icon}

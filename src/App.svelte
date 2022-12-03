@@ -1,17 +1,18 @@
 <script lang="ts">
-  import Header from "./lib/Header.svelte";
-  import Footer from "./lib/Footer.svelte";
-  import HexagonBlockLoading from "./lib/HexagonBlockLoading.svelte";
-  import ParticipantList from "./lib/ParticipantList.svelte";
-  import ScoreBoardCard from "./lib/ScoreBoardCard.svelte";
-  import ParticipateButton from "./lib/ParticipateButton.svelte";
-  import SidebarsManager from "./lib/sidebars/SidebarsManager.svelte";
+  import Header from "$lib/Header.svelte";
+  import Footer from "$lib/Footer.svelte";
+  import HexagonBlockLoading from "$lib/HexagonBlockLoading.svelte";
+  import ParticipantList from "$lib/ParticipantList.svelte";
+  import ScoreBoardCard from "$lib/ScoreBoardCard.svelte";
+  import ParticipateButton from "$lib/buttons/ParticipateButton.svelte";
+  import SidebarsManager from "$lib/sidebars/SidebarsManager.svelte";
   import logo from "/assets/treasury-logo.svg";
 
   import { start, established } from "nimiq-svelte-stores";
-  import { userCashlink, wallet } from "./store";
-  import { getWalletFromCashlink } from "./utils/cashlink";
+  import { userCashlink, wallet } from "$store";
+  import { getWalletFromCashlink } from "$utils/cashlink";
   import { onMount } from "svelte";
+  import LoginAlert from "$lib/buttons/LoginAlert.svelte";
 
   // TODO: Import from .env
   const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
@@ -49,9 +50,13 @@
         href="https://{import.meta.env.DEV &&
           'test.'}nimiq.watch/#{gameAddress}"
         target="_blank"
+        rel="noopener noreferrer"
       >
-        Treasury address ➞
+        Treasury ➞
       </a>
+      {#if $established && !$wallet && !$userCashlink}
+        <LoginAlert />
+      {/if}
     </div>
   </div>
 
