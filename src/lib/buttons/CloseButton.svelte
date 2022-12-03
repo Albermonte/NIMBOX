@@ -1,8 +1,11 @@
 <script lang="ts">
     import { url } from "$store";
+
+	let componentClass: string = "";
+	export { componentClass as class };
 </script>
 
-<button class="cursor-pointer w-fit-content" on:click={() => url.navigate("")}>
+<button class="cursor-pointer w-fit-content {componentClass}" on:click={() => url.navigate("")}>
     <svg
         width="40"
         height="40"

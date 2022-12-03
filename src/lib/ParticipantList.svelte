@@ -70,7 +70,7 @@
 </script>
 
 <div
-	class="flex flex-col p-10 mx-auto max-h-300 min-h-[200px] bg-[#F2F5F9] {componentClass}"
+	class="flex flex-col p-10 mx-auto max-h-300 min-h-[200px] bg-[#F2F5F9] rounded-16 {componentClass}"
 >
 	<div class="flex pb-4 pr-32">
 		<span class="w-1/5 font-extrabold text-center text-20 text-blue-light"

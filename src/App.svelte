@@ -39,7 +39,7 @@
 <main class="w-full h-screen overflow-x-hidden bg-white">
   <div class="bg-[#EDF1F7] flex flex-col items-center h-[calc(50%-45px-32px)]">
     <Header />
-    <div class="my-auto text-center">
+    <div class="my-auto text-center transition-all">
       <img
         class="max-w-[min(80vw,26rem)] mb-20"
         src={logo}

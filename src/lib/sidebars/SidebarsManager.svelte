@@ -1,6 +1,6 @@
 <script lang="ts">
     import { url, userCashlink, wallet } from "$store";
-    import ModalContainer from "$lib/modal/ModalContainer.svelte";
+    import ModalContainer from "$lib/modal/login/ModalContainer.svelte";
     import FreeNimSidebar from "./FreeNimSidebar.svelte";
     import HallOfFameSidebar from "./HallOfFameSidebar.svelte";
     import HowToSidebar from "./HowToSidebar.svelte";
