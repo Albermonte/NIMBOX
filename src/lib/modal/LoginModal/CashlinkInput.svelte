@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { isValidCashlink, getCashlinkBalance } from "$utils/cashlink";
+    import { isValidCashlink, getWalletFromCashlink, getWalletBalance } from "$utils/cashlink";
     import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
@@ -27,7 +27,8 @@
     }
 
     const updateBalance = async () => {
-        balance = await getCashlinkBalance(cashlink);
+        const wallet = getWalletFromCashlink(cashlink);
+        balance = await getWalletBalance(wallet);
         dispatch("balance", balance);
         if (balance < 1) {
             isValid = false;

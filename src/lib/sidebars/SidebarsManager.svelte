@@ -1,6 +1,6 @@
 <script lang="ts">
     import { url, userCashlink, wallet } from "$store";
-    import ModalContainer from "$lib/modal/login/ModalContainer.svelte";
+    import ModalContainer from "$lib/modal/ModalContainer.svelte";
     import FreeNimSidebar from "./FreeNimSidebar.svelte";
     import HallOfFameSidebar from "./HallOfFameSidebar.svelte";
     import HowToSidebar from "./HowToSidebar.svelte";
@@ -9,20 +9,11 @@
 
     let route = "";
     $: route = $url.hash.replace("#/", "");
-    $: {
-        console.log("route", route);
-
-        if (route === "log-out") {
-            $userCashlink = null;
-            $wallet = null;
-            // window.location.href = "";
-        }
-    }
 </script>
 
-{#if route === "login"}
-    <ModalContainer />
-{:else if route && route !== "log-out"}
+{#if route === "login" || route === "log-out"}
+    <ModalContainer {route} />
+{:else if route}
     <button
         class="absolute top-0 order-1 w-full h-full cursor-pointer bg-blue-dark/20"
         on:click={() => url.navigate("")}

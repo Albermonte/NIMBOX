@@ -7,11 +7,10 @@ export const isValidCashlink = (cashlink: string): boolean => {
     return regex.test(cashlink);
 }
 
-export const getCashlinkBalance = async (cashlink: string): Promise<number> => {
-    if (!cashlink) return 0;
+export const getWalletBalance = async (wallet: NimiqType.Wallet): Promise<number> => {
+    if (!wallet) return 0;
     try {
         await client.waitForConsensusEstablished()
-        const wallet = getWalletFromCashlink(cashlink);
         if (!wallet) return 0;
         const account = await client.getAccount(wallet.address);
         return account.balance / 1e5;
