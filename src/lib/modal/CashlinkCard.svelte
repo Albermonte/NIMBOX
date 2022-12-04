@@ -54,13 +54,25 @@
         />
         <button
             class="py-10 mx-auto mt-10 font-extrabold text-white px-14 bg-linear-button-green text-12 rounded-24"
-            on:click={() =>
-                window.open(
-                    `https://wallet.nimiq${
-                        import.meta.env.DEV && "-testnet"
-                    }.com/send/nim`,
-                    "_blank"
-                )}>Fund Cashlink</button
+            on:click={() => {
+                if ($wallet) {
+                    window.open(
+                        `https://wallet.nimiq${
+                            import.meta.env.DEV && "-testnet"
+                        }.com/nimiq:${$wallet.address
+                            .toUserFriendlyAddress()
+                            .replace(/\s/g, '')}`,
+                        "_blank"
+                    );
+                } else {
+                    window.open(
+                        `https://wallet.nimiq${
+                            import.meta.env.DEV && "-testnet"
+                        }.com/send/nim`,
+                        "_blank"
+                    );
+                }
+            }}>Fund Cashlink</button
         >
     </div>
 </div>

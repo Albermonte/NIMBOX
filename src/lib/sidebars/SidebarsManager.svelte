@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { url, userCashlink, wallet } from "$store";
+    import { url, wallet } from "$store";
     import ModalContainer from "$lib/modal/ModalContainer.svelte";
     import FreeNimSidebar from "./FreeNimSidebar.svelte";
     import HallOfFameSidebar from "./HallOfFameSidebar.svelte";
@@ -9,6 +9,23 @@
 
     let route = "";
     $: route = $url.hash.replace("#/", "");
+    $: {
+        if (route === "fund-your-cashlink") {
+            if ($wallet) {
+                window.open(
+                    `https://wallet.nimiq${
+                        import.meta.env.DEV && "-testnet"
+                    }.com/nimiq:${$wallet.address
+                        .toUserFriendlyAddress()
+                        .replace(/\s/g, "")}`,
+                    "_blank"
+                );
+            } else {
+                url.navigate("login");
+            }
+            url.navigate("");
+        }
+    }
 </script>
 
 {#if route === "login" || route === "log-out"}
