@@ -285,7 +285,7 @@ module.exports = {
 
         // Custom button gradients
         'linear-button-green': 'linear-gradient(112.53deg, theme(colors.green.DEFAULT) 0%, theme(colors.green.light) 95.63%)',
-        'linear-button-blue': 'linear-gradient(148.39deg, #289FEE 17.98%, #1D97EA 86.81%)',
+        'linear-button-blue': 'linear-gradient(180deg, #0C90E8 0%, #1485D1 100%)',
         'linear-button-red': 'linear-gradient(297.62deg, #F25454 0.43%, #D63B3B 100.37%)',
         'linear-button-gold': 'linear-gradient(131.27deg, #EAB114 -8.75%, #EC9B1C 122.7%)',
       },

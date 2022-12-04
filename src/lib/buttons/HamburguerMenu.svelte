@@ -1,6 +1,7 @@
 <script lang="ts">
     import Icon from "../icons/Icon.svelte";
     import { url, userCashlink, wallet } from "$store";
+    import { fly } from "svelte/transition";
 
     let componentClass: string = "";
     export { componentClass as class };
@@ -58,7 +59,7 @@
     };
 </script>
 
-<div class="absolute {componentClass}">
+<div class="absolute {componentClass}" transition:fly={{ y: -10, duration: 300 }}>
     <div class="mt-8">
         <div
             class="h-0 w-0 border-black border-x-8 border-b-[14px] border-x-transparent ml-auto mr-48"

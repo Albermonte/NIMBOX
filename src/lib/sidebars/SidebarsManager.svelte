@@ -11,18 +11,18 @@
     $: route = $url.hash.replace("#/", "");
     $: {
         console.log("route", route);
-        
+
         if (route === "log-out") {
             $userCashlink = null;
             $wallet = null;
-            window.location.href = "";
+            // window.location.href = "";
         }
     }
 </script>
 
 {#if route === "login"}
     <ModalContainer />
-{:else if route}
+{:else if route && route !== "log-out"}
     <button
         class="absolute top-0 order-1 w-full h-full cursor-pointer bg-blue-dark/20"
         on:click={() => url.navigate("")}
