@@ -17,9 +17,36 @@
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
 	import HamburguerMenu from "./buttons/HamburguerMenu.svelte";
 	import Icon from "./icons/Icon.svelte";
+	import CashlinkCard from "./modal/CashlinkCard.svelte";
+
+	let innerWidth = window.innerWidth;
 
 	let balance = 0,
-		showHambuguerMenu = false;
+		showHambuguerMenu = false,
+		showCashlinkCard = false,
+		showCashlinkCard2 = false;
+
+	let cashlinkButtonElement: HTMLButtonElement,
+		cashlinkCardElement: HTMLDivElement;
+	let cashlinkCardPosition = { top: 0, left: 0 };
+	let trianglePositionLeft = 0;
+
+	$: {
+		if (innerWidth && cashlinkButtonElement && cashlinkCardElement) {
+			const b = cashlinkButtonElement.getBoundingClientRect();
+			const c = cashlinkCardElement.getBoundingClientRect();
+			// Button px from left - cashlink card width / 2 + displacement
+			let left = b.left - c.width / 2 + 74;
+			left < 0 && (left = b.left);
+
+			cashlinkCardPosition = {
+				top: b.top + b.height + 20,
+				left,
+			};
+
+			trianglePositionLeft = b.x - left;
+		}
+	}
 
 	$: $established && $wallet && $height && updateBalance();
 
@@ -46,6 +73,8 @@
 		balance = account.balance / 1e5;
 	};
 </script>
+
+<svelte:window bind:innerWidth />
 
 <!-- TODO: background when scrolling -->
 <header
@@ -100,8 +129,16 @@
 					>Cashlink Balance</span
 				>
 				<div class="flex items-center">
+					<!-- Cashlink Info -->
 					<button
 						class="p-4 rounded bg-black/20 w-20 h-20 flex items-center mr-10"
+						bind:this={cashlinkButtonElement}
+						on:mouseenter={() => (showCashlinkCard = true)}
+						on:mouseleave={() => {
+							setTimeout(() => {
+								showCashlinkCard = false;
+							}, 100);
+						}}
 					>
 						<Icon
 							height="14"
@@ -113,6 +150,24 @@
 						{balance} <span class="text-14">NIM</span>
 					</span>
 				</div>
+				{#if showCashlinkCard || showCashlinkCard2}
+					<div
+						on:mouseenter={() => (showCashlinkCard2 = true)}
+						on:mouseleave={() => {
+							showCashlinkCard = false;
+							showCashlinkCard2 = false;
+						}}
+					>
+						<CashlinkCard
+							on:cashlinkCardElement={(e) =>
+								(cashlinkCardElement = e.detail)}
+							class="absolute"
+							style="top: {cashlinkCardPosition.top}px; left: {cashlinkCardPosition.left}px;"
+							triangle={true}
+							{trianglePositionLeft}
+						/>
+					</div>
+				{/if}
 			</div>
 		{/if}
 	</div>

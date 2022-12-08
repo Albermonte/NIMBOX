@@ -1,11 +1,25 @@
-<script>
+<script lang="ts">
     import { getWalletFromCashlink, getWalletBalance } from "$utils/cashlink";
     import { client, established } from "nimiq-svelte-stores";
     import { wallet } from "$store";
+    import { createEventDispatcher } from "svelte";
 
     import cashlinkWithEffects from "/assets/cashlink-with-effects.svg";
 
-    export let cashlink = "";
+    const dispatch = createEventDispatcher();
+
+    export let cashlink = "",
+        triangle = false,
+        trianglePositionLeft = 0;
+    let componentClass: string = "",
+        componentStyle: string = "";
+    export { componentClass as class, componentStyle as style };
+
+    let cashlinkCardElement: HTMLDivElement;
+
+    $: cashlinkCardElement &&
+        dispatch("cashlinkCardElement", cashlinkCardElement);
+
     let balance = 0,
         address = "",
         shortAddress = "";
@@ -35,11 +49,25 @@
 </script>
 
 <div
-    class=" bg-grey flex border-[#D6D6D6] border-1 rounded-8 py-20 px-28 shadow-around gap-56"
+    bind:this={cashlinkCardElement}
+    class=" bg-grey flex border-[#D6D6D6] border-1 rounded-8 py-20 px-28 shadow-around gap-56 {componentClass}"
+    style={componentStyle}
 >
+    {#if triangle}
+        <div
+            class="absolute -top-14 h-0 w-0 border-[#D6D6D6] border-x-8 border-b-[14px] border-x-transparent"
+            style="left: {trianglePositionLeft}px;"
+        >
+            <div
+                class="relative h-0 w-0 top-2 -left-[6px] border-grey border-x-[6px] border-b-[12px] border-x-transparent"
+            />
+        </div>
+    {/if}
     <div class="flex flex-col">
         <span class="font-semibold text-16 text-black/60">Cashlink amount</span>
-        <span class="font-bold text-black text-32">{balance} NIM</span>
+        {#key balance}
+            <span class="font-bold text-black text-32">{balance} NIM</span>
+        {/key}
         <span class="font-semibold text-12 text-black/40"
             >{shortAddress || "No funded Cashlink yet"}</span
         >
@@ -61,7 +89,7 @@
                             import.meta.env.DEV && "-testnet"
                         }.com/nimiq:${$wallet.address
                             .toUserFriendlyAddress()
-                            .replace(/\s/g, '')}`,
+                            .replace(/\s/g, "")}`,
                         "_blank"
                     );
                 } else {
