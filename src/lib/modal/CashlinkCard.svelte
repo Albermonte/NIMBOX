@@ -1,14 +1,15 @@
 <script lang="ts">
     import { getWalletFromCashlink, getWalletBalance } from "$utils/cashlink";
     import { client, established } from "nimiq-svelte-stores";
-    import { wallet } from "$store";
+    import { wallet, url } from "$store";
     import { createEventDispatcher } from "svelte";
 
-    import cashlinkWithEffects from "/assets/cashlink-with-effects.svg";
+    import cashlinkWithEffects from "/assets/cashlink-logo.svg";
 
     const dispatch = createEventDispatcher();
 
     export let cashlink = "",
+        extraInfo = false,
         triangle = false,
         trianglePositionLeft = 0;
     let componentClass: string = "",
@@ -71,6 +72,30 @@
         <span class="font-semibold text-12 text-black/40"
             >{shortAddress || "No funded Cashlink yet"}</span
         >
+        {#if extraInfo}
+            <button
+                class="flex items-center gap-6 mt-22"
+                on:click={() => url.navigate("cashlink-info")}
+            >
+                <div class="p-6 bg-black rounded">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="white"
+                        class="w-10 h-10"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                </div>
+                <span class="font-bold text-12 text-black/40"
+                    >More info about Cashlinks?</span
+                >
+            </button>
+        {/if}
     </div>
     <div>
         <img

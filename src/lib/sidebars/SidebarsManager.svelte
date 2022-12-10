@@ -4,6 +4,7 @@
     import FreeNimSidebar from "./FreeNimSidebar.svelte";
     import HallOfFameSidebar from "./HallOfFameSidebar.svelte";
     import HowToSidebar from "./HowToSidebar.svelte";
+    import CashlinkInfoSidebar from "./CashlinkInfoSidebar.svelte";
 
     import { background } from "$utils/transitions";
 
@@ -43,5 +44,7 @@
         <HowToSidebar />
     {:else if route === "hall-of-fame"}
         <HallOfFameSidebar />
+    {:else if route === "cashlink-info"}
+        <CashlinkInfoSidebar />
     {/if}
 {/if}

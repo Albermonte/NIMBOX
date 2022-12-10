@@ -165,6 +165,7 @@
 							style="top: {cashlinkCardPosition.top}px; left: {cashlinkCardPosition.left}px;"
 							triangle={true}
 							{trianglePositionLeft}
+							extraInfo={true}
 						/>
 					</div>
 				{/if}
