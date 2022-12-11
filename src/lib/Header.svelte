@@ -46,6 +46,7 @@
 
 			trianglePositionLeft = b.x - left;
 		}
+		if (balance < 5) trianglePositionLeft += 8;
 	}
 
 	$: $established && $wallet && $height && updateBalance();
@@ -131,20 +132,32 @@
 				<div class="flex items-center">
 					<!-- Cashlink Info -->
 					<button
-						class="p-4 rounded bg-black/20 w-20 h-20 flex items-center mr-10"
-						bind:this={cashlinkButtonElement}
 						on:mouseenter={() => (showCashlinkCard = true)}
 						on:mouseleave={() => {
 							setTimeout(() => {
 								showCashlinkCard = false;
 							}, 100);
 						}}
+						bind:this={cashlinkButtonElement}
 					>
-						<Icon
-							height="14"
-							name="nq-cashlink-big"
-							class="text-white"
-						/>
+						{#if balance < 5}
+							<object
+								class="w-[30px] h-[30px] -mt-[3px] -ml-[5px] mr-[5px]"
+								type="image/svg+xml"
+								data="/assets/cashlink-animated.svg"
+								title=""
+							/>
+						{:else}
+							<div
+								class="p-4 rounded bg-black/20 w-20 h-20 flex items-center mr-10"
+							>
+								<Icon
+									height="14"
+									name="nq-cashlink-big"
+									class="text-white"
+								/>
+							</div>
+						{/if}
 					</button>
 					<span class="font-extrabold text-[#676975] text-18">
 						{balance} <span class="text-14">NIM</span>
