@@ -21,10 +21,10 @@
                         .replace(/\s/g, "")}`,
                     "_blank"
                 );
+                url.navigate("");
             } else {
                 url.navigate("login");
             }
-            url.navigate("");
         }
     }
 </script>
