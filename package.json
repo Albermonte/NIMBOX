@@ -13,21 +13,21 @@
     "@tsconfig/svelte": "^3.0.0",
     "autoprefixer": "^10.4.8",
     "nimiq-svelte-stores": "^1.4.0",
-    "postcss": "^8.4.16",
-    "svelte": "^3.50.0",
-    "svelte-check": "^2.9.0",
-    "svelte-preprocess": "^4.10.7",
+    "postcss": "^8.4.20",
+    "svelte": "^3.55.0",
+    "svelte-check": "^3.0.1",
+    "svelte-preprocess": "^5.0.0",
     "tailwindcss": "^3.1.8",
     "tailwindcss-counter": "^1.1.3",
     "tailwindcss-pseudo-elements": "^2.0.0",
     "tslib": "^2.4.0",
-    "typescript": "^4.8.2",
-    "vite": "^2.9.14"
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3"
   },
   "dependencies": {
     "@macfja/svelte-persistent-store": "^2.1.0",
     "@nimiq/core-web": "^1.5.8",
     "@nimiq/hub-api": "^1.6.0",
-    "@nimiq/utils": "^0.8.2"
+    "@nimiq/utils": "^0.8.3"
   }
 }

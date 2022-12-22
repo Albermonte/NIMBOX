@@ -1,13 +1,9 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
-import postcss from './postcss.config.js';
 import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  css: {
-    postcss,
-  },
   plugins: [svelte()],
   resolve: {
     alias: {
@@ -16,5 +12,8 @@ export default defineConfig({
       $utils: path.resolve('./src/utils'),
       src: path.resolve('./src'),
     }
+  },
+  server: {
+    port: 3000,
   }
 })
