@@ -5,7 +5,7 @@
     export let right = true;
 </script>
 
-<SidebarPanel {right} icon="cashlink" iconStyle="w-[330px] absolute -top-[90px] -right-128" width="42vw">
+<SidebarPanel {right} icon="cashlink" iconStyle="!w-[330px] absolute -top-[90px] -right-128" width="42vw">
     <div class="flex flex-col h-full">
         <div class="px-80">
             <h1 class="w-2/3 font-extrabold text-black text-22">
