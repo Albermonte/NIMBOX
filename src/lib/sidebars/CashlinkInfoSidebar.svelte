@@ -1,17 +1,23 @@
 <script lang="ts">
+    import Divider from "$lib/components/Divider.svelte";
     import CashlinkCard from "$lib/modal/CashlinkCard.svelte";
     import SidebarPanel from "./SidebarPanel.svelte";
 
     export let right = true;
 </script>
 
-<SidebarPanel {right} icon="cashlink" iconStyle="!w-[330px] absolute -top-[90px] -right-128" width="42vw">
+<SidebarPanel
+    {right}
+    icon="cashlink"
+    iconStyle="!w-[330px] absolute -top-[90px] -right-128"
+    width="42vw"
+>
     <div class="flex flex-col h-full">
-        <div class="px-80">
+        <div class="px-80 h-1/3 flex flex-col justify-center gap-18">
             <h1 class="w-2/3 font-extrabold text-black text-22">
                 Why is Nimiq Treasury using the non-custodial Cashlinks?
             </h1>
-            <p class="mt-32 font-bold mb-22 text-16 text-black/50">
+            <p class="font-bold mb-22 text-16 text-black/50">
                 Let's start by describing what "Non-Custodial" actually is. It
                 basically means that you are always in control of your money and
                 at no point does a third party (Nimiq or anybody else) hold
@@ -19,7 +25,10 @@
             </p>
         </div>
         <div class="bg-[#EDF1F7] rounded-8 py-36 px-80 flex-grow">
-            <h1 class="font-extrabold text-black text-22">Fund Cashlink</h1>
+            <h1 class="flex items-center font-extrabold text-black text-22">
+                Fund Cashlink
+                <Divider />
+            </h1>
             <ul
                 class="my-32 font-semibold list-disc ml-18 text-16 text-black/50"
             >
@@ -42,3 +51,9 @@
         </div>
     </div>
 </SidebarPanel>
+
+<style>
+    li {
+        margin-bottom: 0.75rem;
+    }
+</style>

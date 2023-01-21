@@ -1,6 +1,6 @@
 <script lang="ts">
     /**
-     * question-mark-circle | nq-cashlink[-big,-small,-xsmall] | nq-hexagon | trophy | twitter-logo | power | nq-login | exclamation-triangle
+     * question-mark-circle | nq-cashlink[-big,-small,-xsmall] | nq-hexagon | trophy | twitter-logo | power | nq-login | exclamation-triangle | youtube-logo | nimiq-logo
      */
     export let name: string;
     export let width = "1rem";
@@ -76,6 +76,18 @@
             name: "exclamation-triangle",
             svg: `<path fill="evenodd" d="M16.8 12.4c.7 1.2-.2 2.6-1.5 2.6H2.7c-1.4 0-2.2-1.4-1.5-2.6L7.5 1.5c.7-1.2 2.4-1.2 3 0l6.3 10.9zM10 12c0-.6-.4-1-1-1s-1 .4-1 1 .4 1 1 1 1-.4 1-1z" /> <circle cx="9" cy="12" r="1" fill="currentColor" /> <path d="M9.8 4.8v3.5c0 .4-.4.7-.8.7s-.8-.3-.8-.8V4.8c0-.5.4-.8.8-.8s.8.3.8.8z" fill="currentColor" />`,
         },
+        {
+            boxW: 24,
+            boxH: 24,
+            name: "youtube-logo",
+            svg: `<path fill="currentColor" d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z"/>`,
+        },
+        {
+            boxW: 48,
+            boxH: 42,
+            name: "nimiq-logo",
+            svg: `<path d="M47.4453 19.0337L37.4442 1.96092C36.7299 0.746004 35.4094 0 33.9807 0L13.9895 0C12.5608 0 11.2511 0.746004 10.5368 1.96092L0.535768 19.0337C-0.178589 20.2487 -0.178589 21.7513 0.535768 22.9662L10.526 40.0391C11.2403 41.254 12.5608 42 13.9895 42H33.9807C35.4094 42 36.7299 41.254 37.4442 40.0391L47.4344 23.0409C48.1813 21.8046 48.1921 20.27 47.4453 19.0337Z" fill="url(#paint0_linear_1298_3860)" /><defs><linearGradient id="paint0_linear_1298_3860" x1="-3.42857" y1="-4.44231" x2="55.6263" y2="54.7942" gradientUnits="userSpaceOnUse"><stop stop-color="#EAB114" /><stop offset="1" stop-color="#EC9B1C" /></linearGradient></defs>`,
+        },
     ];
     const displayIcon = icons.find((e) => e.name === name);
 </script>
@@ -88,4 +100,3 @@
 >
     {@html displayIcon.svg}
 </svg>
-  
