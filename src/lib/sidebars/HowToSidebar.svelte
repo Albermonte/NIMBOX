@@ -8,7 +8,7 @@
 
 <SidebarPanel {right} width="42vw">
     <div class="flex flex-col h-full">
-        <div class="px-80 h-1/3 flex flex-col justify-center gap-10">
+        <div class="flex flex-col justify-center gap-10 px-80 h-1/3">
             <h1 class="font-extrabold text-black text-22">
                 About Nimiq Treasure
             </h1>
@@ -19,7 +19,7 @@
             </p>
         </div>
         <div class="bg-[#EDF1F7] rounded-8 pt-36 px-80 flex flex-col flex-grow">
-            <h1 class="flex items-center font-extrabold text-black text-22">
+            <h1 class="flex items-center font-bold text-black text-22">
                 How to play?
                 <Divider />
             </h1>
@@ -30,7 +30,7 @@
                 to the game.
             </p>
             <ul
-                class="mt-20 font-semibold list-disc ml-24 text-16 text-black/50"
+                class="mt-20 ml-24 font-semibold list-disc text-16 text-black/50"
             >
                 <li>
                     The timer will start the 6 block countdown (6 blocks on
@@ -45,9 +45,9 @@
                 </li>
                 <li>To win, be the last one to send a transaction!</li>
             </ul>
-            <div class="flex justify-evenly flex-col 2xl:flex-row my-auto">
+            <div class="flex flex-col my-auto justify-evenly 2xl:flex-row">
                 <button
-                    class="flex items-center bg-linear-button-blue py-6 px-12 rounded-24 text-white font-bold text-14"
+                    class="flex items-center px-12 py-6 font-bold text-white bg-linear-button-blue rounded-24 text-14"
                 >
                     <Icon
                         name="youtube-logo"
@@ -58,7 +58,7 @@
                     Watch "How to Play"
                 </button>
                 <button
-                    class="flex items-center bg-black py-6 px-14 rounded-24 text-white font-bold text-14"
+                    class="flex items-center py-6 font-bold text-white bg-black px-14 rounded-24 text-14"
                 >
                     <Icon
                         name="nimiq-logo"
@@ -69,7 +69,7 @@
                     Buy Nimiq
                 </button>
                 <button
-                    class="flex items-center bg-black py-6 px-18 rounded-24 text-white font-bold text-14"
+                    class="flex items-center py-6 font-bold text-white bg-black px-18 rounded-24 text-14"
                     >FAQ</button
                 >
             </div>

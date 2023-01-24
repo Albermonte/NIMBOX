@@ -5,6 +5,7 @@
     import HallOfFameSidebar from "./HallOfFameSidebar.svelte";
     import HowToSidebar from "./HowToSidebar.svelte";
     import CashlinkInfoSidebar from "./CashlinkInfoSidebar.svelte";
+    import ShareAndWinSidebar from "./ShareAndWinSidebar.svelte";
 
     import { background } from "$utils/transitions";
 
@@ -46,5 +47,7 @@
         <HallOfFameSidebar />
     {:else if route === "cashlink-info"}
         <CashlinkInfoSidebar />
+    {:else if route === "share-and-win"}
+        <ShareAndWinSidebar />
     {/if}
 {/if}

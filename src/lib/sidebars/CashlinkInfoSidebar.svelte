@@ -13,7 +13,7 @@
     width="42vw"
 >
     <div class="flex flex-col h-full">
-        <div class="px-80 h-1/3 flex flex-col justify-center gap-18">
+        <div class="flex flex-col justify-center px-80 h-1/3 gap-18">
             <h1 class="w-2/3 font-extrabold text-black text-22">
                 Why is Nimiq Treasury using the non-custodial Cashlinks?
             </h1>
@@ -25,7 +25,7 @@
             </p>
         </div>
         <div class="bg-[#EDF1F7] rounded-8 py-36 px-80 flex-grow">
-            <h1 class="flex items-center font-extrabold text-black text-22">
+            <h1 class="flex items-center font-bold text-black text-22">
                 Fund Cashlink
                 <Divider />
             </h1>
