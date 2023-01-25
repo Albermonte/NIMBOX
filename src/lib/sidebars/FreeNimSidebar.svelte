@@ -6,7 +6,7 @@
     let options = [
         {
             name: "Nimiq Sunset Cyberspace Game",
-            logo: "/assets/treasury-logo.svg",
+            logo: "/assets/ncs-logo.png",
             notice: "",
             description:
                 "Score points, beat your own records and earn as many NIM as you can meanwhile.",
@@ -24,7 +24,7 @@
         },
         {
             name: "HexTank.io",
-            logo: "/assets/treasury-logo.svg",
+            logo: "/assets/hexatank-logo.png",
             notice: "",
             description:
                 "Play-to-earn Web3 instant game built on the Nimiq blockchain.",
@@ -33,7 +33,7 @@
         },
         {
             name: "Nimiq Live on Twitch",
-            logo: "/assets/treasury-logo.svg",
+            logo: "/assets/nimiq-live-logo.svg",
             notice: "",
             description:
                 "NimiqLIVE is a 24/7 educational channel for the Nimiq Blockchain. Earn NIM for participating on this channel.",
@@ -51,7 +51,7 @@
         },
         {
             name: "Buy NIM",
-            logo: "/assets/treasury-logo.svg",
+            logo: "/assets/nimiq-logo.svg",
             notice: "",
             description:
                 "Want to play the game without limits? Then buy NIM from the open market and play from your own wallet.",
@@ -92,10 +92,7 @@
         </p>
     </svelte:fragment>
     <!-- Games -->
-    <div
-        slot="content"
-        class="flex flex-wrap justify-between gap-48 pb-40"
-    >
+    <div slot="content" class="flex flex-wrap justify-between gap-48 pb-40">
         {#each options as option}
             <div class="pr-16 bg-black rounded-32 w-280 h-150 py-14 pl-22">
                 <div class="flex flex-col h-full">
@@ -118,7 +115,7 @@
                         </div>
                         <div class="w-56 h-56 bg-white rounded">
                             <img
-                                class="object-contain w-full h-full"
+                                class="object-contain w-full h-full p-4"
                                 src={option.logo}
                                 alt={option.name}
                             />
@@ -137,9 +134,3 @@
         {/each}
     </div>
 </SidebarPanel>
-
-<style>
-    .scrollbar {
-        color: #1f2248;
-    }
-</style>

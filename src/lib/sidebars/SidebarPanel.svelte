@@ -55,4 +55,8 @@
             width: var(--custom-width);
         }
     }
+
+    .scrollbar {
+        color: #1f2248;
+    }
 </style>
