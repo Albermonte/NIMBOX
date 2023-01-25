@@ -1,4 +1,6 @@
 <script lang="ts">
+    import BuyNimButton from "$lib/buttons/BuyNIMButton.svelte";
+    import FaqButton from "$lib/buttons/FaqButton.svelte";
     import Icon from "$lib/icons/Icon.svelte";
     import SidebarPanel from "./SidebarPanel.svelte";
 </script>
@@ -38,16 +40,8 @@
                 <Icon name="youtube-logo" class="mr-8" width="24" height="24" />
                 Watch "How to Play"
             </button>
-            <button
-                class="flex items-center py-6 font-bold text-white bg-black px-14 rounded-24 text-14"
-            >
-                <Icon name="nimiq-logo" class="mr-8" width="14" height="12" />
-                Buy NIM
-            </button>
-            <button
-                class="flex items-center py-6 font-bold text-white bg-black px-18 rounded-24 text-14"
-                >FAQ</button
-            >
+            <BuyNimButton />
+            <FaqButton />
         </div>
     </svelte:fragment>
 </SidebarPanel>

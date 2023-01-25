@@ -1,6 +1,7 @@
 <script lang="ts">
+    import BuyNIMButton from "$lib/buttons/BuyNIMButton.svelte";
+    import FaqButton from "$lib/buttons/FaqButton.svelte";
     import Divider from "$lib/components/Divider.svelte";
-    import Icon from "$lib/icons/Icon.svelte";
     import SidebarPanel from "./SidebarPanel.svelte";
 
     let options = [
@@ -70,16 +71,8 @@
             created by other community members to earn NIM!
         </p>
         <div class="flex items-center mt-20 mb-40">
-            <button
-                class="flex items-center py-6 font-bold text-white bg-black mr-18 px-14 rounded-24 text-14"
-            >
-                <Icon name="nimiq-logo" class="mr-8" width="14" height="12" />
-                Buy NIM
-            </button>
-            <button
-                class="flex items-center py-6 font-bold text-white bg-black px-18 rounded-24 text-14"
-                >FAQ</button
-            >
+            <BuyNIMButton />
+            <FaqButton />
             <Divider />
         </div>
     </svelte:fragment>
