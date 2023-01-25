@@ -16,7 +16,7 @@
         },
         {
             name: "Nimtris Game",
-            logo: "/assets/treasury-logo.svg",
+            logo: "/assets/nimtris-logo.png",
             notice: "",
             description:
                 "Earn NIM by stopping blocks from leaving the inside of the outer grey hexagon. Available on all major browsers.",
