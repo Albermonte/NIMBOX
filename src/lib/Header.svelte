@@ -24,7 +24,7 @@
 	let balance = 0,
 		showHambuguerMenu = false,
 		showCashlinkCard = false,
-		showCashlinkCard2 = false;
+		keepShowingCashlinkCard = false;
 
 	let cashlinkButtonElement: HTMLButtonElement,
 		cashlinkCardElement: HTMLDivElement;
@@ -46,7 +46,6 @@
 
 			trianglePositionLeft = b.x - left;
 		}
-		if (balance < 5) trianglePositionLeft += 8;
 	}
 
 	$: $established && $wallet && $height && updateBalance();
@@ -163,12 +162,12 @@
 						{balance} <span class="text-14">NIM</span>
 					</span>
 				</div>
-				{#if showCashlinkCard || showCashlinkCard2}
+				{#if showCashlinkCard || keepShowingCashlinkCard}
 					<div
-						on:mouseenter={() => (showCashlinkCard2 = true)}
+						on:mouseenter={() => (keepShowingCashlinkCard = true)}
 						on:mouseleave={() => {
 							showCashlinkCard = false;
-							showCashlinkCard2 = false;
+							keepShowingCashlinkCard = false;
 						}}
 					>
 						<CashlinkCard
