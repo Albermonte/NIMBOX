@@ -15,7 +15,7 @@
         {
             text: "Fund your Cashlink",
             icon: "nq-cashlink-big",
-            link: "fund-your-cashlink",
+            link: "cashlink-info",
         },
         {
             text: "Get FREE NIM",
@@ -65,7 +65,7 @@
             class="h-0 w-0 border-black border-x-8 border-b-[14px] border-x-transparent ml-auto mr-48"
         />
         <ul
-            class="flex flex-col justify-evenly bg-black text-white font-medium text-16 py-6 rounded-6"
+            class="flex flex-col py-6 font-medium text-white bg-black justify-evenly text-16 rounded-6"
         >
             {#each buttons as button}
                 <li
@@ -75,7 +75,7 @@
                 >
                     <Icon
                         name={button.icon}
-                        class="fill-white mr-20 w-20 h-20"
+                        class="w-20 h-20 mr-20 fill-white"
                     />
                     {button.text}
                 </li>
