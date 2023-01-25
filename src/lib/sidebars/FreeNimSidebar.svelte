@@ -9,7 +9,7 @@
             logo: "/assets/ncs-logo.png",
             notice: "",
             description:
-                "Score points, beat your own records and earn as many NIM as you can meanwhile.",
+                "Score points, beat your own records and earn as many NIM as you can meanwhile. Available on Android phones.",
             buttonText: "Play",
             url: "https://play.google.com/store/apps/details?id=com.nimiqsunsetcyberspace",
         },
@@ -18,7 +18,7 @@
             logo: "/assets/treasury-logo.svg",
             notice: "",
             description:
-                "Earn NIM by stopping blocks from leaving the inside of the outer grey hexagon.",
+                "Earn NIM by stopping blocks from leaving the inside of the outer grey hexagon. Available on all major browsers.",
             buttonText: "Play",
             url: "https://nimtris.com/",
         },
@@ -27,7 +27,7 @@
             logo: "/assets/hexatank-logo.png",
             notice: "",
             description:
-                "Play-to-earn Web3 instant game built on the Nimiq blockchain.",
+                "HexTank.io 3 is a play-to-earn Web3 instant game built on the Nimiq blockchain. Available on all major browsers.",
             buttonText: "Play",
             url: "https://hextank.io/",
         },
