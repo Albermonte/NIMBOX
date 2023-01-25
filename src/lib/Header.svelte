@@ -187,7 +187,7 @@
 	</div>
 	<div class="flex items-center">
 		<FiatSelector class="mr-32" />
-		<!-- Hamburguer -->
+		<!-- Hamburger -->
 		<div on:mouseleave={() => (showHambuguerMenu = false)}>
 			<div
 				class="cursor-pointer"

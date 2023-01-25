@@ -15,7 +15,7 @@
             <p class="font-semibold mb-22 text-16 text-black/50">
                 Nimiq Treasury is a decentralized game where there are big
                 prizes to be won. Fund your Cashlink and play the game for a
-                chance to win the chest of Nimiq treasury!
+                chance to win the chest of Nimiq Treasury!
             </p>
         </div>
         <div class="bg-[#EDF1F7] rounded-8 pt-36 px-80 flex flex-col flex-grow">
@@ -66,7 +66,7 @@
                         width="14"
                         height="12"
                     />
-                    Buy Nimiq
+                    Buy NIM
                 </button>
                 <button
                     class="flex items-center py-6 font-bold text-white bg-black px-18 rounded-24 text-14"

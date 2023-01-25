@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { height, transactions } from "nimiq-svelte-stores";
-	import InfoIcon from "./icons/InfoIcon.svelte";
+	import InfoIcon from "../icons/InfoIcon.svelte";
 	import LoadingBar from "./LoadingBar.svelte";
 
 	let componentClass: string = "";

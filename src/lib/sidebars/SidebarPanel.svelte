@@ -9,7 +9,7 @@
 </script>
 
 <div
-    class="transform-gpu absolute top-0 grid auto-cols-fr grid-rows-[10rem_1fr] justify-around items-center drop-shadow-2xl bg-white h-full w-1/2 sidebar-width px-32 pt-20 overflow-auto overflow-x-hidden {right
+    class="transform-gpu absolute top-0 grid grid-rows-[10rem_1fr] items-center drop-shadow-2xl bg-white h-full w-1/2 sidebar-width px-32 pt-20 overflow-auto overflow-x-hidden {right
         ? 'right-0'
         : ''}"
     style="--custom-width: {width}"
@@ -24,6 +24,7 @@
             class="w-200 mx-auto {iconStyle}"
         />
     </div>
+
     <slot />
 </div>
 

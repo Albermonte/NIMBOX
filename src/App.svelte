@@ -1,9 +1,9 @@
 <script lang="ts">
   import Header from "$lib/Header.svelte";
   import Footer from "$lib/Footer.svelte";
-  import HexagonBlockLoading from "$lib/HexagonBlockLoading.svelte";
-  import ParticipantList from "$lib/ParticipantList.svelte";
-  import ScoreBoardCard from "$lib/ScoreBoardCard.svelte";
+  import HexagonBlockLoading from "$lib/components/HexagonBlockLoading.svelte";
+  import ParticipantList from "$lib/components/ParticipantList.svelte";
+  import ScoreBoardCard from "$lib/components/ScoreBoardCard.svelte";
   import ParticipateButton from "$lib/buttons/ParticipateButton.svelte";
   import SidebarsManager from "$lib/sidebars/SidebarsManager.svelte";
   import logo from "/assets/treasury-logo.svg";

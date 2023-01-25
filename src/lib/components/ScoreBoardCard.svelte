@@ -12,9 +12,9 @@
 	import { accounts, transactions } from "nimiq-svelte-stores";
 
 	import { selectedCurrency, selectedFiat } from "$store";
-	import { SupportedCurrencies } from "../types";
+	import { SupportedCurrencies } from "../../types";
 
-	import CoinSelector from "./buttons/CurrencySelector.svelte";
+	import CoinSelector from "../buttons/CurrencySelector.svelte";
 
 	// TODO: Import from .env
 	const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";

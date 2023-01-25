@@ -1,18 +1,11 @@
 <script lang="ts">
+    import Divider from "$lib/components/Divider.svelte";
+    import Icon from "$lib/icons/Icon.svelte";
     import SidebarPanel from "./SidebarPanel.svelte";
 
     export let right = true;
 
     let options = [
-        {
-            name: "Nimiq Treasury GIVEAWAY",
-            logo: "/assets/treasury-logo.svg",
-            notice: "Huge Giveaways up to 1000$",
-            description:
-                "Share the game on twitter. And get a chance to win a giveaway with every target we reach.",
-            buttonText: "Rules",
-            url: "/#/giveaway",
-        },
         {
             name: "Nimiq Sunset Cyberspace Game",
             logo: "/assets/treasury-logo.svg",
@@ -41,73 +34,112 @@
             url: "https://www.twitch.tv/nimiqlive",
         },
         {
-            name: "Buy Nimiq",
+            name: "Nimiq Treasury GIVEAWAY",
+            logo: "/assets/treasury-logo.svg",
+            notice: "Huge Giveaways up to 1000$",
+            description:
+                "Share the game on twitter. And get a chance to win a giveaway with every target we reach.",
+            buttonText: "Rules",
+            url: "/#/share-and-win",
+        },
+        {
+            name: "Buy NIM",
             logo: "/assets/treasury-logo.svg",
             notice: "",
             description:
-                "Want to play the game without limits? Then buy nimiq from the open market and play from your own wallet.",
-            buttonText: "Buy ⬣",
+                "Want to play the game without limits? Then buy NIM from the open market and play from your own wallet.",
+            buttonText: "Buy",
             url: "https://www.nimiq.com/buy-and-sell/",
         },
     ];
 </script>
 
 <SidebarPanel {right}>
-    <div class="h-full overflow-auto gap-x-20 gap-y-56 scrollbar scroll-smooth">
-        <ul class="grid items-center grid-cols-1 gap-32 mt-16 xl:mt-32 xl:grid-cols-2 justify-items-center text-black">
-            <li class="max-w-sm px-32 py-10">
-                <span class="font-medium text-24"> Earn FREE Nimiq </span>
-                <p
-                    class="font-semibold text-16 text-justify text-[#9E9E9E] mt-20"
-                >
-                    Welcome to the Nimiq Treasury Game. There are plenty of
-                    opportunities to earn free Nimiq, and join the Nimiq
-                    Treasury Game. See below.
-                </p>
-            </li>
+    <div class="flex flex-col justify-center gap-10 px-80">
+        <h1 class="font-extrabold text-black text-22">Earn FREE NIM</h1>
+        <p class="mb-20 font-bold text-16 text-black/50">
+            Welcome to the Nimiq Treasury Game. There are plenty of
+            opportunities to WIN and earn FREE NIM. Play one of the games
+            created by other community members to earn NIM!
+        </p>
+    </div>
+    <div class="flex items-center mt-20 mb-40 px-80">
+        <button
+            class="flex items-center py-6 font-bold text-white bg-black mr-18 px-14 rounded-24 text-14"
+        >
+            <Icon name="nimiq-logo" class="mr-8" width="14" height="12" />
+            Buy NIM
+        </button>
+        <button
+            class="flex items-center py-6 font-bold text-white bg-black px-18 rounded-24 text-14"
+            >FAQ</button
+        >
+        <Divider />
+    </div>
+    <!-- Games -->
+    <div
+        class="bg-[#EDF1F7] rounded-8 pt-20 flex flex-col h-full pr-40 overflow-hidden"
+    >
+        <div class="flex items-center pr-40 mb-20 pl-80">
+            <h1 class="font-bold text-black text-22">Apps</h1>
+            <p class="w-3/5 mx-auto font-semibold text-black/50 text-14">
+                <b>TIP:</b> The NIM you earned from the games can be used again
+                for a chance to win the treasury chest!
+            </p>
+        </div>
+        <!-- Games -->
+        <div
+            class="flex flex-wrap justify-between gap-48 pb-40 pr-40 overflow-auto scrollbar scroll-smooth pl-80"
+        >
             {#each options as option}
-                <li
-                    class="max-w-sm px-32 py-10 border-1 border-blue-dark/20 rounded-32 bg-gradient-to-t from-grey-light to-white"
-                >
-                    <span class="font-bold text-blue-dark text-17">
-                        {option.name}
-                    </span>
-                    <!-- Divider -->
-                    <hr class="my-6 border-t-1 border-blue-dark/20" />
-                    <div
-                        class="grid grid-flow-col grid-cols-[min-content,1fr] grid-rows-2 py-4 gap-x-32 text-14"
-                    >
-                        <img
-                            class="self-end mb-18"
-                            src={option.logo}
-                            alt={option.name}
-                        />
-                        <a
-                            class="self-start px-12 py-2 font-bold text-white rounded bg-blue-light w-max"
-                            href={option.url}
-                            target={option.url.startsWith("http")
-                                ? "_blank"
-                                : "_self"}
-                            rel="noopener noreferrer"
+                <div class="pr-16 bg-black rounded-32 w-280 h-150 py-14 pl-22">
+                    <div class="flex flex-col h-full">
+                        <span class="font-bold text-white text-14">
+                            {option.name}
+                        </span>
+                        <div
+                            class="grid grid-cols-[1fr,min-content] gap-x-16 items-center flex-1 mb-8"
                         >
-                            {option.buttonText}
-                        </a>
-                        <div class="row-[1_/_-1]">
-                            {#if option.notice}
-                                <span class="font-bold text-14 text-blue-light">
-                                    {option.notice}
-                                </span>
-                                <br />
-                            {/if}
-                            <p
-                                class="font-semibold text-14 text-justify text-[#9E9E9E]"
-                            >
-                                {option.description}
-                            </p>
+                            <div class="row-[1_/_-1] text-11">
+                                {#if option.notice}
+                                    <span class="font-bold text-blue-light">
+                                        {option.notice}
+                                    </span>
+                                    <br />
+                                {/if}
+                                <p
+                                    class="font-semibold text-justify text-white/80"
+                                >
+                                    {option.description}
+                                </p>
+                            </div>
+                            <div class="w-56 h-56 bg-white rounded">
+                                <img
+                                    class="object-contain w-full h-full"
+                                    src={option.logo}
+                                    alt={option.name}
+                                />
+                            </div>
                         </div>
                     </div>
-                </li>
+                    <a
+                        class="relative bottom-6 mx-auto block px-22 py-4 font-bold text-white text-20 uppercase rounded-[12px] bg-linear-button-blue w-max"
+                        href={option.url}
+                        target={option.url.startsWith("http")
+                            ? "_blank"
+                            : "_self"}
+                        rel="noopener noreferrer"
+                    >
+                        {option.buttonText}
+                    </a>
+                </div>
             {/each}
-        </ul>
+        </div>
     </div>
 </SidebarPanel>
+
+<style>
+    .scrollbar {
+        color: #1f2248;
+    }
+</style>

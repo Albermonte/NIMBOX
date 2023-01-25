@@ -5,7 +5,7 @@
 	import { wallet } from "$store";
 	import { onMount } from "svelte";
 
-	import LoadingSpinner from "./icons/LoadingSpinner.svelte";
+	import LoadingSpinner from "../icons/LoadingSpinner.svelte";
 
 	let componentClass: string = "";
 	export { componentClass as class };
