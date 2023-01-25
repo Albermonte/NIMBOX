@@ -16,7 +16,7 @@
             if ($wallet) {
                 window.open(
                     `https://wallet.nimiq${
-                        import.meta.env.DEV && "-testnet"
+                        import.meta.env.DEV ? "-testnet" : ""
                     }.com/nimiq:${$wallet.address
                         .toUserFriendlyAddress()
                         .replace(/\s/g, "")}`,

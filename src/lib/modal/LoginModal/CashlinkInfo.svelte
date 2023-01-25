@@ -62,8 +62,9 @@
         <div class="flex flex-col items-center justify-center h-full gap-y-28">
             <a
                 class="px-12 py-4 text-white rounded text-14 font-bold bg-radial-gold hover:scale-[1.01] hover:drop-shadow-sm transition-all duration-75"
-                href="https://wallet.nimiq{import.meta.env.DEV &&
-                    '-testnet'}.com/send/nim"
+                href="https://wallet.nimiq{import.meta.env.DEV
+                    ? '-testnet'
+                    : ''}.com/send/nim"
                 target="_blank"
                 rel="noopener noreferrer"
             >

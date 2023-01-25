@@ -84,8 +84,9 @@
 		<div class="mb-16 overflow-auto scrollbar scroll-smooth">
 			{#each participants as participant}
 				<a
-					href="https://{import.meta.env.DEV &&
-						'test.'}nimiq.watch/#{participant.hash}"
+					href="https://{import.meta.env.DEV
+						? 'test.'
+						: ''}nimiq.watch/#{participant.hash}"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="flex items-baseline py-6 font-bold hover:font-extrabold {$wallet &&

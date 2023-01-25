@@ -47,8 +47,9 @@
       />
       <a
         class="px-16 py-4 mx-auto font-extrabold bg-white cursor-pointer text-black/50 text-16 rounded-8"
-        href="https://{import.meta.env.DEV &&
-          'test.'}nimiq.watch/#{gameAddress}"
+        href="https://{import.meta.env.DEV
+          ? 'test.'
+          : ''}nimiq.watch/#{gameAddress}"
         target="_blank"
         rel="noopener noreferrer"
       >

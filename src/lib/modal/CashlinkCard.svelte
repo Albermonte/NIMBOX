@@ -65,7 +65,8 @@
         </div>
     {/if}
     <div class="flex flex-col">
-        <span class="font-semibold text-16 text-black/60">Cashlink Balance</span>
+        <span class="font-semibold text-16 text-black/60">Cashlink Balance</span
+        >
         {#key balance}
             <span class="font-bold text-black text-32">{balance} NIM</span>
         {/key}
@@ -111,7 +112,7 @@
                 if ($wallet) {
                     window.open(
                         `https://wallet.nimiq${
-                            import.meta.env.DEV && "-testnet"
+                            import.meta.env.DEV ? "-testnet" : ""
                         }.com/nimiq:${$wallet.address
                             .toUserFriendlyAddress()
                             .replace(/\s/g, "")}`,
@@ -120,7 +121,7 @@
                 } else {
                     window.open(
                         `https://wallet.nimiq${
-                            import.meta.env.DEV && "-testnet"
+                            import.meta.env.DEV ? "-testnet" : ""
                         }.com/send/nim`,
                         "_blank"
                     );
