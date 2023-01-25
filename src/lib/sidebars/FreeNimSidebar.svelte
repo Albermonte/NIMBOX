@@ -23,6 +23,15 @@
             url: "https://nimtris.com/",
         },
         {
+            name: "HexTank.io",
+            logo: "/assets/treasury-logo.svg",
+            notice: "",
+            description:
+                "Play-to-earn Web3 instant game built on the Nimiq blockchain.",
+            buttonText: "Play",
+            url: "https://hextank.io/",
+        },
+        {
             name: "Nimiq Live on Twitch",
             logo: "/assets/treasury-logo.svg",
             notice: "",
