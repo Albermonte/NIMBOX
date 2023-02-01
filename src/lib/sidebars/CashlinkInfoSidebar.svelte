@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Divider from "$lib/components/Divider.svelte";
-    import CashlinkCard from "$lib/modal/CashlinkCard.svelte";
+    import CashlinkCard from "$lib/components/CashlinkCard.svelte";
     import SidebarPanel from "./SidebarPanel.svelte";
 </script>
 

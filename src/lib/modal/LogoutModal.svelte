@@ -1,6 +1,6 @@
 <script lang="ts">
     import InfoIcon from "$lib/icons/InfoIcon.svelte";
-    import CashlinkCard from "$lib/modal/CashlinkCard.svelte";
+    import CashlinkCard from "$lib/components/CashlinkCard.svelte";
     import { url, userCashlink, wallet } from "$store";
 
     const handleLogout = () => {

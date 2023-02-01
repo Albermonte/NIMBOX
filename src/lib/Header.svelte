@@ -17,7 +17,7 @@
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
 	import HamburguerMenu from "./buttons/HamburguerMenu.svelte";
 	import Icon from "./icons/Icon.svelte";
-	import CashlinkCard from "./modal/CashlinkCard.svelte";
+	import CashlinkCard from "$lib/components/CashlinkCard.svelte";
 
 	let innerWidth = window.innerWidth;
 
