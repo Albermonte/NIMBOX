@@ -15,14 +15,14 @@
 	import WorldIcon from "./icons/WorldIcon.svelte";
 	import WorldCheckIcon from "./icons/WorldCheckIcon.svelte";
 	import WorldAlertIcon from "./icons/WorldAlertIcon.svelte";
-	import HamburguerMenu from "./buttons/HamburguerMenu.svelte";
+	import HamburgerMenu from "./buttons/HamburgerMenu.svelte";
 	import Icon from "./icons/Icon.svelte";
 	import CashlinkCard from "$lib/components/CashlinkCard.svelte";
 
 	let innerWidth = window.innerWidth;
 
 	let balance = 0,
-		showHambuguerMenu = false,
+		showHamburgerMenu = false,
 		showCashlinkCard = false,
 		keepShowingCashlinkCard = false;
 
@@ -82,7 +82,7 @@
 >
 	<div class="flex">
 		<div class="flex flex-col mr-32">
-			<!-- TODO: add tooltip with network statistics like peer count, bandwith... -->
+			<!-- TODO: add tooltip with network statistics like peer count, bandwidth... -->
 			<span
 				class="mb-4 font-extrabold uppercase text-13 text-black-light/40"
 				>Consensus</span
@@ -187,10 +187,10 @@
 	<div class="flex items-center">
 		<FiatSelector class="mr-32" />
 		<!-- Hamburger -->
-		<div on:mouseleave={() => (showHambuguerMenu = false)}>
+		<div on:mouseleave={() => (showHamburgerMenu = false)}>
 			<div
 				class="cursor-pointer"
-				on:mouseenter={() => (showHambuguerMenu = true)}
+				on:mouseenter={() => (showHamburgerMenu = true)}
 			>
 				<svg
 					width="36"
@@ -219,8 +219,8 @@
 					/>
 				</svg>
 			</div>
-			{#if showHambuguerMenu}
-				<HamburguerMenu class="right-18" />
+			{#if showHamburgerMenu}
+				<HamburgerMenu class="right-18" />
 			{/if}
 		</div>
 	</div>

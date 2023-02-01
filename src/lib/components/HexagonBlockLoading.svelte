@@ -65,85 +65,85 @@
 </script>
 
 <div class={componentClass}>
-	<div class="relative">
-		<svg
-			width="228"
-			height="201"
-			viewBox="0 0 228 201"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			{#each Array.from({ length: 6 }) as _, index}
+	<div class="flex items-center gap-6">
+		<div class="relative">
+			<svg
+				width="228"
+				height="201"
+				viewBox="0 0 228 201"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				{#each Array.from({ length: 6 }) as _, index}
+					<g>
+						<path
+							d="M116.698 90.4331L164.588 6.65798C165.766 4.58586 164.28 2 161.889 2H66.1109C63.7198 2 62.234 4.58586 63.4124 6.65798L111.302 90.4331C112.497 92.5223 115.503 92.5223 116.698 90.4331Z"
+							class="fill-white"
+							id="Triangle-{index}"
+							transform="rotate({(index * 360) / 6} 114 99)"
+						/>
+					</g>
+				{/each}
+
+				<!-- White Background -->
 				<g>
 					<path
-						d="M116.698 90.4331L164.588 6.65798C165.766 4.58586 164.28 2 161.889 2H66.1109C63.7198 2 62.234 4.58586 63.4124 6.65798L111.302 90.4331C112.497 92.5223 115.503 92.5223 116.698 90.4331Z"
-						class="fill-white"
-						id="Triangle-{index}"
-						transform="rotate({(index * 360) / 6} 114 99)"
+						d="M178.5 94.4698L150.994 46.4963C149.039 43.1035 145.399 41 141.488 41H86.4774C82.5673 41 78.9269 43.1035 76.9718 46.4963L49.4663 94.4698C47.5112 97.8626 47.5112 102.07 49.4663 105.53L76.9044 153.504C78.8595 156.896 82.4999 159 86.41 159H141.421C145.331 159 148.972 156.896 150.927 153.504L178.365 105.734C180.522 102.205 180.522 97.9304 178.5 94.4698Z"
+						fill="#FAFBFD"
 					/>
 				</g>
-			{/each}
 
-			<!-- White Background -->
-			<g>
-				<path
-					d="M178.5 94.4698L150.994 46.4963C149.039 43.1035 145.399 41 141.488 41H86.4774C82.5673 41 78.9269 43.1035 76.9718 46.4963L49.4663 94.4698C47.5112 97.8626 47.5112 102.07 49.4663 105.53L76.9044 153.504C78.8595 156.896 82.4999 159 86.41 159H141.421C145.331 159 148.972 156.896 150.927 153.504L178.365 105.734C180.522 102.205 180.522 97.9304 178.5 94.4698Z"
-					fill="#FAFBFD"
-				/>
-			</g>
+				<defs>
+					<linearGradient
+						id="linearGradient"
+						x1="4"
+						y1="6"
+						x2="117.018"
+						y2="59.147"
+						gradientUnits="userSpaceOnUse"
+					>
+						<stop
+							class="transition-all duration-1000 ease-in-out"
+							stop-color={color}
+						/>
+						<stop
+							class="transition-all duration-1000 ease-in-out"
+							offset="1"
+							stop-color={color}
+						/>
+					</linearGradient>
+				</defs>
 
-			<defs>
-				<linearGradient
-					id="linearGradient"
-					x1="4"
-					y1="6"
-					x2="117.018"
-					y2="59.147"
-					gradientUnits="userSpaceOnUse"
+				<style>
+					.fill-linear-gradient {
+						fill: url(#linearGradient);
+					}
+				</style>
+			</svg>
+
+			<div
+				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center"
+			>
+				<span
+					class="text-blue-dark font-black tracking-wider text-28 leading-1"
+					>{currentBlock}/{maxBlocks}</span
 				>
-					<stop
-						class="transition-all duration-1000 ease-in-out"
-						stop-color={color}
-					/>
-					<stop
-						class="transition-all duration-1000 ease-in-out"
-						offset="1"
-						stop-color={color}
-					/>
-				</linearGradient>
-			</defs>
-
-			<style>
-				.fill-linear-gradient {
-					fill: url(#linearGradient);
-				}
-			</style>
-		</svg>
-
-		<div
-			class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center"
-		>
-			<span
-				class="text-blue-dark font-black tracking-wider text-28 leading-1"
-				>{currentBlock}/{maxBlocks}</span
-			>
-			<span class="text-blue-dark/50 font-bold text-18 leading-1"
-				>blocks</span
-			>
-			<LoadingBar
-				percentage={(currentBlock / maxBlocks) * 100}
-				height={18}
-				class="mt-8"
-				{currentBlock}
-			/>
+				<span class="text-blue-dark/50 font-bold text-18 leading-1"
+					>blocks</span
+				>
+				<LoadingBar
+					percentage={(currentBlock / maxBlocks) * 100}
+					height={18}
+					class="mt-8"
+					{currentBlock}
+				/>
+			</div>
 		</div>
 
-		<div class="absolute bottom-12 left-18">
-			<InfoIcon class="w-22" />
-		</div>
+		<InfoIcon />
 	</div>
-
-	<div class="flex flex-col text-center mt-6">
+	<!-- Same width as hex svg, that way it's on the middle of the hex -->
+	<div class="flex flex-col text-center mt-6 w-[228px]">
 		<span class="font-bold uppercase text-12 text-black-light/40"
 			>Block Height</span
 		>
