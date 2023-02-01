@@ -40,7 +40,7 @@
 			left < 0 && (left = b.left);
 
 			cashlinkCardPosition = {
-				top: b.top + b.height + 20,
+				top: b.bottom + 20,
 				left,
 			};
 
