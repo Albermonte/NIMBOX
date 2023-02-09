@@ -11,7 +11,8 @@
     export let cashlink = "",
         extraInfo = false,
         triangle = false,
-        trianglePositionLeft = 0;
+        trianglePositionLeft = 0,
+        showFundButton = true;
     let componentClass: string = "",
         componentStyle: string = "";
     export { componentClass as class, componentStyle as style };
@@ -51,7 +52,7 @@
 
 <div
     bind:this={cashlinkCardElement}
-    class=" bg-grey flex border-[#D6D6D6] border-1 rounded-8 py-20 px-28 shadow-around gap-56 {componentClass}"
+    class=" bg-grey grid grid-cols-[6fr_4fr] border-[#D6D6D6] border-1 rounded-8 py-20 px-28 shadow-around gap-20 {componentClass}"
     style={componentStyle}
 >
     {#if triangle}
@@ -101,32 +102,34 @@
     <div>
         <img
             src={cashlinkWithEffects}
-            width="53"
-            height="50"
             alt="Cashlink Logo"
-            class="mx-auto"
+            class="mx-auto {showFundButton ? "h-[50px]" : "h-full"}"
         />
-        <button
-            class="py-10 mx-auto mt-10 font-extrabold text-white px-14 bg-linear-button-green text-12 rounded-24"
-            on:click={() => {
-                if ($wallet) {
-                    window.open(
-                        `https://wallet.nimiq${
-                            import.meta.env.DEV ? "-testnet" : ""
-                        }.com/nimiq:${$wallet.address
-                            .toUserFriendlyAddress()
-                            .replace(/\s/g, "")}`,
-                        "_blank"
-                    );
-                } else {
-                    window.open(
-                        `https://wallet.nimiq${
-                            import.meta.env.DEV ? "-testnet" : ""
-                        }.com/send/nim`,
-                        "_blank"
-                    );
-                }
-            }}>Fund Cashlink</button
-        >
+        {#if showFundButton}
+            <button
+                class="py-10 mx-auto mt-10 font-extrabold text-white px-14 bg-linear-button-green text-12 rounded-24"
+                on:click={() => {
+                    if ($wallet) {
+                        window.open(
+                            `https://wallet.nimiq${
+                                import.meta.env.DEV ? "-testnet" : ""
+                            }.com/nimiq:${$wallet.address
+                                .toUserFriendlyAddress()
+                                .replace(/\s/g, "")}`,
+                            "_blank"
+                        );
+                    } else {
+                        window.open(
+                            `https://wallet.nimiq${
+                                import.meta.env.DEV ? "-testnet" : ""
+                            }.com/send/nim`,
+                            "_blank"
+                        );
+                    }
+                }}
+            >
+                Fund Cashlink
+            </button>
+        {/if}
     </div>
 </div>

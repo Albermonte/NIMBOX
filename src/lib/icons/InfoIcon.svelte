@@ -63,7 +63,7 @@
     />
 </svg>
 
-{#if showInfoCard || keepShowingInfoCard || true}
+{#if showInfoCard || keepShowingInfoCard}
     <div
         class="absolute z-50 rounded-8 bg-black w-360 text-white top-136"
         style="left: {infoCardPosition.left}; right: {infoCardPosition.right};"

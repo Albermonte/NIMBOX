@@ -103,7 +103,7 @@
 				>
 			</div>
 		</div>
-		<div class="flex flex-col mr-40">
+		<!-- <div class="flex flex-col mr-40">
 			<span
 				class="mb-4 font-extrabold uppercase text-13 text-black-light/40"
 				>Logged In</span
@@ -121,7 +121,7 @@
 					alt=""
 				/>
 			{/if}
-		</div>
+		</div> -->
 		{#if $wallet}
 			<div class="flex flex-col" transition:fly={{ y: 10 }}>
 				<span

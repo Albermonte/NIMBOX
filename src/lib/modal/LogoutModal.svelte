@@ -12,7 +12,7 @@
 
 <div class="flex flex-col items-center px-40 gap-y-32">
     <h1 class="font-bold text-24">Log out</h1>
-    <CashlinkCard />
+    <CashlinkCard showFundButton={false} />
     <div class="flex items-center justify-evenly">
         <InfoIcon class="w-26 h-26" />
         <span class="font-bold text-12 text-black/50 mx-14">
