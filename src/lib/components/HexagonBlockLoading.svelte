@@ -140,7 +140,24 @@
 			</div>
 		</div>
 
-		<InfoIcon />
+		<InfoIcon>
+			<span class="font-extrabold text-17">Timer info:</span>
+			<ul
+				class="font-semibold text-14 text-[#CCCCCC] list-disc list-outside"
+			>
+				<li>It cost 6 ~ minutes to complete 6 blocks.</li>
+				<li>
+					The timer resets to 0 blocks whenever someone sends a new
+					transaction to the treasure chest.
+				</li>
+			</ul>
+			<div class="flex items-center justify-between w-344 mt-12 mb-4">
+				<span class="font-medium text-15"
+					>Check the block height:
+				</span>
+				<a class="bg-linear-button-blue rounded-24 font-bold text-14 px-12 py-8" href="https://nimiq.watch/" target="_blank" rel="noreferrer">Open Block Explorer</a>
+			</div>
+		</InfoIcon>
 	</div>
 	<!-- Same width as hex svg, that way it's on the middle of the hex -->
 	<div class="flex flex-col text-center mt-6 w-[228px]">
