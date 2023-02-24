@@ -4,7 +4,7 @@
     import CloseButton from "../buttons/CloseButton.svelte";
 
     export let width = "50vw",
-        icon = "treasury",
+        icon = "nimbox",
         iconStyle = "";
 </script>
 
@@ -19,7 +19,7 @@
         <CloseButton />
         <img
             src={`/assets/${icon}-logo.svg`}
-            alt="Nimiq Treasury"
+            alt="NIMBOX"
             class="w-200 mx-auto {iconStyle}"
         />
     </div>

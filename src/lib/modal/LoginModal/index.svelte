@@ -1,5 +1,5 @@
 <script lang="ts">
-    import InfoIcon from "$lib/icons/InfoIcon.svelte";
+    import InfoIcon from "$lib/buttons/InfoButton.svelte";
     import CashlinkCard from "$lib/components/CashlinkCard.svelte";
     import CashlinkInput from "./CashlinkInput.svelte";
     import { url, userCashlink } from "$store";

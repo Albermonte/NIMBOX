@@ -36,11 +36,14 @@ module.exports = {
         'light-on-dark-darkened': '#0E99EC',
         dark: '#1F2348',
         'dark-darkened': '#151833',
+        logo: "#249CED",
+        'logo-light': "#62B1E6",
       },
       green: {
         DEFAULT: '#2AB799',
         light: '#24CFAB',
         darkened: '#20B29E',
+        logo: "#25CBA8",
       },
       orange: {
         DEFAULT: '#FC8702',
@@ -50,6 +53,7 @@ module.exports = {
         DEFAULT: '#D94432',
         darkened: '#D13030',
         'on-dark': '#FF5C48',
+        logo: "#FF6363"
       },
       brown: {
         DEFAULT: '#795548',

@@ -97,7 +97,6 @@
 						<div in:fly={{ y: 10 }}>
 							<img
 								src="/assets/{$selectedCurrency}-logo.svg"
-								preload="true"
 								alt="{$selectedCurrency} logo"
 								class="object-cover"
 							/>

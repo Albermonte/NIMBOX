@@ -1,55 +1,44 @@
 <script lang="ts">
-    export let percentage = 0,
-        height = 20,
-        currentBlock = 0;
-    
-        let bgColor = "bg-linear-button-green"
+    import { fly } from "svelte/transition";
+    import { currentBlock } from "$store";
+
+    export let maxBlocks = 6;
+
+    let bgColor = "bg-linear-button-blue";
     $: {
-        if (currentBlock < 2) {
-            bgColor = "bg-linear-button-green";
-        } else if (currentBlock < 4) {
+        if ($currentBlock < 5) {
             bgColor = "bg-linear-button-blue";
-        } else if (currentBlock < 6) {
+        } else if ($currentBlock < 6) {
             bgColor = "bg-linear-button-red";
         } else {
             bgColor = "bg-linear-button-gold";
         }
     }
 
+    let percentage = 0;
+    $: percentage = Math.min(($currentBlock / maxBlocks) * 100, 100);
+
     let componentClass: string = "";
     export { componentClass as class };
 </script>
 
-<div
-    class="flex items-center w-72 bg-transparent border-1 border-black/[0.15] rounded {componentClass}"
-    style="height: {height}px;"
->
-    <div
-        class="{bgColor} -ml-1 flex items-center justify-center transition-all duration-1000 ease-in-out rounded-l {percentage >=
-        100
-            ? 'rounded'
-            : ''}"
-        style="height: {height}px; width: {Math.max(percentage + 5, 10)}%;"
-    >
-        {#if percentage >= 50}
-            <span
-                class="text-white font-bold"
-                style="font-size: {0.55 * height}px"
-            >
-                {percentage.toFixed()} %
-            </span>
-        {/if}
-    </div>
-    {#if percentage < 50}
-        <span
-            class="text-black font-bold mx-auto"
-            style="font-size: {0.6 * height}px"
-        >
-            {percentage.toFixed()} %
-        </span>
-    {/if}
+<div class="flex w-[220px] justify-between items-center {componentClass}">
+    {#each [...Array(maxBlocks).keys()] as i}
+        <div class="relative">
+            <div
+                class="w-28 h-6 rounded-6 border-2 border-[#676975]/5 transition-all {i <
+                $currentBlock
+                    ? bgColor
+                    : 'bg-[#EDF1F7]'}"
+            />
+            {#if i === Math.min($currentBlock, 6) - 1}
+                <span
+                    class="absolute font-bold text-center text-black text-14 top-10"
+                    in:fly={{ x: -20 }}
+                    out:fly={{ x: 20 }}
+                    >{Math.floor(percentage).toFixed()}%</span
+                >
+            {/if}
+        </div>
+    {/each}
 </div>
-
-<style>
-    /* box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.1); */
-</style>

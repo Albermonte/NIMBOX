@@ -30,6 +30,8 @@ export const userCashlink: PersistentStore<string> = persist(
     "userCashlink",
 );
 
+export const currentBlock: Writable<number> = writable(0);
+
 export const wallet: Writable<Nimiq.Wallet | null> = writable(null);
 
 const createUrlStore = () => {

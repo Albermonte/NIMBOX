@@ -1,18 +1,19 @@
 <script lang="ts">
   import Header from "$lib/Header.svelte";
   import Footer from "$lib/Footer.svelte";
-  import HexagonBlockLoading from "$lib/components/HexagonBlockLoading.svelte";
+  import HexagonBlockLoading from "$lib/components/HexagonBlock.svelte";
   import ParticipantList from "$lib/components/ParticipantList.svelte";
-  import ScoreBoardCard from "$lib/components/ScoreBoardCard.svelte";
-  import ParticipateButton from "$lib/buttons/ParticipateButton.svelte";
+  import ScoreBoardCard from "$lib/components/BalanceDisplay.svelte";
+  import PlayBlock from "$lib/components/PlayBlock.svelte";
   import SidebarsManager from "$lib/sidebars/SidebarsManager.svelte";
-  import logo from "/assets/treasury-logo.svg";
+  import NimboxLogo from "$lib/components/NimboxLogo.svelte";
+  import LoginAlert from "$lib/buttons/LoginAlert.svelte";
+  import InfoIcon from "$lib/buttons/InfoButton.svelte";
 
   import { start, established } from "nimiq-svelte-stores";
   import { userCashlink, wallet } from "$store";
   import { getWalletFromCashlink } from "$utils/cashlink";
   import { onMount } from "svelte";
-  import LoginAlert from "$lib/buttons/LoginAlert.svelte";
 
   // TODO: Import from .env
   const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
@@ -40,36 +41,24 @@
   <div class="bg-[#EDF1F7] flex flex-col items-center h-[calc(50%-45px-32px)]">
     <Header />
     <div class="my-auto text-center transition-all">
-      <img
-        class="max-w-[min(80vw,26rem)] mb-20"
-        src={logo}
-        alt="Nimiq Game Treasure Logo"
-      />
-      <a
-        class="px-16 py-4 mx-auto font-extrabold bg-white cursor-pointer text-black/50 text-16 rounded-8"
-        href="https://{import.meta.env.DEV
-          ? 'test.'
-          : ''}nimiq.watch/#{gameAddress}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Treasury ➞
-      </a>
+      <NimboxLogo />
+      <div class="flex items-center justify-center gap-6">
+        <InfoIcon />
+        <a
+          class="px-16 py-8 font-extrabold bg-white cursor-pointer text-black/60 text-14 rounded-24"
+          href="https://{import.meta.env.DEV
+            ? 'test.'
+            : ''}nimiq.watch/#{gameAddress}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          NIMBOX ➞
+        </a>
+      </div>
       {#if $established && !$wallet && !$userCashlink}
         <LoginAlert />
       {/if}
     </div>
-  </div>
-
-  <!-- Mobile -->
-  <div
-    class="flex flex-col items-center justify-center pt-10 bg-white xl:hidden xs:flex-row gap-x-16"
-  >
-    <ParticipateButton class="flex flex-col items-center" />
-    {#if isMobile}
-      <!-- Can only be rendered once, otherwise the animation on the Desktop version will brole -->
-      <HexagonBlockLoading class="scale-75" />
-    {/if}
   </div>
 
   <!-- Desktop -->
@@ -88,8 +77,8 @@
     <div
       class="w-full rounded-br-[28px] bg-[#EDF1F7] relative hidden xl:block shadow-bottom-left"
     >
-      <ParticipateButton
-        class="absolute flex flex-col items-center justify-center -translate-x-1/2 -translate-y-56 w-max left-1/2"
+      <PlayBlock
+        class="absolute -translate-x-1/2 -translate-y-56 w-max left-1/2"
       />
     </div>
     <div class="bg-white relative col-span-2 xl:col-[2_/_span_1]">
@@ -102,11 +91,9 @@
     <div
       class="w-full rounded-bl-[28px] bg-[#EDF1F7] relative hidden xl:block shadow-bottom-right"
     >
-      {#if !isMobile}
-        <HexagonBlockLoading
-          class="absolute -translate-x-1/2 w-max left-1/2 -translate-y-[68px]"
-        />
-      {/if}
+      <HexagonBlockLoading
+        class="absolute -translate-x-1/2 -translate-y-[68px] w-max left-1/2"
+      />
     </div>
     <Footer />
   </div>

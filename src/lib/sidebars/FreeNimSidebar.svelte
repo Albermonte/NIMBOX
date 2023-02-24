@@ -42,8 +42,8 @@
             url: "https://www.twitch.tv/nimiqlive",
         },
         {
-            name: "Nimiq Treasury GIVEAWAY",
-            logo: "/assets/treasury-logo.svg",
+            name: "NIMBOX GIVEAWAY",
+            logo: "/assets/nimbox-logo.svg",
             notice: "Huge Giveaways up to 1000$",
             description:
                 "Share the game on twitter. And get a chance to win a giveaway with every target we reach.",

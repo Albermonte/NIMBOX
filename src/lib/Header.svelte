@@ -92,7 +92,7 @@
 					{#if $consensus === "connecting"}
 						<WorldIcon />
 					{:else if $consensus === "established"}
-						<WorldCheckIcon class=" text-green" />
+						<WorldCheckIcon class="border-green" />
 					{:else}
 						<WorldAlertIcon class=" text-orange" />
 					{/if}
