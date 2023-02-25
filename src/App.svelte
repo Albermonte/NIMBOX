@@ -7,7 +7,7 @@
   import PlayBlock from "$lib/components/PlayBlock.svelte";
   import SidebarsManager from "$lib/sidebars/SidebarsManager.svelte";
   import NimboxLogo from "$lib/components/NimboxLogo.svelte";
-  import LoginAlert from "$lib/buttons/LoginAlert.svelte";
+  // import LoginAlert from "$lib/buttons/LoginAlert.svelte";
   import InfoIcon from "$lib/buttons/InfoButton.svelte";
 
   import { start, established } from "nimiq-svelte-stores";
@@ -55,9 +55,11 @@
           NIMBOX ➞
         </a>
       </div>
+      <!-- 
       {#if $established && !$wallet && !$userCashlink}
         <LoginAlert />
-      {/if}
+      {/if} 
+      -->
     </div>
   </div>
 

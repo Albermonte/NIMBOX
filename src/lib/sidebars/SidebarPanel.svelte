@@ -9,7 +9,7 @@
 </script>
 
 <div
-    class="transform-gpu absolute top-0 grid grid-rows-[10rem_1fr_3fr] items-start drop-shadow-2xl bg-white h-full w-1/2 sidebar-width px-32 pt-20 overflow-auto overflow-x-hidden right-0"
+    class="transform-gpu absolute z-20 top-0 grid grid-rows-[10rem_1fr_3fr] items-start drop-shadow-2xl bg-white h-full w-1/2 sidebar-width px-32 pt-20 overflow-auto overflow-x-hidden right-0"
     style="--custom-width: {width}"
     in:fly={{ delay: 150, x: 100 }}
     out:fly={{ x: 100 }}

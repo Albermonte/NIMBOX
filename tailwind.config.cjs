@@ -292,6 +292,7 @@ module.exports = {
         'linear-button-blue': 'linear-gradient(180deg, #0C90E8 0%, #1485D1 100%)',
         'linear-button-red': 'linear-gradient(297.62deg, #F25454 0.43%, #D63B3B 100.37%)',
         'linear-button-gold': 'linear-gradient(131.27deg, #EAB114 -8.75%, #EC9B1C 122.7%)',
+        'linear-button-orange': 'linear-gradient(139.67deg, #E97E08 16.04%, #FC8702 92.5%)',
       },
       transitionProperty: {
         'transform-opacity': 'transform, opacity',

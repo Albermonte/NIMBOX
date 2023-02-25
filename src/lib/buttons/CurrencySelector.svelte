@@ -30,7 +30,7 @@
 			? "filter: grayscale(100%)"
 			: ""}
 		on:click={() => ($selectedCurrency = SupportedCurrencies.NIM)}
-		on:keypress={() => ($selectedCurrency = SupportedCurrencies.NIM)}
+		on:keydown={() => ($selectedCurrency = SupportedCurrencies.NIM)}
 	>
 		<circle
 			cx="16.9195"

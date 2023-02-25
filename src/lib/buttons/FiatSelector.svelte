@@ -27,9 +27,7 @@
     on:mouseenter={() => (hover = true)}
     on:mouseleave={() => (hover = false)}
 >
-    <div
-        class="h-40 bg-white w-104 hover:bg-blue-dark/5 rounded-l-24"
-    >
+    <div class="h-36 bg-white w-96 hover:bg-blue-dark/5 rounded-l-24">
         <div
             class="flex items-center pl-16 rounded-tl-[20px] hover:bg-blue-dark/80 {hover
                 ? 'bg-blue-dark'
@@ -39,12 +37,12 @@
             <img
                 src="/assets/icons/{$selectedFiat}-icon.svg"
                 alt=""
-                width="22"
+                width="20"
             />
             <span
                 class="mx-auto font-extrabold text-{hover
                     ? 'white'
-                    : 'black'} uppercase text-18">{$selectedFiat}</span
+                    : 'black'} uppercase text-16">{$selectedFiat}</span
             >
         </div>
 
@@ -62,17 +60,18 @@
                     in:fly={{ opacity: 1, y: -20 }}
                     out:fly={{ opacity: 0, y: -10, duration: 150 }}
                     on:click={() => ($selectedFiat = currency)}
+                    on:keydown={() => ($selectedFiat = currency)}
                 >
                     <img
                         src="/assets/icons/{currency}-icon.svg"
                         alt=""
-                        width="22"
+                        width="20"
                     />
 
                     <span
                         class="mx-auto font-extrabold text-{hover
                             ? 'white'
-                            : 'black'} uppercase text-18">{currency}</span
+                            : 'black'} uppercase text-16">{currency}</span
                     >
                 </div>
             {/each}
@@ -80,14 +79,14 @@
     </div>
     <!-- Arrow -->
     <div
-        class="flex items-center justify-center h-40 pl-6 pr-16 bg-white rounded-r-24 {hover
+        class="flex items-center justify-center h-36 pl-6 pr-16 bg-white rounded-r-24 {hover
             ? 'bg-blue-dark/5'
             : ''}"
     >
         <svg
-            width="17"
-            height="15"
-            viewBox="0 0 17 15"
+            width="14"
+            height="14"
+            viewBox="0 0 15 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             class="transition-all transform"
@@ -96,7 +95,7 @@
                 : "transform: rotate(90deg)"}
         >
             <path
-                d="M8.5 15L16.7272 0.75H0.272758L8.5 15Z"
+                d="M6.63397 13.5C7.01887 14.1667 7.98112 14.1667 8.36602 13.5L14.8612 2.25C15.2461 1.58333 14.765 0.75 13.9952 0.75H1.00481C0.23501 0.75 -0.246116 1.58333 0.138784 2.25L6.63397 13.5Z"
                 class={hover ? "fill-blue-dark" : "fill-[#C4C4C4]"}
             />
         </svg>

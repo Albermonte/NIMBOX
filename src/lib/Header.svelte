@@ -18,6 +18,7 @@
 	import HamburgerMenu from "./buttons/HamburgerMenu.svelte";
 	import Icon from "./icons/Icon.svelte";
 	import CashlinkCard from "$lib/components/CashlinkCard.svelte";
+	import LoginButton from "./buttons/LoginButton.svelte";
 
 	let innerWidth = window.innerWidth;
 
@@ -185,6 +186,9 @@
 		{/if}
 	</div>
 	<div class="flex items-center">
+		{#if $established && !$wallet && !$userCashlink}
+			<LoginButton class="mr-32" />
+		{/if}
 		<FiatSelector class="mr-32" />
 		<!-- Hamburger -->
 		<div on:mouseleave={() => (showHamburgerMenu = false)}>

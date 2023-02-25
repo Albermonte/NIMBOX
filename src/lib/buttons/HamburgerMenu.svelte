@@ -41,7 +41,7 @@
 
     $: {
         // Last button will always be the log in/out button
-        if ($userCashlink && $wallet) {
+        if ($userCashlink) {
             // Change last button to "Log out"
             buttons[buttons.length - 1].text = "Log out";
             buttons[buttons.length - 1].link = "log-out";
@@ -59,7 +59,7 @@
     };
 </script>
 
-<div class="absolute {componentClass}" transition:fly={{ y: -10, duration: 300 }}>
+<div class="absolute z-10 {componentClass}" transition:fly={{ y: -10, duration: 300 }}>
     <div class="mt-8">
         <div
             class="h-0 w-0 border-black border-x-8 border-b-[14px] border-x-transparent ml-auto mr-48"
@@ -71,7 +71,7 @@
                 <li
                     class="hover:bg-[#464864] px-20 py-10 hover:cursor-pointer transition-colors duration-300 flex items-center"
                     on:click={() => navigate(button.link)}
-                    on:keypress={() => navigate(button.link)}
+                    on:keydown={() => navigate(button.link)}
                 >
                     <Icon
                         name={button.icon}

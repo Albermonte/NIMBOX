@@ -65,7 +65,7 @@
     <div
         class="cursor-pointer"
         on:click={handlePlay}
-        on:keypress={() => console.log("keypress")}
+        on:keydown={() => console.log("keydown")}
         on:mouseenter={() => (isHovering = true)}
         on:mouseleave={() => (isHovering = false)}
     >

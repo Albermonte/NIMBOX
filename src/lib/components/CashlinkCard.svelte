@@ -48,6 +48,20 @@
     // ●●●   •••
     $: address &&
         (shortAddress = address.slice(0, 4) + " ••• " + address.slice(-4));
+
+    const fundCashlinkURL = () => {
+        if ($wallet) {
+            return `https://wallet.nimiq${
+                import.meta.env.DEV ? "-testnet" : ""
+            }.com/nimiq:${$wallet.address
+                .toUserFriendlyAddress()
+                .replace(/\s/g, "")}`;
+        } else {
+            return `https://wallet.nimiq${
+                import.meta.env.DEV ? "-testnet" : ""
+            }.com/send/nim`;
+        }
+    };
 </script>
 
 <div
@@ -103,33 +117,17 @@
         <img
             src={cashlinkWithEffects}
             alt="Cashlink Logo"
-            class="mx-auto {showFundButton ? "h-[50px]" : "h-full"}"
+            class="mx-auto {showFundButton ? 'h-[50px]' : 'h-full'}"
         />
         {#if showFundButton}
-            <button
-                class="py-10 mx-auto mt-10 font-extrabold text-white px-14 bg-linear-button-green text-12 rounded-24"
-                on:click={() => {
-                    if ($wallet) {
-                        window.open(
-                            `https://wallet.nimiq${
-                                import.meta.env.DEV ? "-testnet" : ""
-                            }.com/nimiq:${$wallet.address
-                                .toUserFriendlyAddress()
-                                .replace(/\s/g, "")}`,
-                            "_blank"
-                        );
-                    } else {
-                        window.open(
-                            `https://wallet.nimiq${
-                                import.meta.env.DEV ? "-testnet" : ""
-                            }.com/send/nim`,
-                            "_blank"
-                        );
-                    }
-                }}
+            <a
+                class="py-4 mx-auto mt-10 font-extrabold text-white px-10 bg-linear-button-green text-12 rounded-24"
+                href={fundCashlinkURL()}
+                target="_blank"
+                rel="noopener noreferrer"
             >
                 Fund Cashlink
-            </button>
+            </a>
         {/if}
     </div>
 </div>
