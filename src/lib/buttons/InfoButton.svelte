@@ -47,7 +47,7 @@
                 showInfoCard = false;
             }, 250);
         }}
-        class="cursor-pointer {componentClass}"
+        class="cursor-pointer"
     >
         <circle cx="11.5" cy="11.5" r="11.5" fill="#D2D3DA" />
         <path
@@ -62,7 +62,7 @@
 
     {#if showInfoCard || keepShowingInfoCard}
         <div
-            class="absolute z-20 top-[calc(100%+22px)] rounded-8 bg-black min-w-[360px] text-white"
+            class="absolute z-20 top-[calc(100%+22px)] rounded-8 bg-black min-w-[360px] text-white {componentClass}"
             style="left: {infoCardPosition.left}; right: {infoCardPosition.right};"
             on:mouseenter={() => (keepShowingInfoCard = true)}
             on:mouseleave={() => {

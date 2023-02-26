@@ -18,10 +18,10 @@
 			<ul
 				class="font-semibold text-14 text-[#CCCCCC] list-disc list-outside"
 			>
-				<li>It cost 6 ~ minutes to complete 6 blocks.</li>
+				<li>It takes ~6 minutes to complete 6 blocks.</li>
 				<li>
-					The timer resets to 0 blocks whenever someone sends a new
-					transaction to the treasure chest.
+					The timer resets to 0 blocks each time someone sends a new
+					transaction to the NIMBOX.
 				</li>
 			</ul>
 			<div class="flex items-center justify-between mt-12 mb-4 w-344">

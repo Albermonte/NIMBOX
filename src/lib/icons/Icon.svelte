@@ -1,6 +1,6 @@
 <script lang="ts">
     /**
-     * question-mark-circle | nq-cashlink[-big,-small,-xsmall] | nq-hexagon | trophy | twitter-logo | power | nq-login | exclamation-triangle | youtube-logo | nimiq-logo
+     * question-mark-circle | nq-cashlink[-big,-small,-xsmall] | nq-hexagon | trophy | twitter-logo | power | nq-login | exclamation-triangle | youtube-logo | nimiq-logo | arrow-right
      */
     export let name: string;
     export let width = "1rem";
@@ -88,6 +88,12 @@
             name: "nimiq-logo",
             svg: `<path d="M47.4453 19.0337L37.4442 1.96092C36.7299 0.746004 35.4094 0 33.9807 0L13.9895 0C12.5608 0 11.2511 0.746004 10.5368 1.96092L0.535768 19.0337C-0.178589 20.2487 -0.178589 21.7513 0.535768 22.9662L10.526 40.0391C11.2403 41.254 12.5608 42 13.9895 42H33.9807C35.4094 42 36.7299 41.254 37.4442 40.0391L47.4344 23.0409C48.1813 21.8046 48.1921 20.27 47.4453 19.0337Z" fill="url(#paint0_linear_1298_3860)" /><defs><linearGradient id="paint0_linear_1298_3860" x1="-3.42857" y1="-4.44231" x2="55.6263" y2="54.7942" gradientUnits="userSpaceOnUse"><stop stop-color="#EAB114" /><stop offset="1" stop-color="#EC9B1C" /></linearGradient></defs>`,
         },
+        {
+            boxW: 16,
+            boxH: 8,
+            name: "arrow-right",
+            svg: `<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1716 0.146447L15.3536 3.32843C15.5488 3.52369 15.5488 3.84027 15.3536 4.03553L12.1716 7.21751C11.9763 7.41278 11.6597 7.41278 11.4645 7.21751C11.2692 7.02225 11.2692 6.70567 11.4645 6.51041L13.7929 4.18198H7C6.72386 4.18198 6.5 3.95812 6.5 3.68198C6.5 3.40584 6.72386 3.18198 7 3.18198H13.7929L11.4645 0.853553C11.2692 0.658291 11.2692 0.341709 11.4645 0.146447C11.6597 -0.0488155 11.9763 -0.0488155 12.1716 0.146447Z" fill="#8E8AA4"/><circle cx="4.5" cy="3.68164" r="0.5" fill="#8E8AA4"/><circle cx="2.5" cy="3.68164" r="0.5" fill="#8E8AA4"/><circle cx="0.5" cy="3.68164" r="0.5" fill="#8E8AA4"/>`,
+        },
     ];
     const displayIcon = icons.find((e) => e.name === name);
 </script>
@@ -100,3 +106,4 @@
 >
     {@html displayIcon.svg}
 </svg>
+    

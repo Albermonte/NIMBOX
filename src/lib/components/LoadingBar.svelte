@@ -16,7 +16,8 @@
     }
 
     let percentage = 0;
-    $: percentage = Math.min(($currentBlock / maxBlocks) * 100, 100);
+    $: percentage = Math.min(($currentBlock / maxBlocks) * 100, 99);
+    $: $currentBlock > 6 && (percentage = 100);
 
     let componentClass: string = "";
     export { componentClass as class };

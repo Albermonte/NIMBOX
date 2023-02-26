@@ -14,6 +14,7 @@
   import { userCashlink, wallet } from "$store";
   import { getWalletFromCashlink } from "$utils/cashlink";
   import { onMount } from "svelte";
+  import Icon from "$lib/icons/Icon.svelte";
 
   // TODO: Import from .env
   const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
@@ -43,16 +44,23 @@
     <div class="my-auto text-center transition-all">
       <NimboxLogo />
       <div class="flex items-center justify-center gap-6">
-        <InfoIcon />
+        <InfoIcon class="text-left">
+          <span class="font-extrabold text-17">NIMBOX info</span>
+          <p class="font-semibold text-14 text-[#CCCCCC] mt-2">
+            This is the NIMBOX link to the blockchain explore, where all the NIM
+            is collected from the players participating in this game. To win
+            this NIMBOX, be the last to send a transaction.
+          </p>
+        </InfoIcon>
         <a
-          class="px-16 py-8 font-extrabold bg-white cursor-pointer text-black/60 text-14 rounded-24"
+          class="px-16 py-8 font-extrabold bg-white cursor-pointer text-black/60 text-14 rounded-24 flex items-center gap-6"
           href="https://{import.meta.env.DEV
             ? 'test.'
             : ''}nimiq.watch/#{gameAddress}"
           target="_blank"
           rel="noopener noreferrer"
         >
-          NIMBOX ➞
+          NIMBOX <Icon name="arrow-right" />
         </a>
       </div>
       <!-- 
