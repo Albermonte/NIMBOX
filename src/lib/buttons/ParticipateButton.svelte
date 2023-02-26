@@ -1,8 +1,10 @@
 <script lang="ts">
+    import { fly } from "svelte/transition";
     import { established, height, client } from "nimiq-svelte-stores";
     import type Nimiq from "@nimiq/core-web";
 
-    import { participationCounter, url, wallet } from "$store";
+    import { participationCounter, url, wallet, userCashlink } from "$store";
+    import Icon from "$lib/icons/Icon.svelte";
 
     // TODO: Import from .env
     const gameAddress = "NQ38 5QM1 6E26 UUB1 XMU3 01JN 3RLV HAN9 U6MF";
@@ -58,6 +60,23 @@
         }
     };
 </script>
+
+<!-- Tooltip -->
+{#if !$wallet && !$userCashlink && isHovering}
+    <div
+        in:fly={{ y: 10 }}
+        out:fly={{ y: 4, duration: 200 }}
+        class="absolute z-10 -top-48 flex bg-black rounded-6 w-max px-10 py-6 items-center gap-6"
+    >
+        <div
+            class="absolute -bottom-14 right-1/2 h-0 w-0 border-black border-x-8 border-t-[14px] border-x-transparent"
+        />
+        <Icon name="exclamation-triangle" class="fill-white" width="24" />
+        <span class="text-white font-semibold text-16"
+            >To participate, please login</span
+        >
+    </div>
+{/if}
 
 <div
     class="w-96 h-96 m-40 rounded bg-[#269EEE] shadow flex justify-center items-center"
